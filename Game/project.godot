@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 
 project/assembly_name="Metamorphosis"
 
+[layer_names]
+
+3d_physics/layer_1="DO NOT USE"
+3d_physics/layer_2="Body"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
