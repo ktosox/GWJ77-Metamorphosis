@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://7tk0ien3w4x0"]
+
+[ext_resource type="Texture2D" uid="uid://cowcmtg2ufl8n" path="res://resources/shader_textures/Shader_Texture_8.png" id="1_gmpw6"]
+[ext_resource type="ArrayMesh" uid="uid://dcc7h8ce7lfm8" path="res://resources/level_parts/basic_segment.tres" id="2_pqsxu"]
+[ext_resource type="PackedScene" uid="uid://cowurckmby2dh" path="res://experimental/player_ship.tscn" id="3_ktpns"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwch3"]
+albedo_color = Color(0.389814, 0.780047, 0.718667, 1)
+albedo_texture = ExtResource("1_gmpw6")
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8mufp"]
+size = Vector3(4, 10, 1)
+
+[node name="TunnelFalling" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_mwch3")
+mesh = ExtResource("2_pqsxu")
+
+[node name="PlayerShip" parent="." instance=ExtResource("3_ktpns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354996, 5.23243, -0.243435)
+axis_lock_angular_y = true
+wall_min_slide_angle = 3.14159
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+shape = SubResource("BoxShape3D_8mufp")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+shape = SubResource("BoxShape3D_8mufp")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 0)
+shape = SubResource("BoxShape3D_8mufp")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)
+shape = SubResource("BoxShape3D_8mufp")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cowurckmby2dh"]
+
+[ext_resource type="Script" path="res://experimental/player_ship.gd" id="1_xe1e3"]
+
+[sub_resource type="Environment" id="Environment_6tf13"]
+background_mode = 1
+background_color = Color(0.92682, 0.747396, 0.904714, 1)
+ambient_light_energy = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yeada"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbsmn"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.419608)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tt5kq"]
+material = SubResource("StandardMaterial3D_hbsmn")
+
+[node name="PlayerShip" type="CharacterBody3D"]
+motion_mode = 1
+script = ExtResource("1_xe1e3")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 1.5, 0)
+environment = SubResource("Environment_6tf13")
+current = true
+fov = 140.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yeada")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_tt5kq")
