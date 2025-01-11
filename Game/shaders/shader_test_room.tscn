@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://7l51yg06trqm"]
+
+[ext_resource type="Shader" path="res://shaders/scroll_shader.gdshader" id="1_37cfk"]
+[ext_resource type="Texture2D" uid="uid://b0twiabnmfv15" path="res://resources/shader_textures/Shader_Texture_9.png" id="2_mv5b5"]
+[ext_resource type="Shader" path="res://shaders/gradient_scroll_shader.gdshader" id="3_sfdg3"]
+[ext_resource type="Texture2D" uid="uid://d3mpj810l7xvq" path="res://resources/shader_textures/Shader_Texture_7.png" id="4_6fw2q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3l2bp"]
+shader = ExtResource("1_37cfk")
+shader_parameter/scrollSpeed = Vector2(-0.195, 0)
+shader_parameter/scroll_texture = ExtResource("2_mv5b5")
+
+[sub_resource type="Gradient" id="Gradient_koqjs"]
+offsets = PackedFloat32Array(0, 0.131148, 0.196721, 0.303279)
+colors = PackedColorArray(0.0666667, 0.0666667, 0.0666667, 0, 0.570566, 0.592576, 1.92523e-07, 0.291667, 1, 1, 1, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wvbbc"]
+gradient = SubResource("Gradient_koqjs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfkj8"]
+shader = ExtResource("3_sfdg3")
+shader_parameter/scrollSpeed = Vector2(0, 1)
+shader_parameter/scroll_texture = ExtResource("4_6fw2q")
+shader_parameter/gradient = SubResource("GradientTexture1D_wvbbc")
+
+[node name="ShaderTestRoom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SimpleScrollShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3l2bp")
+layout_mode = 0
+offset_left = 126.0
+offset_top = 112.0
+offset_right = 331.0
+offset_bottom = 293.0
+
+[node name="GradientScrollShader" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_nfkj8")
+layout_mode = 0
+offset_left = 667.0
+offset_top = 104.0
+offset_right = 856.0
+offset_bottom = 327.0
