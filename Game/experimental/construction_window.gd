@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("RMB"):
+		last_mouse_pos = $SubViewport.get_mouse_position()
 		mouse_tracked = true
 	if event.is_action_released("RMB"):
 		mouse_tracked = false

@@ -1,13 +1,13 @@
 [gd_scene load_steps=7 format=3 uid="uid://7tk0ien3w4x0"]
 
-[ext_resource type="Texture2D" uid="uid://cowcmtg2ufl8n" path="res://resources/shader_textures/Shader_Texture_8.png" id="1_gmpw6"]
+[ext_resource type="Texture2D" uid="uid://c2dwq1xfwxht8" path="res://resources/shader_textures/Shader_Texture_4.png" id="1_opxnk"]
 [ext_resource type="ArrayMesh" uid="uid://dcc7h8ce7lfm8" path="res://resources/level_parts/basic_segment.tres" id="2_pqsxu"]
 [ext_resource type="PackedScene" uid="uid://4wrvwk40jiq0" path="res://experimental/player_v_2.tscn" id="3_uhjkr"]
 [ext_resource type="PackedScene" uid="uid://ct37o3qihlm88" path="res://experimental/test_bumper.tscn" id="4_5tpui"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwch3"]
 albedo_color = Color(0.389814, 0.780047, 0.718667, 1)
-albedo_texture = ExtResource("1_gmpw6")
+albedo_texture = ExtResource("1_opxnk")
 texture_filter = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8mufp"]

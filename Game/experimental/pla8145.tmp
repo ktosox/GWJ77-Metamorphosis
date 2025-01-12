@@ -44,18 +44,6 @@ offset_top = 317.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Texture1" type="Button" parent="ColorRect/VBoxContainer2"]
-layout_mode = 2
-text = "Texture1"
-
-[node name="Texture2" type="Button" parent="ColorRect/VBoxContainer2"]
-layout_mode = 2
-text = "Texture2"
-
-[node name="Texture3" type="Button" parent="ColorRect/VBoxContainer2"]
-layout_mode = 2
-text = "Texture3"
-
 [node name="ConstructionWindow" type="SubViewportContainer" parent="."]
 custom_minimum_size = Vector2(720, 720)
 layout_mode = 2
@@ -95,11 +83,6 @@ text = "Box"
 layout_mode = 2
 text = "Can"
 
-[connection signal="pressed" from="ColorRect/VBoxContainer/ShapeButtonA" to="." method="_on_shape_button_a_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/ShapeButtonB" to="." method="_on_shape_button_b_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Texture1" to="." method="_on_texture_1_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Texture2" to="." method="_on_texture_2_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Texture3" to="." method="_on_texture_3_pressed"]
 [connection signal="gui_input" from="ConstructionWindow" to="ConstructionWindow" method="_on_gui_input"]
 [connection signal="pressed" from="ColorRect2/VBoxContainer/SpikeButton" to="." method="_on_spike_button_pressed"]
 [connection signal="pressed" from="ColorRect2/VBoxContainer/BoxButton" to="." method="_on_box_button_pressed"]

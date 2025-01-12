@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2dwq1xfwxht8"
-path.s3tc="res://.godot/imported/Shader_Texture_4.png-6b0d1dd9b4083f79b7be85a322e81bd8.s3tc.ctex"
+uid="uid://cv8s0lfn24bxp"
+path.s3tc="res://.godot/imported/checkerboard_bloom_128x128.png-d5402677f220252771710e6fe6d561f4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/shader_textures/Shader_Texture_4.png"
-dest_files=["res://.godot/imported/Shader_Texture_4.png-6b0d1dd9b4083f79b7be85a322e81bd8.s3tc.ctex"]
+source_file="res://resources/3D_textures/checkerboard_bloom_128x128.png"
+dest_files=["res://.godot/imported/checkerboard_bloom_128x128.png-d5402677f220252771710e6fe6d561f4.s3tc.ctex"]
 
 [params]
 
