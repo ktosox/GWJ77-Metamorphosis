@@ -1,11 +1,11 @@
 extends Node3D
 
-var placed_part_scene : PackedScene
+var placed_part_scene : Node3D
 
 var valid_materials = [preload("res://experimental/checkerboard_material.tres"),preload("res://experimental/gradient_material.tres"),preload("res://experimental/grid_material.tres")]
 
 func swap_placed_object(part : Node3D) -> void:
-	placed_part_scene.instantiate()
+
 	pass
 
 func swap_central_body(new_body : Node3D) -> void:
@@ -28,6 +28,9 @@ func update_preview() -> void:
 	$Camera3D/RayCast3D.look_at($Camera3D.project_position(mouse_pos,50))
 	$Camera3D/RayCast3D.force_raycast_update()
 	$ColisionPreview.global_position = $Camera3D/RayCast3D.get_collision_point()
+	if $Camera3D/RayCast3D.get_collider() != null:
+		$ColisionPreview.global_rotation = Vector3.UP.bounce($Camera3D/RayCast3D.get_collision_normal()) # $ObjectHolder.global_rotation 
+	
 	
 func _on_timer_timeout() -> void:
 	update_preview()

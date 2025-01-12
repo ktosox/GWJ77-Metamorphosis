@@ -1,23 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgs4l6rmxjr3v"]
+[gd_scene load_steps=7 format=3 uid="uid://cgs4l6rmxjr3v"]
 
 [ext_resource type="Script" path="res://experimental/player_building_test.gd" id="1_0ehik"]
-[ext_resource type="Material" uid="uid://bfu4ljavy5560" path="res://experimental/gradient_material.tres" id="2_8yufm"]
+[ext_resource type="PackedScene" uid="uid://dupfmq1l5v3gx" path="res://experimental/example_body_b.tscn" id="2_gk61n"]
+[ext_resource type="Material" uid="uid://hhliwspm43bx" path="res://experimental/grid_material.tres" id="2_htgcx"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_atqxp"]
-size = Vector3(4, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t6rjh"]
+albedo_color = Color(1, 1, 0.423529, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_75pkj"]
-size = Vector3(4, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujd4c"]
-albedo_color = Color(1, 0.403922, 0.290196, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_mxlrq"]
-material = SubResource("StandardMaterial3D_ujd4c")
-radius = 0.2
-height = 0.4
-radial_segments = 16
-rings = 12
+[sub_resource type="PrismMesh" id="PrismMesh_wvtgx"]
+material = SubResource("StandardMaterial3D_t6rjh")
+size = Vector3(0.6, 0.6, 0.4)
 
 [sub_resource type="Environment" id="Environment_27voy"]
 background_mode = 1
@@ -36,23 +28,19 @@ script = ExtResource("1_0ehik")
 
 [node name="ObjectHolder" type="Node3D" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="ObjectHolder"]
-collision_layer = 2
-collision_mask = 0
+[node name="ExampleBodyB" parent="ObjectHolder" instance=ExtResource("2_gk61n")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectHolder/StaticBody3D"]
-shape = SubResource("BoxShape3D_atqxp")
-
-[node name="Mesh" type="MeshInstance3D" parent="ObjectHolder/StaticBody3D"]
-mesh = SubResource("BoxMesh_75pkj")
-surface_material_override/0 = ExtResource("2_8yufm")
+[node name="Mesh" parent="ObjectHolder/ExampleBodyB" index="0"]
+surface_material_override/0 = ExtResource("2_htgcx")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
 autostart = true
 
 [node name="ColisionPreview" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_mxlrq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+mesh = SubResource("PrismMesh_wvtgx")
+skeleton = NodePath("")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
@@ -63,3 +51,5 @@ target_position = Vector3(0, 0, -10)
 collision_mask = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="ObjectHolder/ExampleBodyB"]
