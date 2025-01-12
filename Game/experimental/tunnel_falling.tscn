@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://7tk0ien3w4x0"]
+[gd_scene load_steps=7 format=3 uid="uid://7tk0ien3w4x0"]
 
 [ext_resource type="Texture2D" uid="uid://cowcmtg2ufl8n" path="res://resources/shader_textures/Shader_Texture_8.png" id="1_gmpw6"]
 [ext_resource type="ArrayMesh" uid="uid://dcc7h8ce7lfm8" path="res://resources/level_parts/basic_segment.tres" id="2_pqsxu"]
-[ext_resource type="PackedScene" uid="uid://cowurckmby2dh" path="res://experimental/player_ship.tscn" id="3_ktpns"]
+[ext_resource type="PackedScene" uid="uid://4wrvwk40jiq0" path="res://experimental/player_v_2.tscn" id="3_uhjkr"]
+[ext_resource type="PackedScene" uid="uid://ct37o3qihlm88" path="res://experimental/test_bumper.tscn" id="4_5tpui"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwch3"]
 albedo_color = Color(0.389814, 0.780047, 0.718667, 1)
@@ -15,28 +16,55 @@ size = Vector3(4, 10, 1)
 [node name="TunnelFalling" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.27, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_mwch3")
 mesh = ExtResource("2_pqsxu")
 
-[node name="PlayerShip" parent="." instance=ExtResource("3_ktpns")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.354996, 5.23243, -0.243435)
-axis_lock_angular_y = true
-wall_min_slide_angle = 3.14159
+[node name="Wall4" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+constant_linear_velocity = Vector3(4, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Wall4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)
 shape = SubResource("BoxShape3D_8mufp")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-shape = SubResource("BoxShape3D_8mufp")
+[node name="Wall3" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+constant_linear_velocity = Vector3(-4, 0, 0)
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Wall3"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 0)
 shape = SubResource("BoxShape3D_8mufp")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)
+[node name="Wall1" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+constant_linear_velocity = Vector3(0, 0, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 shape = SubResource("BoxShape3D_8mufp")
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+constant_linear_velocity = Vector3(0, 0, -4)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+shape = SubResource("BoxShape3D_8mufp")
+
+[node name="PlayerV2" parent="." instance=ExtResource("3_uhjkr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.34372, 0)
+gravity_scale = 0.4
+
+[node name="TestBumper" parent="." instance=ExtResource("4_5tpui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17185, -0.0428286, -0.0130536)
+
+[node name="TestBumper2" parent="." instance=ExtResource("4_5tpui")]
+transform = Transform3D(0.620532, 0, -0.784181, 0, 1, 0, 0.784181, 0, 0.620532, 0.516507, -1.15216, -0.0130536)
+
+[node name="TestBumper3" parent="." instance=ExtResource("4_5tpui")]
+transform = Transform3D(-0.723654, 0, -0.690163, 0, 1, 0, 0.690163, 0, -0.723654, -0.772204, -3.55129, 1.05396)

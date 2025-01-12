@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" path="res://experimental/player_building_test.gd" id="1_0ehik"]
 
-[sub_resource type="Environment" id="Environment_27voy"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_atqxp"]
 size = Vector3(4, 1, 1)
 
@@ -24,8 +22,54 @@ height = 0.4
 radial_segments = 16
 rings = 12
 
+[sub_resource type="Environment" id="Environment_27voy"]
+
 [node name="PlayerBuildingTest" type="Node3D"]
 script = ExtResource("1_0ehik")
+
+[node name="ObjectHolder" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ObjectHolder"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectHolder/StaticBody3D"]
+shape = SubResource("BoxShape3D_atqxp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ObjectHolder/StaticBody3D"]
+mesh = SubResource("BoxMesh_75pkj")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="ObjectHolder"]
+transform = Transform3D(-0.0505929, -0.998719, 0, 0.998719, -0.0505929, 0, 0, 0, 1, 0, 1.57905, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectHolder/StaticBody3D2"]
+shape = SubResource("BoxShape3D_atqxp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ObjectHolder/StaticBody3D2"]
+mesh = SubResource("BoxMesh_75pkj")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="ObjectHolder"]
+transform = Transform3D(-0.0505929, 1.74622e-07, 0.998719, 0, 1, -1.74846e-07, -0.998719, -8.84595e-09, -0.0505929, 0, -1.95268, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObjectHolder/StaticBody3D3"]
+shape = SubResource("BoxShape3D_atqxp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ObjectHolder/StaticBody3D3"]
+mesh = SubResource("BoxMesh_75pkj")
+skeleton = NodePath("../../..")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[node name="ColisionPreview" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_mxlrq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
@@ -34,47 +78,5 @@ environment = SubResource("Environment_27voy")
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -10)
 collision_mask = 2
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_atqxp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_75pkj")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.0505929, -0.998719, 0, 0.998719, -0.0505929, 0, 0, 0, 1, 0, 1.57905, 0)
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-shape = SubResource("BoxShape3D_atqxp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-mesh = SubResource("BoxMesh_75pkj")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.0505929, 1.74622e-07, 0.998719, 0, 1, -1.74846e-07, -0.998719, -8.84595e-09, -0.0505929, 0, -1.95268, 0)
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
-shape = SubResource("BoxShape3D_atqxp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
-mesh = SubResource("BoxMesh_75pkj")
-skeleton = NodePath("../..")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
-autostart = true
-
-[node name="ColisionPreview" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_mxlrq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

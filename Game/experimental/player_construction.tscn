@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://mv7gh2u28mg5"]
+
+[ext_resource type="Script" path="res://experimental/construction_window.gd" id="1_2vdxp"]
+[ext_resource type="PackedScene" uid="uid://cgs4l6rmxjr3v" path="res://experimental/player_building_test.tscn" id="1_418so"]
+
+[node name="PlayerConstruction" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0.34902, 0.572549, 1)
+
+[node name="ConstructionWindow" type="SubViewportContainer" parent="."]
+custom_minimum_size = Vector2(720, 720)
+layout_mode = 2
+script = ExtResource("1_2vdxp")
+
+[node name="SubViewport" type="SubViewport" parent="ConstructionWindow"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(720, 720)
+render_target_update_mode = 4
+
+[node name="PlayerBuildingTest" parent="ConstructionWindow/SubViewport" instance=ExtResource("1_418so")]
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0.34902, 0.572549, 1)
+
+[connection signal="gui_input" from="ConstructionWindow" to="ConstructionWindow" method="_on_gui_input"]
