@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://7tk0ien3w4x0"]
+[gd_scene load_steps=9 format=3 uid="uid://7tk0ien3w4x0"]
 
 [ext_resource type="Texture2D" uid="uid://c2dwq1xfwxht8" path="res://resources/shader_textures/Shader_Texture_4.png" id="1_opxnk"]
 [ext_resource type="ArrayMesh" uid="uid://dcc7h8ce7lfm8" path="res://resources/level_parts/basic_segment.tres" id="2_pqsxu"]
 [ext_resource type="PackedScene" uid="uid://4wrvwk40jiq0" path="res://experimental/player_v_2.tscn" id="3_uhjkr"]
 [ext_resource type="PackedScene" uid="uid://ct37o3qihlm88" path="res://experimental/test_bumper.tscn" id="4_5tpui"]
+[ext_resource type="PackedScene" uid="uid://cg8dbwjja2xe4" path="res://not_player/pusher.tscn" id="6_5b1hh"]
+[ext_resource type="PackedScene" uid="uid://wgbqu5l18xj2" path="res://level/intersection.tscn" id="6_s7f5t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwch3"]
 albedo_color = Color(0.389814, 0.780047, 0.718667, 1)
@@ -17,6 +19,11 @@ size = Vector3(4, 10, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.27, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_mwch3")
+mesh = ExtResource("2_pqsxu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.27, 0, 0, 0, 1, 0, -10, 0)
 material_override = SubResource("StandardMaterial3D_mwch3")
 mesh = ExtResource("2_pqsxu")
 
@@ -63,8 +70,29 @@ gravity_scale = 0.4
 [node name="TestBumper" parent="." instance=ExtResource("4_5tpui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17185, -0.0428286, -0.0130536)
 
-[node name="TestBumper2" parent="." instance=ExtResource("4_5tpui")]
-transform = Transform3D(0.620532, 0, -0.784181, 0, 1, 0, 0.784181, 0, 0.620532, 0.516507, -1.15216, -0.0130536)
-
 [node name="TestBumper3" parent="." instance=ExtResource("4_5tpui")]
-transform = Transform3D(-0.723654, 0, -0.690163, 0, 1, 0, 0.690163, 0, -0.723654, -0.772204, -3.55129, 1.05396)
+transform = Transform3D(-0.723654, 0, -0.690163, 0, 1, 0, 0.690163, 0, -0.723654, -0.772204, 2.44871, 1.05396)
+
+[node name="Pusher" parent="." instance=ExtResource("6_5b1hh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.321713, 0.915696, -0.732764)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.880071, -8.56166, -1.88073)
+double_sided = false
+text = "P
+A
+R
+K
+I
+N
+G"
+font_size = 192
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0520405, -1.83003, -1.85)
+double_sided = false
+text = "F R E E"
+font_size = 192
+
+[node name="Intersection" parent="." instance=ExtResource("6_s7f5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319225, -1.81786, 0.00068748)

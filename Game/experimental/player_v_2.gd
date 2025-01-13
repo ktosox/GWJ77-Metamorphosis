@@ -17,17 +17,25 @@ func _physics_process(delta: float) -> void:
 	pass
 
 
+func take_bump(data : BumpPacket) -> void:
+	
+	pass
+
+func take_loot(data : LootPacket) -> void:
+	
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 
 func _on_timer_timeout() -> void:
-	print(linear_velocity)
+	#print(linear_velocity)
 	pass # Replace with function body.
 
 
 func _on_body_entered(body: Node) -> void:
-	print(body)
+	#print(body)
 
 	pass # Replace with function body.

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjfs0xngtrl"]
+
+[ext_resource type="Script" path="res://not_player/loot.gd" id="1_2ivtw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u82rf"]
+
+[node name="Loot" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_2ivtw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_u82rf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

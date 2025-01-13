@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://gsd0kn3bisan"]
+
+[ext_resource type="Script" path="res://level/car.gd" id="1_jjb8l"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8mtgs"]
+radius = 0.4
+height = 1.2
+radial_segments = 8
+rings = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nabls"]
+size = Vector3(1, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7m8ip"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vtl3h"]
+material = SubResource("StandardMaterial3D_7m8ip")
+flip_faces = true
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_ij74b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.60806, 0.0, 0, 0]
+point_count = 2
+
+[node name="Car" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_jjb8l")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_8mtgs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.685212, 0)
+shape = SubResource("BoxShape3D_nabls")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 16
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.87
+mesh = SubResource("PlaneMesh_vtl3h")
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_align_y = true
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 2.0
+initial_velocity_max = 6.0
+radial_accel_min = -4.0
+radial_accel_max = 3.0
+damping_max = 4.0
+scale_amount_curve = SubResource("Curve_ij74b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

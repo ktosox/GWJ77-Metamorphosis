@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://3s00a7q88gky"]
+
+[ext_resource type="PackedScene" uid="uid://mv7gh2u28mg5" path="res://experimental/player_construction.tscn" id="1_wgv3v"]
+[ext_resource type="PackedScene" uid="uid://7tk0ien3w4x0" path="res://experimental/tunnel_falling.tscn" id="2_asjhb"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Window" type="Window" parent="."]
+title = "Name of window"
+position = Vector2i(50, 60)
+size = Vector2i(320, 240)
+
+[node name="ColorRect" type="ColorRect" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Window/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "BUTTON1"
+
+[node name="Button2" type="Button" parent="Window/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "BUTTON2"
+
+[node name="Button3" type="Button" parent="Window/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "BUTTON3"
+
+[node name="Window2" type="Window" parent="."]
+auto_translate_mode = 1
+title = "Name of window"
+position = Vector2i(520, 120)
+size = Vector2i(720, 360)
+
+[node name="PlayerConstruction" parent="Window2" instance=ExtResource("1_wgv3v")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+
+[node name="Window3" type="Window" parent="."]
+position = Vector2i(242, 300)
+size = Vector2i(320, 320)
+
+[node name="TunnelFalling" parent="Window3" instance=ExtResource("2_asjhb")]

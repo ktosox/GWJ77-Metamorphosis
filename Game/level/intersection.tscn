@@ -1,0 +1,134 @@
+[gd_scene load_steps=5 format=3 uid="uid://wgbqu5l18xj2"]
+
+[ext_resource type="PackedScene" uid="uid://gsd0kn3bisan" path="res://level/car.tscn" id="1_4vuya"]
+
+[sub_resource type="Animation" id="Animation_e70bj"]
+resource_name = "Normal"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Car:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.53333, 3),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Vector3(0.5, 0, 3), Vector3(0.5, 0, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.533333, 1),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Vector3(0.5, 0, 3), Vector3(0.5, 0, -3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Car3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.50833, 1.90833),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Vector3(-0.5, 0, -3), Vector3(-0.5, 0, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Car4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.6, 4),
+"transitions": PackedFloat32Array(0, 1),
+"update": 0,
+"values": [Vector3(-0.5, 0, -3), Vector3(-0.5, 0, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_tw0fa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Car:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Car2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.5, 0, 2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Car3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 0, -2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Car4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.5, 0, -1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3uyuq"]
+_data = {
+"Normal": SubResource("Animation_e70bj"),
+"RESET": SubResource("Animation_tw0fa")
+}
+
+[node name="Intersection" type="Node3D"]
+
+[node name="CarMover" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3uyuq")
+}
+autoplay = "Normal"
+speed_scale = 3.0
+
+[node name="Car" parent="." instance=ExtResource("1_4vuya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 1)
+
+[node name="Car2" parent="." instance=ExtResource("1_4vuya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 2)
+
+[node name="Car3" parent="." instance=ExtResource("1_4vuya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -2)
+
+[node name="Car4" parent="." instance=ExtResource("1_4vuya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -1)

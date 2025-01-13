@@ -5,9 +5,10 @@
 [ext_resource type="Script" path="res://experimental/player_construction.gd" id="1_opj86"]
 
 [node name="PlayerConstruction" type="HBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 0.562
+anchor_bottom = 0.5
+offset_right = 0.639954
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_opj86")
@@ -22,7 +23,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -411.0
+offset_top = 13.0
+offset_bottom = -219.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -40,7 +42,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 317.0
+offset_top = 188.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -57,14 +60,14 @@ layout_mode = 2
 text = "Texture3"
 
 [node name="ConstructionWindow" type="SubViewportContainer" parent="."]
-custom_minimum_size = Vector2(720, 720)
+custom_minimum_size = Vector2(360, 360)
 layout_mode = 2
 script = ExtResource("1_2vdxp")
 
 [node name="SubViewport" type="SubViewport" parent="ConstructionWindow"]
 own_world_3d = true
 handle_input_locally = false
-size = Vector2i(720, 720)
+size = Vector2i(360, 360)
 render_target_update_mode = 4
 
 [node name="PlayerBuildingTest" parent="ConstructionWindow/SubViewport" instance=ExtResource("1_418so")]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd4rpfmoy6xui"]
+
+[ext_resource type="Script" path="res://not_player/bump.gd" id="1_xmtqv"]
+
+[node name="Bump" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_xmtqv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
