@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=4 uid="uid://be5e44tl4ldbh"]
+
+[ext_resource type="PackedScene" uid="uid://ds50h46o8ew8s" path="res://experimental/the_blender_goes.glb" id="1_40m5e"]
+[ext_resource type="Texture2D" uid="uid://d4dmk0ioym1vm" path="res://resources/3D_textures/checkerboard_224x224.png" id="2_6q1m6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vg6hp"]
+resource_name = "Checker"
+cull_mode = 2
+albedo_texture = ExtResource("2_6q1m6")
+metallic = 1.0
+uv1_scale = Vector3(1, 4, 1)
+uv1_triplanar_sharpness = 2.47879e-05
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pv4dl"]
+_surfaces = [{
+"aabb": AABB(-2, -8, -2, 4, 16, 4),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AwAGAAcAAwACAAYABwAEAAUABwAGAAQAAQACAAMAAQAAAAIABQAAAAEABQAEAAAA"),
+"name": "Checker",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAD//wAAAAAAAP///////wAA//8AAP//AAAAAP//AAAAAAAAAAAAAAAAAAD/////AAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pfafo"]
+resource_name = "the_blender_goes_Cube"
+_surfaces = [{
+"aabb": AABB(-2, -8, -2, 4, 16, 4),
+"attribute_data": PackedByteArray("/1//f/+f/z//X/+//5//f/9f/z//nwAA/1//f/+f/z//X/+//5//f/9f////n/+//18AAP+f/7//X/8//5///w=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("BwAMAA4ABwAFAAwADwAIAAoADwANAAgAAwAEAAYAAwABAAQACwAAAAIACwAJAAAA"),
+"material": SubResource("StandardMaterial3D_vg6hp"),
+"name": "Checker",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/////wAAAAD/////AAAAAP//AAAAAAAA//8AAAAAAAD///////8AAP///////wAA//8AAP//AAD//wAA//8AAAAA//8AAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////AAAAAP////8AAAAAAAD//wAAAAAAAP//AAD/f/9//z//f/9//3//P/9//z//f////3//P/9/////f/+//3//f/9//7//f/9//3////9//7//f////3//v/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_pv4dl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pfy5q"]
+size = Vector3(4, 17, 1)
+
+[node name="SegmentBase" type="Node3D"]
+
+[node name="the_blender_goes2" parent="." instance=ExtResource("1_40m5e")]
+
+[node name="Cube" parent="the_blender_goes2" index="0"]
+mesh = SubResource("ArrayMesh_pfafo")
+
+[node name="Wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0, 0)
+collision_layer = 4
+collision_mask = 2
+constant_linear_velocity = Vector3(4, 0, 0)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Wall4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_pfy5q")
+
+[node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0, 0)
+collision_layer = 4
+collision_mask = 2
+constant_linear_velocity = Vector3(-4, 0, 0)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Wall3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("BoxShape3D_pfy5q")
+
+[node name="Wall1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.6)
+collision_layer = 4
+collision_mask = 2
+constant_linear_velocity = Vector3(0, 0, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1"]
+shape = SubResource("BoxShape3D_pfy5q")
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.6)
+collision_layer = 4
+collision_mask = 2
+constant_linear_velocity = Vector3(0, 0, -4)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Wall2"]
+shape = SubResource("BoxShape3D_pfy5q")
+
+[editable path="the_blender_goes2"]

@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6n1a36i8bdmy"]
+
+[ext_resource type="Script" path="res://level/level_builder.gd" id="1_qv3op"]
+[ext_resource type="PackedScene" uid="uid://bhtsrhgyo1unt" path="res://level/player_catcher.tscn" id="2_xgffx"]
+
+[node name="LevelBuilder" type="Node3D"]
+script = ExtResource("1_qv3op")
+
+[node name="PlayerSpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="LoadingScreen" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.548269, 0.549033, 1)
+
+[node name="Label" type="Label" parent="LoadingScreen/ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "hello wrold"
+
+[node name="Label2" type="Label" parent="LoadingScreen/ColorRect"]
+layout_mode = 0
+offset_left = 1173.0
+offset_top = 29.0
+offset_right = 1260.0
+offset_bottom = 52.0
+text = "hello wrold"
+
+[node name="Label3" type="Label" parent="LoadingScreen/ColorRect"]
+layout_mode = 0
+offset_left = 1158.0
+offset_top = 658.0
+offset_right = 1245.0
+offset_bottom = 681.0
+text = "hello wrold"
+
+[node name="ProgressBar" type="ProgressBar" parent="LoadingScreen/ColorRect"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 329.0
+offset_right = 1220.0
+offset_bottom = 389.0
+
+[node name="SegmentsGoHere" type="Node3D" parent="."]
+
+[node name="PlayerCatcher" parent="." instance=ExtResource("2_xgffx")]

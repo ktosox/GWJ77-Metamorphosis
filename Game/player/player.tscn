@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://4wrvwk40jiq0"]
 
-[ext_resource type="Script" path="res://experimental/player_v_2.gd" id="1_0jtrh"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_0jtrh"]
 
 [sub_resource type="Environment" id="Environment_6tf13"]
 background_mode = 1
@@ -20,7 +20,7 @@ material = SubResource("StandardMaterial3D_c51jg")
 height = 1.0
 radial_segments = 16
 
-[node name="PlayerV2" type="RigidBody3D" groups=["Player"]]
+[node name="Player" type="RigidBody3D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 4
 axis_lock_angular_x = true
@@ -28,7 +28,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 contact_monitor = true
 max_contacts_reported = 1
-linear_damp = 4.0
+linear_damp = 2.0
 script = ExtResource("1_0jtrh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
