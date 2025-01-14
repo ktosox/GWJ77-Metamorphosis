@@ -1,18 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgoioeh8elj8e"]
 
-[ext_resource type="ArrayMesh" uid="uid://c62so2blrv22o" path="res://experimental/short_segment_mesh.tres" id="1_dw67f"]
-[ext_resource type="Material" uid="uid://ds3p1o3ie64uh" path="res://experimental/checkerboard_material.tres" id="2_5n7c4"]
+[ext_resource type="ArrayMesh" uid="uid://cpe11vg7yaq63" path="res://experimental/big_segment_mesh.tres" id="1_8xglu"]
+[ext_resource type="Material" uid="uid://c3f7sdj7hxgtc" path="res://experimental/vapor_bricks1_material.tres" id="2_ihsgf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pfy5q"]
 size = Vector3(4, 34, 1)
 
-[node name="SegmentBigger" type="MeshInstance3D"]
-mesh = ExtResource("1_dw67f")
-surface_material_override/0 = ExtResource("2_5n7c4")
-metadata/length = 16
+[node name="SegmentBigger" type="Node3D"]
+metadata/length = 32
 
 [node name="Wall4" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, -16, 0)
 collision_layer = 4
 collision_mask = 2
 constant_linear_velocity = Vector3(4, 0, 0)
@@ -22,7 +20,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 shape = SubResource("BoxShape3D_pfy5q")
 
 [node name="Wall3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, -16, 0)
 collision_layer = 4
 collision_mask = 2
 constant_linear_velocity = Vector3(-4, 0, 0)
@@ -32,7 +30,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 shape = SubResource("BoxShape3D_pfy5q")
 
 [node name="Wall1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, -2.6)
 collision_layer = 4
 collision_mask = 2
 constant_linear_velocity = Vector3(0, 0, 4)
@@ -41,10 +39,16 @@ constant_linear_velocity = Vector3(0, 0, 4)
 shape = SubResource("BoxShape3D_pfy5q")
 
 [node name="Wall2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 2.6)
 collision_layer = 4
 collision_mask = 2
 constant_linear_velocity = Vector3(0, 0, -4)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Wall2"]
 shape = SubResource("BoxShape3D_pfy5q")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -16, 0)
+mesh = ExtResource("1_8xglu")
+surface_material_override/0 = ExtResource("2_ihsgf")
+metadata/length = 16

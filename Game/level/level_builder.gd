@@ -10,6 +10,7 @@ var player_scene = preload("res://player/player.tscn")
 
 var segment_scene = preload("res://level/segments/segment_base.tscn")
 
+var bigger_segment_scene = preload("res://level/segments/segment_bigger.tscn")
 
 
 signal level_complete
@@ -43,14 +44,18 @@ func create_segments() -> void:
 	assert(segment_count > 0)
 	var segment_offset = 0
 	for S in segment_count:
-		var new_segment = segment_scene.instantiate() as Node3D
+		var new_segment
+		match randi()%2:
+			0: new_segment = segment_scene.instantiate() as Node3D
+			1: new_segment = bigger_segment_scene.instantiate() as Node3D
+		 
 		new_segment.global_position = Vector3(0,segment_offset,0)
 
 		segment_offset -= new_segment.get_meta("length")
 		$SegmentsGoHere.add_child(new_segment)
 		# make each segemnt and add it to $SegmentsGoHere
 		pass
-	$PlayerCatcher.global_position = Vector3(0,segment_offset+12,0)
+	$PlayerCatcher.global_position = Vector3(0,segment_offset+6,0)
 	# move $PlayerCatcher to the end of the last segment
 	pass
 	
