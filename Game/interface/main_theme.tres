@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dbotcsipmht72"]
+
+[ext_resource type="StyleBox" uid="uid://b643uoxsfu6y5" path="res://resources/interface_theme/window_border_focused.tres" id="1_1aqhb"]
+[ext_resource type="StyleBox" uid="uid://cxrhqx3jk4p3j" path="res://resources/interface_theme/window_border_unfocused.tres" id="2_dw5w7"]
+
+[resource]
+Window/colors/title_color = Color(1, 1, 1, 1)
+Window/colors/title_outline_modulate = Color(0, 0, 0, 1)
+Window/constants/title_outline_size = 10
+Window/font_sizes/title_font_size = 20
+Window/styles/embedded_border = ExtResource("1_1aqhb")
+Window/styles/embedded_unfocused_border = ExtResource("2_dw5w7")

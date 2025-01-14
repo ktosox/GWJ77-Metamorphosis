@@ -37,4 +37,12 @@ mesh = SubResource("BoxMesh_2csiq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.01644, 0)
 mesh = SubResource("PlaneMesh_8v475")
 
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.858047, 0)
+visible = false
+billboard = 1
+render_priority = 1
+text = "LEVEL COMPLETE"
+font_size = 52
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

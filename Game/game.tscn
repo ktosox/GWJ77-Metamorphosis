@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://3s00a7q88gky"]
+[gd_scene load_steps=8 format=3 uid="uid://3s00a7q88gky"]
 
+[ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_8ojrk"]
 [ext_resource type="Script" path="res://game.gd" id="1_oho4n"]
 [ext_resource type="PackedScene" uid="uid://mv7gh2u28mg5" path="res://experimental/player_construction.tscn" id="1_wgv3v"]
 [ext_resource type="PackedScene" uid="uid://b6n1a36i8bdmy" path="res://level/level_builder.tscn" id="2_1inpa"]
+[ext_resource type="Script" path="res://interface/window.gd" id="3_mw1gv"]
+
+[sub_resource type="Gradient" id="Gradient_gfmeh"]
+interpolation_mode = 2
+colors = PackedColorArray(0.801052, 0.400161, 1, 1, 0.75868, 0.685812, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fuyl8"]
+gradient = SubResource("Gradient_gfmeh")
+height = 720
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -11,12 +23,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8ojrk")
 script = ExtResource("1_oho4n")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_fuyl8")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="Window" type="Window" parent="."]
 title = "Name of window"
 position = Vector2i(50, 60)
 size = Vector2i(320, 240)
+script = ExtResource("3_mw1gv")
 
 [node name="ColorRect" type="ColorRect" parent="Window"]
 anchors_preset = 15
@@ -34,7 +72,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Window/ColorRect/VBoxContainer"]
+[node name="Button1" type="Button" parent="Window/ColorRect/VBoxContainer"]
 layout_mode = 2
 text = "BUTTON1"
 
@@ -48,9 +86,11 @@ text = "BUTTON3"
 
 [node name="Window2" type="Window" parent="."]
 auto_translate_mode = 1
-title = "Name of window"
+title = "Name of other window"
 position = Vector2i(520, 120)
 size = Vector2i(720, 360)
+unresizable = true
+script = ExtResource("3_mw1gv")
 
 [node name="PlayerConstruction" parent="Window2" instance=ExtResource("1_wgv3v")]
 anchors_preset = 15
@@ -59,8 +99,14 @@ anchor_bottom = 1.0
 offset_right = 0.0
 
 [node name="Window3" type="Window" parent="."]
-position = Vector2i(120, 35)
+title = "Primary Game Window"
+position = Vector2i(10, 32)
 size = Vector2i(640, 640)
 unresizable = true
+script = ExtResource("3_mw1gv")
 
 [node name="LevelBuilder" parent="Window3" instance=ExtResource("2_1inpa")]
+
+[connection signal="pressed" from="Window/ColorRect/VBoxContainer/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Window/ColorRect/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Window/ColorRect/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
