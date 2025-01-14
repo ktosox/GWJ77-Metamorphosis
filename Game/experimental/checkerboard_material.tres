@@ -6,4 +6,4 @@
 albedo_texture = ExtResource("1_yvfx8")
 emission_energy_multiplier = 13.48
 uv1_triplanar = true
-texture_filter = 0
+texture_filter = 2

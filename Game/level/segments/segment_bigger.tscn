@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://be5e44tl4ldbh"]
+[gd_scene load_steps=4 format=3 uid="uid://dgoioeh8elj8e"]
 
-[ext_resource type="ArrayMesh" uid="uid://dbe0eus01m6di" path="res://experimental/normal_segment_mesh.tres" id="1_wwuiy"]
-[ext_resource type="Material" uid="uid://c3f7sdj7hxgtc" path="res://experimental/vapor_bricks1_material.tres" id="2_ri7xj"]
+[ext_resource type="ArrayMesh" uid="uid://c62so2blrv22o" path="res://experimental/short_segment_mesh.tres" id="1_dw67f"]
+[ext_resource type="Material" uid="uid://ds3p1o3ie64uh" path="res://experimental/checkerboard_material.tres" id="2_5n7c4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pfy5q"]
-size = Vector3(4, 17, 1)
+size = Vector3(4, 34, 1)
 
-[node name="SegmentBase" type="MeshInstance3D"]
-mesh = ExtResource("1_wwuiy")
-surface_material_override/0 = ExtResource("2_ri7xj")
+[node name="SegmentBigger" type="MeshInstance3D"]
+mesh = ExtResource("1_dw67f")
+surface_material_override/0 = ExtResource("2_5n7c4")
 metadata/length = 16
 
 [node name="Wall4" type="StaticBody3D" parent="."]

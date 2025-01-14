@@ -1,0 +1,38 @@
+[gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://dbe0eus01m6di"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6n27r"]
+resource_name = "Checker"
+cull_mode = 2
+metallic = 1.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_va28w"]
+_surfaces = [{
+"aabb": AABB(-2, -8, -2, 4, 16, 4),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray("AwAGAAcAAwACAAYABwAEAAUABwAGAAQAAQACAAMAAQAAAAIABQAAAAEABQAEAAAA"),
+"name": "Checker",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("/////wAAAAD//wAAAAAAAP///////wAA//8AAP//AAAAAP//AAAAAAAAAAAAAAAAAAD/////AAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "the_blender_goes_Cube"
+_surfaces = [{
+"aabb": AABB(-2, -8, -2, 4, 16, 4),
+"attribute_data": PackedByteArray("AAD/vwAA/7////+/////vwAAAAAAAP////8AAP////8AAP9/AAD/f////3////9/AAD/PwAA/z////8/////Pw=="),
+"format": 34896613399,
+"index_count": 24,
+"index_data": PackedByteArray("BgAMAA4ABgAEAAwADwAJAAsADwANAAkAAgAFAAcAAgAAAAUACgABAAMACgAIAAEA"),
+"material": SubResource("StandardMaterial3D_6n27r"),
+"name": "Checker",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/////wAAqir/////AAD/P///AAAAAKoq//8AAAAA/z////////8AAP///////6oq//8AAP//AAD//wAA//+qKgAA//8AAP8/AAD//wAAqioAAAAAAAD/PwAAAAAAAKoqAAD/////AAAAAP////+qKgAAAAD//wAAAAAAAP//qipUVaqq/3//f1RVqqr/f/9//z//v1RVqqr/P/+/VFWqqv9//3+qqlRV/3//f6qqVFX/P/+/qqpUVf8//7+qqlRV")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_va28w")

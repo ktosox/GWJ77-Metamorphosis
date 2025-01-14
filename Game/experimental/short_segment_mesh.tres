@@ -34,5 +34,4 @@ _surfaces = [{
 "vertex_count": 16,
 "vertex_data": PackedByteArray("/////wAAAAD/////AAAAAP//AAAAAAAA//8AAAAAAAD///////8AAP///////wAA//8AAP//AAD//wAA//8AAAAA//8AAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/////AAAAAP////8AAAAAAAD//wAAAAAAAP//AAD/f/9//z//f/9//3//P/9//z//f////3//P/9/////f/+//3//f/9//7//f/9//3////9//7//f////3//v/9/")
 }]
-blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_pv4dl")

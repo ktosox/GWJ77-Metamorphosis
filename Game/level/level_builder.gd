@@ -2,13 +2,15 @@ extends Node3D
 
 @export_range(1,3) var world = 1
 
-@export var segment_count = 4
+@export var segment_count = 6
 
 @export var feature_list : Array
 
 var player_scene = preload("res://player/player.tscn")
 
 var segment_scene = preload("res://level/segments/segment_base.tscn")
+
+
 
 signal level_complete
 
@@ -43,6 +45,7 @@ func create_segments() -> void:
 	for S in segment_count:
 		var new_segment = segment_scene.instantiate() as Node3D
 		new_segment.global_position = Vector3(0,segment_offset,0)
+
 		segment_offset -= new_segment.get_meta("length")
 		$SegmentsGoHere.add_child(new_segment)
 		# make each segemnt and add it to $SegmentsGoHere

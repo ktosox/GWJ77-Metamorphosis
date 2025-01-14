@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://djshlt4w7bwy"]
+
+[ext_resource type="PackedScene" uid="uid://be5e44tl4ldbh" path="res://level/segments/segment_base.tscn" id="1_ugntp"]
+
+[sub_resource type="Gradient" id="Gradient_yh406"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0.370364, 0.370364, 0.370364, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_37md6"]
+gradient = SubResource("Gradient_yh406")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11tb4"]
+albedo_color = Color(0, 0.889131, 0.893238, 1)
+albedo_texture = SubResource("GradientTexture1D_37md6")
+emission_energy_multiplier = 13.48
+texture_filter = 0
+
+[node name="SegmentBase" instance=ExtResource("1_ugntp")]
+surface_material_override/0 = SubResource("StandardMaterial3D_11tb4")
