@@ -4,10 +4,13 @@ extends Node3D
 
 @export var segment_count = 4
 
+@export var feature_list : Array
+
 var player_scene = preload("res://player/player.tscn")
 
 var segment_scene = preload("res://level/segments/segment_base.tscn")
 
+signal level_complete
 
 func _ready() -> void:
 	create_segments()
@@ -40,7 +43,7 @@ func create_segments() -> void:
 	for S in segment_count:
 		var new_segment = segment_scene.instantiate() as Node3D
 		new_segment.global_position = Vector3(0,segment_offset,0)
-		segment_offset -= 16
+		segment_offset -= new_segment.get_meta("length")
 		$SegmentsGoHere.add_child(new_segment)
 		# make each segemnt and add it to $SegmentsGoHere
 		pass
@@ -51,6 +54,7 @@ func create_segments() -> void:
 
 func create_features() -> void:
 	# place features in range from the end of segment 1 to the top of last segment
+	
 	pass
 
 

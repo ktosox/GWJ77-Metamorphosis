@@ -6,11 +6,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_pfy5q"]
 size = Vector3(4, 17, 1)
 
-[node name="SegmentBase" type="Node3D"]
-
-[node name="Mesh" type="MeshInstance3D" parent="."]
+[node name="SegmentBase" type="MeshInstance3D"]
 mesh = ExtResource("1_c8wjb")
 surface_material_override/0 = ExtResource("2_ho1g7")
+metadata/length = 16
 
 [node name="Wall4" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6, 0, 0)
