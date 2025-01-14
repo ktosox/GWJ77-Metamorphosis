@@ -1,11 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://4wrvwk40jiq0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_0jtrh"]
-
-[sub_resource type="Environment" id="Environment_6tf13"]
-background_mode = 1
-background_color = Color(0.92682, 0.747396, 0.904714, 1)
-ambient_light_energy = 0.0
+[ext_resource type="Environment" uid="uid://fe2dljyurgxb" path="res://experimental/new_environment.tres" id="2_bmkcv"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1k6um"]
 height = 0.8
@@ -33,7 +29,7 @@ script = ExtResource("1_0jtrh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-environment = SubResource("Environment_6tf13")
+environment = ExtResource("2_bmkcv")
 current = true
 fov = 90.0
 

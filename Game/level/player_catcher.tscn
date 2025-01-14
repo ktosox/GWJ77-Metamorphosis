@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhtsrhgyo1unt"]
+[gd_scene load_steps=6 format=3 uid="uid://bhtsrhgyo1unt"]
+
+[ext_resource type="Script" path="res://level/player_catcher.gd" id="1_t8klm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aiaat"]
 size = Vector3(4, 1.42981, 4)
@@ -22,9 +24,10 @@ gravity_space_override = 3
 gravity = 0.0
 linear_damp_space_override = 3
 linear_damp = 4.0
+script = ExtResource("1_t8klm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.714905, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.107058, 0)
 shape = SubResource("BoxShape3D_aiaat")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -33,3 +36,5 @@ mesh = SubResource("BoxMesh_2csiq")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.01644, 0)
 mesh = SubResource("PlaneMesh_8v475")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

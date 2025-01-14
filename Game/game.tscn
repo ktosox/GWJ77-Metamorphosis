@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://3s00a7q88gky"]
+[gd_scene load_steps=4 format=3 uid="uid://3s00a7q88gky"]
 
+[ext_resource type="Script" path="res://game.gd" id="1_oho4n"]
 [ext_resource type="PackedScene" uid="uid://mv7gh2u28mg5" path="res://experimental/player_construction.tscn" id="1_wgv3v"]
 [ext_resource type="PackedScene" uid="uid://b6n1a36i8bdmy" path="res://level/level_builder.tscn" id="2_1inpa"]
 
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oho4n")
 
 [node name="Window" type="Window" parent="."]
 title = "Name of window"
@@ -57,5 +59,8 @@ anchor_bottom = 1.0
 offset_right = 0.0
 
 [node name="Window3" type="Window" parent="."]
+position = Vector2i(120, 35)
+size = Vector2i(640, 640)
+unresizable = true
 
 [node name="LevelBuilder" parent="Window3" instance=ExtResource("2_1inpa")]

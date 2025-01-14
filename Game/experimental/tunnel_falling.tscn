@@ -1,72 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://7tk0ien3w4x0"]
+[gd_scene load_steps=7 format=3 uid="uid://7tk0ien3w4x0"]
 
-[ext_resource type="Texture2D" uid="uid://c2dwq1xfwxht8" path="res://resources/shader_textures/Shader_Texture_4.png" id="1_opxnk"]
-[ext_resource type="ArrayMesh" uid="uid://dcc7h8ce7lfm8" path="res://resources/level_parts/basic_segment.tres" id="2_pqsxu"]
 [ext_resource type="PackedScene" uid="uid://4wrvwk40jiq0" path="res://player/player.tscn" id="3_uhjkr"]
 [ext_resource type="PackedScene" uid="uid://ct37o3qihlm88" path="res://experimental/test_bumper.tscn" id="4_5tpui"]
 [ext_resource type="PackedScene" uid="uid://cg8dbwjja2xe4" path="res://not_player/pusher.tscn" id="6_5b1hh"]
+[ext_resource type="PackedScene" uid="uid://be5e44tl4ldbh" path="res://level/segments/segment_base.tscn" id="6_fbepk"]
 [ext_resource type="PackedScene" uid="uid://wgbqu5l18xj2" path="res://level/intersection.tscn" id="6_s7f5t"]
 [ext_resource type="PackedScene" uid="uid://bhtsrhgyo1unt" path="res://level/player_catcher.tscn" id="7_nlbj0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwch3"]
-albedo_color = Color(0.389814, 0.780047, 0.718667, 1)
-albedo_texture = ExtResource("1_opxnk")
-texture_filter = 0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8mufp"]
-size = Vector3(4, 20, 1)
-
 [node name="TunnelFalling" type="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.27, 0, 0, 0, 1, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_mwch3")
-mesh = ExtResource("2_pqsxu")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.27, 0, 0, 0, 1, 0, -10, 0)
-material_override = SubResource("StandardMaterial3D_mwch3")
-mesh = ExtResource("2_pqsxu")
-
-[node name="Wall4" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.63898, 0)
-collision_layer = 4
-collision_mask = 2
-constant_linear_velocity = Vector3(4, 0, 0)
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="Wall4"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)
-shape = SubResource("BoxShape3D_8mufp")
-
-[node name="Wall3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.63898, 0)
-collision_layer = 4
-collision_mask = 2
-constant_linear_velocity = Vector3(-4, 0, 0)
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="Wall3"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 0)
-shape = SubResource("BoxShape3D_8mufp")
-
-[node name="Wall1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.63898, 0)
-collision_layer = 4
-collision_mask = 2
-constant_linear_velocity = Vector3(0, 0, 4)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-shape = SubResource("BoxShape3D_8mufp")
-
-[node name="Wall2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.63898, 0)
-collision_layer = 4
-collision_mask = 2
-constant_linear_velocity = Vector3(0, 0, -4)
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="Wall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
-shape = SubResource("BoxShape3D_8mufp")
 
 [node name="PlayerV2" parent="." instance=ExtResource("3_uhjkr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.34372, 0)
@@ -104,3 +45,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319225, -1.81786, 0.0006874
 
 [node name="PlayerCatcher" parent="." instance=ExtResource("7_nlbj0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.3498, 0)
+
+[node name="SegmentBase" parent="." instance=ExtResource("6_fbepk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.867, 0)
+
+[node name="SegmentBase2" parent="." instance=ExtResource("6_fbepk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.18408, 0)
+
+[editable path="PlayerV2"]

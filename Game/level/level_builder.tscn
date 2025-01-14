@@ -15,6 +15,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -640.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0.548269, 0.549033, 1)
@@ -25,29 +27,35 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "hello wrold"
 
-[node name="Label2" type="Label" parent="LoadingScreen/ColorRect"]
+[node name="LoadingComplete" type="Label" parent="LoadingScreen/ColorRect"]
+visible = false
 layout_mode = 0
-offset_left = 1173.0
-offset_top = 29.0
-offset_right = 1260.0
-offset_bottom = 52.0
-text = "hello wrold"
+offset_left = 39.0
+offset_top = 219.0
+offset_right = 234.0
+offset_bottom = 242.0
+scale = Vector2(3, 3)
+text = "PRESS SPACE TO LAUNCH"
+horizontal_alignment = 1
 
 [node name="Label3" type="Label" parent="LoadingScreen/ColorRect"]
 layout_mode = 0
-offset_left = 1158.0
-offset_top = 658.0
-offset_right = 1245.0
-offset_bottom = 681.0
+offset_left = 554.0
+offset_top = 596.0
+offset_right = 641.0
+offset_bottom = 619.0
 text = "hello wrold"
 
 [node name="ProgressBar" type="ProgressBar" parent="LoadingScreen/ColorRect"]
 layout_mode = 0
 offset_left = 52.0
 offset_top = 329.0
-offset_right = 1220.0
+offset_right = 599.0
 offset_bottom = 389.0
 
 [node name="SegmentsGoHere" type="Node3D" parent="."]
 
+[node name="FeaturesGoHere" type="Node3D" parent="."]
+
 [node name="PlayerCatcher" parent="." instance=ExtResource("2_xgffx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
