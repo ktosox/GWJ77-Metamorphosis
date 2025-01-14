@@ -24,9 +24,11 @@ shape = SubResource("BoxShape3D_gq4ju")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 shape = SubResource("BoxShape3D_5glpq")
+disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+visible = false
 mesh = SubResource("BoxMesh_v1j50")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
