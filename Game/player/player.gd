@@ -22,7 +22,7 @@ func take_bump(data : BumpPacket) -> void:
 	pass
 
 func take_loot(data : LootPacket) -> void:
-	
+	print(data.type)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

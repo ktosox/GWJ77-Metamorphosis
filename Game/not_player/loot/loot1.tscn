@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://dcoc0e2s2w7um"]
+
+[ext_resource type="PackedScene" uid="uid://bjfs0xngtrl" path="res://not_player/loot.tscn" id="1_gv76n"]
+[ext_resource type="Script" path="res://not_player/loot_packet.gd" id="2_abm13"]
+
+[sub_resource type="Resource" id="Resource_tos0q"]
+script = ExtResource("2_abm13")
+type = 0
+value = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_307ci"]
+albedo_color = Color(0.767842, 0.152748, 4.13924e-06, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_scurf"]
+material = SubResource("StandardMaterial3D_307ci")
+
+[node name="Loot" instance=ExtResource("1_gv76n")]
+packet = SubResource("Resource_tos0q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+mesh = SubResource("BoxMesh_scurf")

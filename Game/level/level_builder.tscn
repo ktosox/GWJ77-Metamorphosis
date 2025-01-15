@@ -5,7 +5,7 @@
 
 [node name="LevelBuilder" type="Node3D"]
 script = ExtResource("1_qv3op")
-segment_count = 11
+segment_count = 6
 
 [node name="PlayerSpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -57,6 +57,8 @@ offset_bottom = 389.0
 [node name="SegmentsGoHere" type="Node3D" parent="."]
 
 [node name="FeaturesGoHere" type="Node3D" parent="."]
+
+[node name="LootGoesHere" type="Node3D" parent="."]
 
 [node name="PlayerCatcher" parent="." instance=ExtResource("2_xgffx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)

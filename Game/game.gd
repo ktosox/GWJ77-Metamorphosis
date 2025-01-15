@@ -10,35 +10,37 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
+func test_load_level(level_number : int):
+	$GameWindow.get_child(0).queue_free()
+	var new_level = load("res://level/level_builder.tscn").instantiate()
+	#add funy things to new_level based on a level_number match HERE
+	
+	#knobs to turn here: @export_range(1,3) var world (from 1 to 3), @export var segment_count = 6 (how long should the fall be?), @export var feature_list : Array (bonus things to add)
+	
+	$GameWindow.add_child(new_level)
+	$GameWindow.visible = true
+	$GameWindow.grab_focus()
+	if !$PanelTexture/Layout/GameWindowButton.visible:
+		$PanelTexture/Layout/GameWindowButton.visible = true
+	pass
 
 
 # SPECILA TEST BUTTONS
 
 func _on_button_1_pressed() -> void:
-	$GameWindow.get_child(0).queue_free()
-	var new_level = load("res://level/level_builder.tscn").instantiate()
-	$GameWindow.add_child(new_level)
-	$GameWindow.visible = true
-	$GameWindow.grab_focus()
+	test_load_level(1)
 	pass # Replace with function body.
 
 func _on_button_2_pressed() -> void:
-	$GameWindow.get_child(0).queue_free()
-	var new_level = load("res://level/level_builder.tscn").instantiate()
-	$GameWindow.add_child(new_level)
-	$GameWindow.visible = true
-	$GameWindow.grab_focus()
+	test_load_level(2)
 	pass # Replace with function body.
 
 func _on_button_3_pressed() -> void:
-	$GameWindow.get_child(0).queue_free()
-	var new_level = load("res://level/level_builder.tscn").instantiate()
-	$GameWindow.add_child(new_level)
-	$GameWindow.visible = true
-	$GameWindow.grab_focus()
+	test_load_level(3)
 	pass # Replace with function body.
 
+
+# WINDOW MINIMAZING STUFF
 
 func _on_select_level_close_requested() -> void:
 	$SelectLevel.visible = false

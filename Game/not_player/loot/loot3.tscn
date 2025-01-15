@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://boc5a6o361mbt"]
+
+[ext_resource type="PackedScene" uid="uid://bjfs0xngtrl" path="res://not_player/loot.tscn" id="1_ir3q6"]
+[ext_resource type="Script" path="res://not_player/loot_packet.gd" id="2_lkyee"]
+
+[sub_resource type="Resource" id="Resource_6dlb7"]
+script = ExtResource("2_lkyee")
+type = 1
+value = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5c6hx"]
+albedo_color = Color(1, 0.913725, 0.196078, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_hsvfu"]
+material = SubResource("StandardMaterial3D_5c6hx")
+
+[node name="Loot" instance=ExtResource("1_ir3q6")]
+packet = SubResource("Resource_6dlb7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(-0.832921, -0.422054, -0.357928, 0, 0.64679, -0.762668, 0.553392, -0.635243, -0.538725, 0, 0, 0)
+mesh = SubResource("PrismMesh_hsvfu")

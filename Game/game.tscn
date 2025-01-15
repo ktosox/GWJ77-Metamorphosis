@@ -69,6 +69,7 @@ custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="GameWindowButton" type="Button" parent="PanelTexture/Layout"]
+visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 text = "g      w
@@ -84,6 +85,7 @@ custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="HiddenWindowButton" type="Button" parent="PanelTexture/Layout"]
+visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 text = "h     w
@@ -101,6 +103,7 @@ custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="LinkButton4" type="Button" parent="PanelTexture/Layout"]
+visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 text = "n
@@ -167,6 +170,7 @@ offset_right = 0.0
 title = "game window"
 position = Vector2i(400, 36)
 size = Vector2i(640, 640)
+visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
 

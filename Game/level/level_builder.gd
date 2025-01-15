@@ -2,7 +2,7 @@ extends Node3D
 
 @export_range(1,3) var world = 1
 
-@export var segment_count = 6
+@export var segment_count = 2
 
 @export var feature_list : Array
 
@@ -14,7 +14,11 @@ var bigger_segment_scene = preload("res://level/segments/segment_bigger.tscn")
 
 var floor_scene = preload("res://level/floor_segment.tscn")
 
+var loot_scene_array = [preload("res://not_player/loot/loot1.tscn"),preload("res://not_player/loot/loot2.tscn"),preload("res://not_player/loot/loot3.tscn")]
+
 var _total_length : int
+
+var _valid_location_array = []
 
 signal level_complete
 
@@ -30,7 +34,7 @@ func _ready() -> void:
 	$LoadingScreen/ColorRect/ProgressBar.value = 100
 	$LoadingScreen/ColorRect/LoadingComplete.visible = true
 	
-
+	print("_total_length ", _total_length)
 	pass
 
 
@@ -58,38 +62,72 @@ func create_segments() -> void:
 		
 		
 		pass
-	$PlayerCatcher.global_position = Vector3(0,segment_offset+6,0) # move $PlayerCatcher to the end of the last segment
+	
 	
 	
 	_total_length = abs(segment_offset)
+	
+
+	
+	var length_to_chunk_ratio = 4 
+	var first_floor_zone = 12 # nothing spawns here becouse too soon
+	for chunk in range(first_floor_zone, _total_length, length_to_chunk_ratio):
+		_valid_location_array.push_back(chunk * -1)
+	# populate _valid_location_array by taking the length of the tunnel and arbitrarly placing points in it
+	
+
+	
+	$PlayerCatcher.global_position = Vector3(0,_valid_location_array.pop_back(),0) # move $PlayerCatcher to the end of the last segment
 	pass
 	
 
 func create_features() -> void:
-	# place features in range from the end of segment 1 to the top of last segment
-	var length_to_floor_ratio = 36
-	var first_floor_zone = 12
+
+	var length_to_floor_ratio = 16
+
 	var desired_floor_count = roundi(_total_length/length_to_floor_ratio)
-	print(desired_floor_count)
-	var next_floor_hight = first_floor_zone + randi()%4
-	for count in desired_floor_count:
-		var new_floor = floor_scene.instantiate() as Node3D
-		$FeaturesGoHere.add_child(new_floor)
-		new_floor.global_rotation_degrees = Vector3(0, randi_range(0,3) * (90.0),0 )
-		new_floor.global_position = Vector3(0,-next_floor_hight,0)
-		next_floor_hight += length_to_floor_ratio + randi_range(-6,6)
+	var array_of_spots_to_remove_later = []
+	var tick_shift_point = _valid_location_array.size() / (desired_floor_count * 1.0)
+	var next_floor_tick = 0.0
+	var next_floor_rotation = 0.0
+	for tick in _valid_location_array.size():
 		
+		if next_floor_tick >= tick_shift_point:
+			var selected_valid_location = _valid_location_array[tick]
+			var new_floor = floor_scene.instantiate() as Node3D
+			$FeaturesGoHere.add_child(new_floor)
+			new_floor.global_rotation_degrees = Vector3(0, next_floor_rotation,0 )
+			next_floor_rotation += randi_range(1,2) * (90.0)
+			new_floor.global_position = Vector3(0,selected_valid_location,0)
+			array_of_spots_to_remove_later.push_back(selected_valid_location)
+			next_floor_tick -= tick_shift_point
+		else:
+			next_floor_tick += 1
+	for a in array_of_spots_to_remove_later:
+		_valid_location_array.erase(a)
+
 	pass
 
 
 func create_loot() -> void:
-	# place loot in range from the end of segment 1 to the top of last segment
+	var from_range = -1
+	var to_range = 1
+	for spot in _valid_location_array.size():
+		if spot%2 == 1:
+			var new_loot = loot_scene_array[randi()%3].instantiate() as Node3D
+			$LootGoesHere.add_child(new_loot)
+			new_loot.global_position = Vector3(randi_range(from_range,to_range),_valid_location_array[spot],randi_range(from_range,to_range))
+			
+	
 	pass
 
 func spawn_player() -> void:
 	var new_player = player_scene.instantiate()
+	
 	new_player.global_position = $PlayerSpawnPoint.global_position
 	add_child(new_player)
+	
+	
 	pass
 
 
