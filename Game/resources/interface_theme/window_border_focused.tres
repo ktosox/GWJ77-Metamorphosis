@@ -14,7 +14,7 @@ fill_to = Vector2(0.5, 0.899083)
 [resource]
 texture = SubResource("GradientTexture2D_m730x")
 expand_margin_left = 10.0
-expand_margin_top = 32.0
+expand_margin_top = 36.0
 expand_margin_right = 10.0
 expand_margin_bottom = 10.0
-modulate_color = Color(0.436106, 0.295429, 0.999957, 1)
+modulate_color = Color(0.478589, 0.392245, 0.999979, 1)

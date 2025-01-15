@@ -55,13 +55,12 @@ alignment = 1
 [node name="SelectLevelButton" type="Button" parent="PanelTexture/Layout"]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
-text = "s    l
- e    e
-  l     v
-  e     e
- c        l
-t         "
-alignment = 0
+text = "s   l
+e   e
+l   v
+e   e
+c   l
+t    "
 autowrap_mode = 2
 
 [node name="Control4" type="Control" parent="PanelTexture/Layout"]
@@ -69,15 +68,14 @@ custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="GameWindowButton" type="Button" parent="PanelTexture/Layout"]
-visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
-text = "g      w
- a       i
-  m     n
-  e     d
-        o
-         w"
+text = "g   w
+a   i
+m   n
+e   d
+    o
+    w"
 autowrap_mode = 2
 
 [node name="Control3" type="Control" parent="PanelTexture/Layout"]
@@ -85,17 +83,15 @@ custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="HiddenWindowButton" type="Button" parent="PanelTexture/Layout"]
-visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
-text = "h     w
-i        i
-d      n
-d      d
-e      o
-n     w
+text = "h   w
+i   i
+d   n
+d   d
+e   o
+n   w
 "
-alignment = 2
 autowrap_mode = 2
 
 [node name="Control" type="Control" parent="PanelTexture/Layout"]
@@ -103,7 +99,6 @@ custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="LinkButton4" type="Button" parent="PanelTexture/Layout"]
-visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 text = "n
@@ -156,7 +151,6 @@ auto_translate_mode = 1
 title = "hidden window"
 position = Vector2i(520, 120)
 size = Vector2i(720, 360)
-visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
 
@@ -168,9 +162,8 @@ offset_right = 0.0
 
 [node name="GameWindow" type="Window" parent="."]
 title = "game window"
-position = Vector2i(400, 36)
+position = Vector2i(400, 44)
 size = Vector2i(640, 640)
-visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
 
