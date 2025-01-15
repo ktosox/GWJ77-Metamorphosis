@@ -1,12 +1,11 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://nbjqb68ffyqe"]
 
-[ext_resource type="Texture2D" uid="uid://j7k1jbuk1q02" path="res://resources/3D_textures/checkerboard_512x256.png" id="1_2di7h"]
+[ext_resource type="Texture2D" uid="uid://j7k1jbuk1q02" path="res://resources/3D_textures/checkerboard_512x256.png" id="1_sx33a"]
 
 [resource]
 resource_name = "Checker"
 cull_mode = 2
-albedo_texture = ExtResource("1_2di7h")
-uv1_scale = Vector3(0.5, 1, 1)
+albedo_texture = ExtResource("1_sx33a")
 uv1_triplanar_sharpness = 2.47879e-05
 texture_filter = 2
 texture_repeat = false

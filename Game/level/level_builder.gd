@@ -1,8 +1,8 @@
 extends Node3D
 
-@export_range(1,3) var world = 1
+@export_range(1,3) var world = 3
 
-@export var segment_count = 2
+@export var segment_count = 4
 
 @export var feature_list : Array
 
@@ -15,6 +15,18 @@ var bigger_segment_scene = preload("res://level/segments/segment_bigger.tscn")
 var floor_scene = preload("res://level/floor_segment.tscn")
 
 var loot_scene_array = [preload("res://not_player/loot/loot1.tscn"),preload("res://not_player/loot/loot2.tscn"),preload("res://not_player/loot/loot3.tscn")]
+
+var segment_materials_regular ={
+	1 : [load("res://level/segments/world1/vapor1_material.tres")],
+	2 : [load("res://level/segments/world2/generic_water_material.tres")],
+	3 : [load("res://level/segments/world3/checkerboard_material_small.tres")]
+}
+
+var segment_materials_big ={
+	1 : [load("res://level/segments/world1/vapor_bricks1_material.tres") ],
+	2 : [load("res://level/segments/world2/generic_water_material.tres")],
+	3 : [load("res://level/segments/world3/checkerboard_material_big.tres")]
+}
 
 var _total_length : int
 
@@ -53,8 +65,12 @@ func create_segments() -> void:
 	for S in segment_count: # make each segemnt and add it to $SegmentsGoHere
 		var new_segment
 		match randi()%2:
-			0: new_segment = segment_scene.instantiate() as Node3D
-			1: new_segment = bigger_segment_scene.instantiate() as Node3D
+			0: 
+				new_segment = segment_scene.instantiate() as Node3D
+				new_segment.get_node("Mesh").set_surface_override_material(0,segment_materials_regular[world][0])
+			1: 
+				new_segment = bigger_segment_scene.instantiate() as Node3D
+				new_segment.get_node("Mesh").set_surface_override_material(0,segment_materials_big[world][0])
 		$SegmentsGoHere.add_child(new_segment)
 		new_segment.global_position = Vector3(0,segment_offset,0)
 

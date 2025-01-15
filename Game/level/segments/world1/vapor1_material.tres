@@ -1,11 +1,11 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bvk5s1dxyg8go"]
 
-[ext_resource type="Texture2D" uid="uid://bkmuykx5b1xk3" path="res://resources/3D_textures/vapor4_512x256.png" id="1_r0j1f"]
+[ext_resource type="Texture2D" uid="uid://bkmuykx5b1xk3" path="res://resources/3D_textures/vapor4_512x256.png" id="1_rxntk"]
 
 [resource]
 resource_name = "Checker"
 cull_mode = 2
-albedo_texture = ExtResource("1_r0j1f")
+albedo_texture = ExtResource("1_rxntk")
+uv1_scale = Vector3(1, 2, 2)
 uv1_triplanar_sharpness = 2.47879e-05
 texture_filter = 2
-texture_repeat = false

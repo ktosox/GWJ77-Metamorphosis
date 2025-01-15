@@ -16,7 +16,8 @@ func test_load_level(level_number : int):
 	#add funy things to new_level based on a level_number match HERE
 	
 	#knobs to turn here: @export_range(1,3) var world (from 1 to 3), @export var segment_count = 6 (how long should the fall be?), @export var feature_list : Array (bonus things to add)
-	
+	new_level.world = level_number
+	new_level.segment_count = 3+level_number
 	$GameWindow.add_child(new_level)
 	$GameWindow.visible = true
 	$GameWindow.grab_focus()
