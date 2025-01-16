@@ -25,12 +25,14 @@ func take_bump(data : BumpPacket) -> void:
 
 func take_loot(data : LootPacket) -> void:
 	print(data.type)
+	GM.emit_signal("item_was_collected",data)
 	pass
 
 func take_damage(amount:int) -> void:
 	if cant_take_damage:
 		return
-	print("ouch")
+	
+	GM.emit_signal("player_was_damaged",amount)
 	cant_take_damage = true
 	$DamageTakenTimer.start()
 	pass
@@ -42,7 +44,7 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node) -> void:
-	print(body)
+
 	$BumpSound.play()
 	take_damage(1)
 	pass # Replace with function body.
