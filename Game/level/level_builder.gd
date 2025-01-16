@@ -37,7 +37,10 @@ signal level_complete
 func _ready() -> void:
 	create_segments()
 	await get_tree().create_timer(0.4).timeout
-	$LoadingScreen/ColorRect/ProgressBar.value += 20 + randi()%26
+	$LoadingScreen/ColorRect/ProgressBar.value += 10 + randi()%26
+	create_floors()
+	await get_tree().create_timer(0.4).timeout
+	$LoadingScreen/ColorRect/ProgressBar.value += 10 + randi()%26
 	create_features()
 	await get_tree().create_timer(0.4).timeout
 	$LoadingScreen/ColorRect/ProgressBar.value += 10 + randi()%39
@@ -97,8 +100,7 @@ func create_segments() -> void:
 	pass
 	
 
-func create_features() -> void:
-
+func create_floors() -> void:
 	var length_to_floor_ratio = 16
 
 	var desired_floor_count = roundi(_total_length/length_to_floor_ratio)
@@ -121,6 +123,10 @@ func create_features() -> void:
 			next_floor_tick += 1
 	for a in array_of_spots_to_remove_later:
 		_valid_location_array.erase(a)
+
+func create_features() -> void:
+
+
 
 	pass
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://be5e44tl4ldbh"]
+[gd_scene load_steps=5 format=3 uid="uid://be5e44tl4ldbh"]
 
 [ext_resource type="ArrayMesh" uid="uid://dbe0eus01m6di" path="res://experimental/normal_segment_mesh.tres" id="1_wwuiy"]
 [ext_resource type="Material" uid="uid://bvk5s1dxyg8go" path="res://level/segments/world1/vapor1_material.tres" id="2_3r16o"]
+[ext_resource type="PackedScene" uid="uid://c1838uqk0isy3" path="res://level/features/virtual_poster.tscn" id="3_adput"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pfy5q"]
 size = Vector3(4, 17, 1)
@@ -52,3 +53,6 @@ constant_linear_velocity = Vector3(0, 0, -4)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Wall2"]
 shape = SubResource("BoxShape3D_pfy5q")
+
+[node name="WallCoverSmall" parent="." instance=ExtResource("3_adput")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.597889, -4.27557, -1.67296)

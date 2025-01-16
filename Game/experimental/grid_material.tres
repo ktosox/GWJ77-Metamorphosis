@@ -13,4 +13,4 @@ emission = Color(0.743178, 0.143173, 0.710423, 1)
 emission_energy_multiplier = 0.55
 uv1_scale = Vector3(1.445, 1.445, 1.445)
 uv1_triplanar = true
-texture_filter = 0
+texture_filter = 2
