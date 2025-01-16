@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgs4l6rmxjr3v"]
 
-[ext_resource type="Script" path="res://experimental/player_building_test.gd" id="1_0ehik"]
+[ext_resource type="Script" path="res://construction_mechanic/player_building.gd" id="1_0ehik"]
 [ext_resource type="PackedScene" uid="uid://dupfmq1l5v3gx" path="res://experimental/example_body_b.tscn" id="2_gk61n"]
 [ext_resource type="Material" uid="uid://hhliwspm43bx" path="res://experimental/grid_material.tres" id="2_htgcx"]
 
@@ -23,7 +23,7 @@ glow_enabled = true
 glow_intensity = 1.89
 glow_bloom = 0.16
 
-[node name="PlayerBuildingTest" type="Node3D"]
+[node name="PlayerBuilding" type="Node3D"]
 script = ExtResource("1_0ehik")
 
 [node name="ObjectHolder" type="Node3D" parent="."]
@@ -35,7 +35,6 @@ surface_material_override/0 = ExtResource("2_htgcx")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
-autostart = true
 
 [node name="ColisionPreview" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)

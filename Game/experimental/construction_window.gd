@@ -26,9 +26,14 @@ func _process(delta: float) -> void:
 
 
 func _on_gui_input(event: InputEvent) -> void:
+	
+	if event.is_class("InputEventMouseMotion"):
+		$SubViewport/PlayerBuildingTest.update_preview()
 	if event.is_action_pressed("RMB"):
 		last_mouse_pos = $SubViewport.get_mouse_position()
 		mouse_tracked = true
 	if event.is_action_released("RMB"):
 		mouse_tracked = false
+	if event.is_action_pressed("LMB"):
+		$SubViewport/PlayerBuildingTest.place_object()
 	pass # Replace with function body.

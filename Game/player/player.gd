@@ -2,6 +2,8 @@ extends RigidBody3D
 
 const MOVE_FORCE = 10.0
 
+var cant_take_damage = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -25,17 +27,27 @@ func take_loot(data : LootPacket) -> void:
 	print(data.type)
 	pass
 
+func take_damage(amount:int) -> void:
+	if cant_take_damage:
+		return
+	print("ouch")
+	cant_take_damage = true
+	$DamageTakenTimer.start()
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 
-func _on_timer_timeout() -> void:
-	#print(linear_velocity)
+
+func _on_body_entered(body: Node) -> void:
+	print(body)
+	$BumpSound.play()
+	take_damage(1)
 	pass # Replace with function body.
 
 
-func _on_body_entered(body: Node) -> void:
-	#print(body)
-
+func _on_damage_taken_timer_timeout() -> void:
+	cant_take_damage = false
 	pass # Replace with function body.

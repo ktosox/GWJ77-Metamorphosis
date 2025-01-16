@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://jtkfilmql5kv"]
+
+[ext_resource type="Texture2D" uid="uid://du11aw0w40edy" path="res://construction_mechanic/part_button_border.png" id="1_5ooxu"]
+[ext_resource type="Texture2D" uid="uid://td7wp0tbscrh" path="res://construction_mechanic/test_preview.png" id="1_7ch25"]
+[ext_resource type="Script" path="res://construction_mechanic/part_selection_button.gd" id="2_ofroh"]
+
+[node name="PartSelectionButton" type="NinePatchRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(56, 87)
+offset_right = 56.0
+offset_bottom = 87.0
+texture = ExtResource("1_5ooxu")
+region_rect = Rect2(0, 0, 64, 64)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+script = ExtResource("2_ofroh")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Layout"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_7ch25")
+stretch_mode = 3
+
+[node name="Button" type="Button" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "撰ぶ"

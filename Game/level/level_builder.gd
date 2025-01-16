@@ -6,6 +6,7 @@ extends Node3D
 
 @export var feature_list : Array
 
+
 var player_scene = preload("res://player/player.tscn")
 
 var segment_scene = preload("res://level/segments/segment_base.tscn")

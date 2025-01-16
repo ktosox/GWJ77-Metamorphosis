@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_8ojrk"]
 [ext_resource type="Script" path="res://game.gd" id="1_oho4n"]
-[ext_resource type="PackedScene" uid="uid://mv7gh2u28mg5" path="res://experimental/player_construction.tscn" id="1_wgv3v"]
+[ext_resource type="PackedScene" uid="uid://mv7gh2u28mg5" path="res://construction_mechanic/player_construction.tscn" id="1_wgv3v"]
 [ext_resource type="Script" path="res://interface/window.gd" id="3_mw1gv"]
 
 [sub_resource type="Gradient" id="Gradient_gfmeh"]

@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://mv7gh2u28mg5"]
+
+[ext_resource type="Script" path="res://experimental/construction_window.gd" id="1_2vdxp"]
+[ext_resource type="PackedScene" uid="uid://cgs4l6rmxjr3v" path="res://construction_mechanic/player_building.tscn" id="1_418so"]
+[ext_resource type="Script" path="res://construction_mechanic/player_construction.gd" id="1_opj86"]
+[ext_resource type="PackedScene" uid="uid://jtkfilmql5kv" path="res://construction_mechanic/part_selection_button.tscn" id="4_51f7o"]
+
+[node name="PlayerConstruction" type="HBoxContainer"]
+anchors_preset = -1
+anchor_right = 0.562
+anchor_bottom = 0.5
+offset_right = 0.639954
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_opj86")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0.34902, 0.572549, 1)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 188.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Texture1" type="Button" parent="ColorRect/VBoxContainer2"]
+layout_mode = 2
+text = "Texture1"
+
+[node name="Texture2" type="Button" parent="ColorRect/VBoxContainer2"]
+layout_mode = 2
+text = "Texture2"
+
+[node name="Texture3" type="Button" parent="ColorRect/VBoxContainer2"]
+layout_mode = 2
+text = "Texture3"
+
+[node name="ConstructionWindow" type="SubViewportContainer" parent="."]
+custom_minimum_size = Vector2(360, 360)
+layout_mode = 2
+script = ExtResource("1_2vdxp")
+
+[node name="SubViewport" type="SubViewport" parent="ConstructionWindow"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(360, 360)
+render_target_update_mode = 4
+
+[node name="PlayerBuildingTest" parent="ConstructionWindow/SubViewport" instance=ExtResource("1_418so")]
+
+[node name="PartSelector" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(1, 0.34902, 0.572549, 1)
+
+[node name="GridContainer" type="GridContainer" parent="PartSelector"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="ColorRect" parent="PartSelector/GridContainer" instance=ExtResource("4_51f7o")]
+layout_mode = 2
+
+[node name="ColorRect2" parent="PartSelector/GridContainer" instance=ExtResource("4_51f7o")]
+layout_mode = 2
+
+[node name="ColorRect3" parent="PartSelector/GridContainer" instance=ExtResource("4_51f7o")]
+layout_mode = 2
+
+[node name="ColorRect4" parent="PartSelector/GridContainer" instance=ExtResource("4_51f7o")]
+layout_mode = 2
+
+[node name="ColorRect5" parent="PartSelector/GridContainer" instance=ExtResource("4_51f7o")]
+layout_mode = 2
+
+[node name="ColorRect6" parent="PartSelector/GridContainer" instance=ExtResource("4_51f7o")]
+layout_mode = 2
+
+[node name="ColorRect7" parent="PartSelector/GridContainer" instance=ExtResource("4_51f7o")]
+layout_mode = 2
+
+[node name="ColorRect8" parent="PartSelector/GridContainer" instance=ExtResource("4_51f7o")]
+layout_mode = 2
+
+[node name="ColorRect9" parent="PartSelector/GridContainer" instance=ExtResource("4_51f7o")]
+layout_mode = 2
+
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Texture1" to="." method="_on_texture_1_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Texture2" to="." method="_on_texture_2_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer2/Texture3" to="." method="_on_texture_3_pressed"]
+[connection signal="gui_input" from="ConstructionWindow" to="ConstructionWindow" method="_on_gui_input"]

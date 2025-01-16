@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://mv7gh2u28mg5"]
+[gd_scene load_steps=5 format=3 uid="uid://mv7gh2u28mg5"]
 
 [ext_resource type="Script" path="res://experimental/construction_window.gd" id="1_2vdxp"]
-[ext_resource type="PackedScene" uid="uid://cgs4l6rmxjr3v" path="res://experimental/player_building_test.tscn" id="1_418so"]
-[ext_resource type="Script" path="res://experimental/player_construction.gd" id="1_opj86"]
+[ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_3q4v6"]
+[ext_resource type="PackedScene" uid="uid://cgs4l6rmxjr3v" path="res://construction_mechanic/player_building.tscn" id="1_418so"]
+[ext_resource type="Script" path="res://construction_mechanic/player_construction.gd" id="1_opj86"]
 
 [node name="PlayerConstruction" type="HBoxContainer"]
 anchors_preset = -1
@@ -11,31 +12,13 @@ anchor_bottom = 0.5
 offset_right = 0.639954
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_3q4v6")
 script = ExtResource("1_opj86")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 0.34902, 0.572549, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 13.0
-offset_bottom = -219.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="ShapeButtonA" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-text = "Shape A"
-
-[node name="ShapeButtonB" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-text = "Shape B"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
@@ -72,38 +55,21 @@ render_target_update_mode = 4
 
 [node name="PlayerBuildingTest" parent="ConstructionWindow/SubViewport" instance=ExtResource("1_418so")]
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="PartSelector" type="ColorRect" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 0.34902, 0.572549, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2"]
+[node name="GridContainer" type="GridContainer" parent="PartSelector"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+columns = 3
 
-[node name="SpikeButton" type="Button" parent="ColorRect2/VBoxContainer"]
-layout_mode = 2
-text = "Spike"
-
-[node name="BoxButton" type="Button" parent="ColorRect2/VBoxContainer"]
-layout_mode = 2
-text = "Box"
-
-[node name="CanButton" type="Button" parent="ColorRect2/VBoxContainer"]
-layout_mode = 2
-text = "Can"
-
-[connection signal="pressed" from="ColorRect/VBoxContainer/ShapeButtonA" to="." method="_on_shape_button_a_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/ShapeButtonB" to="." method="_on_shape_button_b_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Texture1" to="." method="_on_texture_1_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Texture2" to="." method="_on_texture_2_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Texture3" to="." method="_on_texture_3_pressed"]
 [connection signal="gui_input" from="ConstructionWindow" to="ConstructionWindow" method="_on_gui_input"]
-[connection signal="pressed" from="ColorRect2/VBoxContainer/SpikeButton" to="." method="_on_spike_button_pressed"]
-[connection signal="pressed" from="ColorRect2/VBoxContainer/BoxButton" to="." method="_on_box_button_pressed"]
-[connection signal="pressed" from="ColorRect2/VBoxContainer/CanButton" to="." method="_on_can_button_pressed"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cp5wgukjld5s7"
+path="res://.godot/imported/GDYN_Punching_Perc_PRO_SH - 5.wav-47ad3d6a7319ded82246d25daee2374c.sample"
+
+[deps]
+
+source_file="res://resources/sounds/GDYN_Punching_Perc_PRO_SH - 5.wav"
+dest_files=["res://.godot/imported/GDYN_Punching_Perc_PRO_SH - 5.wav-47ad3d6a7319ded82246d25daee2374c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

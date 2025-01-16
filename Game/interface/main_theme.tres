@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dbotcsipmht72"]
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dbotcsipmht72"]
 
 [ext_resource type="StyleBox" uid="uid://b643uoxsfu6y5" path="res://resources/interface_theme/window_border_focused.tres" id="1_1aqhb"]
 [ext_resource type="FontFile" uid="uid://b78omn5loj8l7" path="res://resources/fonts/simply_mono_2/SimplyMono-Book.ttf" id="1_1mfeb"]
@@ -7,9 +7,26 @@
 [ext_resource type="Texture2D" uid="uid://b05syjtopefmg" path="res://interface/question_mark3.png" id="3_4lh28"]
 [ext_resource type="Texture2D" uid="uid://cxxpl24vp2nd8" path="res://interface/question_mark4.png" id="4_e8h3x"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hmt0"]
+bg_color = Color(0.827338, 0.811834, 0.873307, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0852478, 0.294529, 0.360051, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 2
+anti_aliasing = false
+
 [resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
 Button/font_sizes/font_size = 19
 Button/fonts/font = ExtResource("1_1mfeb")
+Button/styles/normal = SubResource("StyleBoxFlat_7hmt0")
 Window/colors/title_color = Color(1, 1, 1, 1)
 Window/constants/close_h_offset = 24
 Window/constants/close_v_offset = 34
