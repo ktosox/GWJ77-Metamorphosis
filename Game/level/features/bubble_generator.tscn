@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bibr0jwrfulir"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7mbj"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.764706, 1, 1, 0.839216)
+
+[sub_resource type="SphereMesh" id="SphereMesh_arunj"]
+material = SubResource("StandardMaterial3D_m7mbj")
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 8
+
+[node name="BubbleGenerator" type="CPUParticles3D"]
+amount = 16
+lifetime = 3.0
+explosiveness = 0.75
+lifetime_randomness = 0.8
+mesh = SubResource("SphereMesh_arunj")
+gravity = Vector3(0, 6, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+damping_min = 2.0
+damping_max = 4.0
