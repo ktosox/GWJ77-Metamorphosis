@@ -117,6 +117,7 @@ title = "select level"
 position = Vector2i(50, 60)
 size = Vector2i(320, 240)
 script = ExtResource("3_mw1gv")
+tutorial_scene = NodePath("TutorialGoesHere")
 
 [node name="ColorRect" type="ColorRect" parent="SelectLevel"]
 anchors_preset = 15
@@ -146,20 +147,35 @@ text = "BUTTON2"
 layout_mode = 2
 text = "BUTTON3"
 
+[node name="TutorialGoesHere" type="ColorRect" parent="SelectLevel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.313726, 1, 1)
+
 [node name="HiddenWindow" type="Window" parent="."]
 auto_translate_mode = 1
 title = "hidden window"
 position = Vector2i(520, 120)
 size = Vector2i(720, 360)
-visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
+tutorial_scene = NodePath("TutorialWindow")
 
 [node name="PlayerConstruction" parent="HiddenWindow" instance=ExtResource("1_wgv3v")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = 0.0
+
+[node name="TutorialWindow" type="ColorRect" parent="HiddenWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="GameWindow" type="Window" parent="."]
 title = "game window"
@@ -174,9 +190,6 @@ script = ExtResource("3_mw1gv")
 [connection signal="pressed" from="PanelTexture/Layout/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
 [connection signal="pressed" from="PanelTexture/Layout/GameWindowButton" to="." method="_on_game_window_button_pressed"]
 [connection signal="pressed" from="PanelTexture/Layout/HiddenWindowButton" to="." method="_on_hidden_window_button_pressed"]
-[connection signal="close_requested" from="SelectLevel" to="." method="_on_select_level_close_requested"]
 [connection signal="pressed" from="SelectLevel/ColorRect/VBoxContainer/Button1" to="." method="_on_button_1_pressed"]
 [connection signal="pressed" from="SelectLevel/ColorRect/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="SelectLevel/ColorRect/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
-[connection signal="close_requested" from="HiddenWindow" to="." method="_on_hidden_window_close_requested"]
-[connection signal="close_requested" from="GameWindow" to="." method="_on_game_window_close_requested"]

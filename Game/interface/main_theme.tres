@@ -1,19 +1,23 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dbotcsipmht72"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dbotcsipmht72"]
 
 [ext_resource type="StyleBox" uid="uid://b643uoxsfu6y5" path="res://resources/interface_theme/window_border_focused.tres" id="1_1aqhb"]
 [ext_resource type="FontFile" uid="uid://b78omn5loj8l7" path="res://resources/fonts/simply_mono_2/SimplyMono-Book.ttf" id="1_1mfeb"]
 [ext_resource type="FontFile" uid="uid://bels28mhb7p0e" path="res://resources/fonts/koomik_mono/KoomikMono-Regular.otf" id="1_ifgcg"]
 [ext_resource type="StyleBox" uid="uid://cxrhqx3jk4p3j" path="res://resources/interface_theme/window_border_unfocused.tres" id="2_dw5w7"]
+[ext_resource type="Texture2D" uid="uid://b05syjtopefmg" path="res://interface/question_mark3.png" id="3_4lh28"]
+[ext_resource type="Texture2D" uid="uid://cxxpl24vp2nd8" path="res://interface/question_mark4.png" id="4_e8h3x"]
 
 [resource]
 Button/font_sizes/font_size = 19
 Button/fonts/font = ExtResource("1_1mfeb")
 Window/colors/title_color = Color(1, 1, 1, 1)
-Window/constants/close_h_offset = 14
-Window/constants/close_v_offset = 24
-Window/constants/title_height = 44
+Window/constants/close_h_offset = 24
+Window/constants/close_v_offset = 34
+Window/constants/title_height = 42
 Window/constants/title_outline_size = 10
 Window/font_sizes/title_font_size = 24
 Window/fonts/title_font = ExtResource("1_ifgcg")
+Window/icons/close = ExtResource("3_4lh28")
+Window/icons/close_pressed = ExtResource("4_e8h3x")
 Window/styles/embedded_border = ExtResource("1_1aqhb")
 Window/styles/embedded_unfocused_border = ExtResource("2_dw5w7")

@@ -1,6 +1,8 @@
 extends Control
 
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -43,10 +45,6 @@ func _on_button_3_pressed() -> void:
 
 # WINDOW MINIMAZING STUFF
 
-func _on_select_level_close_requested() -> void:
-	$SelectLevel.visible = false
-	
-	pass # Replace with function body.
 
 
 func _on_select_level_button_pressed() -> void:
@@ -55,9 +53,6 @@ func _on_select_level_button_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_game_window_close_requested() -> void:
-	$GameWindow.visible = false
-	pass # Replace with function body.
 
 
 func _on_game_window_button_pressed() -> void:
@@ -68,9 +63,4 @@ func _on_game_window_button_pressed() -> void:
 
 func _on_hidden_window_button_pressed() -> void:
 	$HiddenWindow.visible = !$HiddenWindow.visible
-	pass # Replace with function body.
-
-
-func _on_hidden_window_close_requested() -> void:
-	$HiddenWindow.visible = false
 	pass # Replace with function body.
