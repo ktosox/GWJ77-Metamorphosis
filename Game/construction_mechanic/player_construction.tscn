@@ -1,9 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://mv7gh2u28mg5"]
+[gd_scene load_steps=10 format=3 uid="uid://mv7gh2u28mg5"]
 
 [ext_resource type="Script" path="res://experimental/construction_window.gd" id="1_2vdxp"]
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_3q4v6"]
 [ext_resource type="PackedScene" uid="uid://cgs4l6rmxjr3v" path="res://construction_mechanic/player_building.tscn" id="1_418so"]
 [ext_resource type="Script" path="res://construction_mechanic/player_construction.gd" id="1_opj86"]
+[ext_resource type="PackedScene" uid="uid://c2b3vr2ga3db5" path="res://construction_mechanic/skill_point_thing.tscn" id="6_gf0qy"]
+[ext_resource type="Script" path="res://part_data.gd" id="6_jmgte"]
+
+[sub_resource type="Resource" id="Resource_fvj03"]
+script = ExtResource("6_jmgte")
+required_skill = 0
+required_level = 1
+
+[sub_resource type="Resource" id="Resource_rmjdc"]
+script = ExtResource("6_jmgte")
+required_skill = 1
+required_level = 1
+
+[sub_resource type="Resource" id="Resource_olcjs"]
+script = ExtResource("6_jmgte")
+required_skill = 2
+required_level = 1
 
 [node name="PlayerConstruction" type="HBoxContainer"]
 anchors_preset = -1
@@ -14,10 +31,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3q4v6")
 script = ExtResource("1_opj86")
+starting_parts = [SubResource("Resource_fvj03"), SubResource("Resource_rmjdc"), SubResource("Resource_olcjs")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.55
 color = Color(1, 0.34902, 0.572549, 1)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect"]
@@ -25,8 +44,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 188.0
-offset_bottom = -56.0
+offset_top = 3.0
+offset_bottom = -253.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -42,6 +61,23 @@ text = "Texture2"
 layout_mode = 2
 text = "Texture3"
 
+[node name="SpecialPreviewWindow" type="ColorRect" parent="ColorRect"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 109.0
+offset_right = 122.0
+offset_bottom = 358.0
+
+[node name="PlayerTips" type="Label" parent="ColorRect"]
+top_level = true
+layout_mode = 0
+offset_left = 158.0
+offset_top = 298.0
+offset_right = 443.0
+offset_bottom = 347.0
+text = "abcdedd sdadasd dsadasdasd dsa da sdasdasdad dsadasd  sadasdas"
+autowrap_mode = 1
+
 [node name="ConstructionWindow" type="SubViewportContainer" parent="."]
 custom_minimum_size = Vector2(360, 360)
 layout_mode = 2
@@ -56,18 +92,64 @@ render_target_update_mode = 4
 [node name="PlayerBuildingTest" parent="ConstructionWindow/SubViewport" instance=ExtResource("1_418so")]
 
 [node name="PartSelector" type="ColorRect" parent="."]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(1, 0.34902, 0.572549, 1)
 
 [node name="GridContainer" type="GridContainer" parent="PartSelector"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -109.0
+offset_right = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 3
+
+[node name="SkillPoints" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.254902, 0.254902, 1, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SkillPoints"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = 3.0
+offset_bottom = -183.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SkillPointThing" parent="SkillPoints/HBoxContainer" instance=ExtResource("6_gf0qy")]
+layout_mode = 2
+
+[node name="SkillPointThing2" parent="SkillPoints/HBoxContainer" instance=ExtResource("6_gf0qy")]
+layout_mode = 2
+
+[node name="SkillPointThing3" parent="SkillPoints/HBoxContainer" instance=ExtResource("6_gf0qy")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SkillPoints"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 211.0
+offset_right = 133.0
+offset_bottom = 234.0
+text = "Avialble  skill points:"
+
+[node name="Label2" type="Label" parent="SkillPoints"]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 210.0
+offset_right = 210.0
+offset_bottom = 233.0
+text = "3"
 
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Texture1" to="." method="_on_texture_1_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Texture2" to="." method="_on_texture_2_pressed"]
