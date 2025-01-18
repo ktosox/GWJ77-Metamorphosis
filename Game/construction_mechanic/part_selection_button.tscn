@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://jtkfilmql5kv"]
+[gd_scene load_steps=6 format=3 uid="uid://jtkfilmql5kv"]
 
 [ext_resource type="Texture2D" uid="uid://du11aw0w40edy" path="res://construction_mechanic/part_button_border.png" id="1_5ooxu"]
 [ext_resource type="Texture2D" uid="uid://td7wp0tbscrh" path="res://construction_mechanic/test_preview.png" id="1_7ch25"]
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_yotwv"]
 [ext_resource type="Script" path="res://construction_mechanic/part_selection_button.gd" id="2_ofroh"]
+[ext_resource type="FontFile" uid="uid://bels28mhb7p0e" path="res://resources/fonts/koomik_mono/KoomikMono-Regular.otf" id="5_yr7aa"]
 
 [node name="PartSelectionButton" type="NinePatchRect"]
 texture_filter = 1
@@ -47,6 +48,7 @@ stretch_mode = 3
 [node name="Button" type="Button" parent="Layout"]
 layout_mode = 2
 size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("5_yr7aa")
 theme_override_font_sizes/font_size = 12
 text = "0 HELLO"
 

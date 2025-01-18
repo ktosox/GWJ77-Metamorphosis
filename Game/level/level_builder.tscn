@@ -12,6 +12,7 @@ segment_count = 6
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="LoadingScreen" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
 anchors_preset = 15

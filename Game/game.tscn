@@ -148,6 +148,7 @@ layout_mode = 2
 text = "BUTTON3"
 
 [node name="TutorialGoesHere" type="ColorRect" parent="SelectLevel"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -155,11 +156,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.313726, 1, 1)
 
+[node name="Label" type="Label" parent="SelectLevel/TutorialGoesHere"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 306.0
+offset_bottom = 83.0
+text = "tutrial instruction geos here"
+
 [node name="HiddenWindow" type="Window" parent="."]
 auto_translate_mode = 1
 title = "hidden window"
 position = Vector2i(520, 120)
 size = Vector2i(720, 360)
+visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
 tutorial_scene = NodePath("TutorialWindow")
@@ -171,21 +180,47 @@ anchor_bottom = 1.0
 offset_right = 0.0
 
 [node name="TutorialWindow" type="ColorRect" parent="HiddenWindow"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Label" type="Label" parent="HiddenWindow/TutorialWindow"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 200.0
+offset_top = 80.0
+offset_right = 369.0
+offset_bottom = 121.0
+text = "i m a g i n e
+ t u t o r a i l"
+
 [node name="GameWindow" type="Window" parent="."]
 title = "game window"
 position = Vector2i(400, 44)
 size = Vector2i(640, 640)
-visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
+tutorial_scene = NodePath("TutorialGoesHere")
 
-[node name="Node3D" type="Node3D" parent="GameWindow"]
+[node name="TutorialGoesHere" type="ColorRect" parent="GameWindow"]
+visible = false
+top_level = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.584314, 0.803922, 1)
+
+[node name="Label" type="Label" parent="GameWindow/TutorialGoesHere"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "press AWSD or ARROWS to move
+"
 
 [connection signal="pressed" from="PanelTexture/Layout/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
 [connection signal="pressed" from="PanelTexture/Layout/GameWindowButton" to="." method="_on_game_window_button_pressed"]

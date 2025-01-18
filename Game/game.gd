@@ -1,6 +1,6 @@
 extends Control
 
-
+var current_game_level : Node3D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,10 +13,12 @@ func _process(delta: float) -> void:
 	pass
 
 func test_load_level(level_number : int):
-	$GameWindow.get_child(0).queue_free()
+	if current_game_level!=null:
+		current_game_level.queue_free()
+	
 	var new_level = load("res://level/level_builder.tscn").instantiate()
 	#add funy things to new_level based on a level_number match HERE
-	
+	current_game_level = new_level
 	#knobs to turn here: @export_range(1,3) var world (from 1 to 3), @export var segment_count = 6 (how long should the fall be?), @export var feature_list : Array (bonus things to add)
 	new_level.world = level_number
 	new_level.segment_count = 3+level_number
