@@ -1,10 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://3s00a7q88gky"]
+[gd_scene load_steps=15 format=3 uid="uid://3s00a7q88gky"]
 
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_8ojrk"]
 [ext_resource type="Script" path="res://game.gd" id="1_oho4n"]
 [ext_resource type="PackedScene" uid="uid://mv7gh2u28mg5" path="res://construction_mechanic/player_construction.tscn" id="1_wgv3v"]
+[ext_resource type="FontFile" uid="uid://bart7fupiyr0l" path="res://resources/fonts/simply_mono_2/SimplyMono-BookOblique.ttf" id="3_cucsq"]
 [ext_resource type="Script" path="res://interface/window.gd" id="3_mw1gv"]
 [ext_resource type="PackedScene" uid="uid://bg8jt5dej20l1" path="res://path_mechanic/path_selection_screen.tscn" id="4_ko2fr"]
+
+[sub_resource type="Gradient" id="Gradient_0pjls"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_64bat"]
+gradient = SubResource("Gradient_0pjls")
+width = 128
+height = 4
+fill_from = Vector2(0, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_gfmeh"]
 interpolation_mode = 2
@@ -16,6 +26,123 @@ height = 720
 fill_from = Vector2(1, 1)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="Animation" id="Animation_uvmom"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Welcome:texture:fill_from")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Welcome:texture:gradient:colors")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ayow3"]
+resource_name = "loop"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Welcome:texture:fill_from")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 9.2, 21),
+"transitions": PackedFloat32Array(1, -2, -0.5),
+"update": 0,
+"values": [Vector2(0, 0.5), Vector2(0.15, 0.5), Vector2(0.4, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_rayii"]
+resource_name = "new_animation"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Welcome:texture:fill_from")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0.5), Vector2(0, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Welcome:texture:gradient:colors")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.33333, 5.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1), PackedColorArray(0, 0, 0, 1, 7.7486e-07, 0.733861, 0.735921, 1), PackedColorArray(7.70092e-07, 0.733861, 0.735921, 1, 0.658824, 0.0784314, 0.439216, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StartAniamator:current_animation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.66667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"loop"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Welcome/Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.1, 5.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5.16667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_game"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7rh51"]
+_data = {
+"RESET": SubResource("Animation_uvmom"),
+"loop": SubResource("Animation_ayow3"),
+"new_animation": SubResource("Animation_rayii")
+}
+
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -25,6 +152,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_8ojrk")
 script = ExtResource("1_oho4n")
+
+[node name="Welcome" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_64bat")
+
+[node name="Label" type="Label" parent="Welcome"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 150.0
+offset_top = 273.0
+offset_right = 1125.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(0.528115, 0.998717, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.8, 0.458824, 0.8, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/font = ExtResource("3_cucsq")
+theme_override_font_sizes/font_size = 128
+text = "W E L C O M E"
 
 [node name="PanelTexture" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(64, 0)
@@ -53,6 +204,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="SelectLevelButton" type="Button" parent="PanelTexture/Layout"]
+visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 text = "s   l
@@ -68,6 +220,7 @@ custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="GameWindowButton" type="Button" parent="PanelTexture/Layout"]
+visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 text = "g   w
@@ -83,6 +236,7 @@ custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
 [node name="HiddenWindowButton" type="Button" parent="PanelTexture/Layout"]
+visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 text = "h   w
@@ -98,25 +252,24 @@ autowrap_mode = 2
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="LinkButton4" type="Button" parent="PanelTexture/Layout"]
+[node name="OptionsWindowButton" type="Button" parent="PanelTexture/Layout"]
 visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
-text = "n
-a
-m
-e
-"
+text = "o
+p
+t
+i
+o
+n
+s"
 autowrap_mode = 2
-
-[node name="Control5" type="Control" parent="PanelTexture/Layout"]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="SelectLevel" type="Window" parent="."]
 title = "select level"
-position = Vector2i(50, 60)
+position = Vector2i(90, 125)
 size = Vector2i(380, 300)
+visible = false
 script = ExtResource("3_mw1gv")
 tutorial_scene = NodePath("TutorialGoesHere")
 
@@ -183,6 +336,7 @@ text = "i m a g i n e
 title = "game window"
 position = Vector2i(400, 42)
 size = Vector2i(640, 640)
+visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
 tutorial_scene = NodePath("TutorialGoesHere")
@@ -217,6 +371,30 @@ layout_mode = 2
 text = "N O
  S I G N A L"
 
+[node name="OptionsWindow" type="Window" parent="."]
+title = "options"
+position = Vector2i(810, 407)
+size = Vector2i(240, 240)
+visible = false
+script = ExtResource("3_mw1gv")
+tutorial_scene = NodePath("TutorialIGuess")
+
+[node name="TutorialIGuess" type="ColorRect" parent="OptionsWindow"]
+custom_minimum_size = Vector2(240, 240)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(4.23551e-06, 0.691915, 0.697463, 1)
+
+[node name="StartAniamator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7rh51")
+}
+autoplay = "new_animation"
+
 [connection signal="pressed" from="PanelTexture/Layout/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
 [connection signal="pressed" from="PanelTexture/Layout/GameWindowButton" to="." method="_on_game_window_button_pressed"]
 [connection signal="pressed" from="PanelTexture/Layout/HiddenWindowButton" to="." method="_on_hidden_window_button_pressed"]
+[connection signal="pressed" from="PanelTexture/Layout/OptionsWindowButton" to="." method="_on_options_window_button_pressed"]

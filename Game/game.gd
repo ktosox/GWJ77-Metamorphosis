@@ -47,7 +47,12 @@ func test_load_level(level_number : int):
 
 
 
-
+func start_game() -> void:
+	$PanelTexture/Layout/SelectLevelButton.visible = true
+	$PanelTexture/Layout/OptionsWindowButton.visible = true
+	$SelectLevel.visible = true
+	$OptionsWindow.visible = true
+	pass
 
 
 func _on_select_level_button_pressed() -> void:
@@ -66,4 +71,9 @@ func _on_game_window_button_pressed() -> void:
 
 func _on_hidden_window_button_pressed() -> void:
 	$HiddenWindow.visible = !$HiddenWindow.visible
+	pass # Replace with function body.
+
+
+func _on_options_window_button_pressed() -> void:
+	$OptionsWindow.visible = !$OptionsWindow.visible
 	pass # Replace with function body.
