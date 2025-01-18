@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://mv7gh2u28mg5"]
+[gd_scene load_steps=13 format=3 uid="uid://mv7gh2u28mg5"]
 
 [ext_resource type="Script" path="res://experimental/construction_window.gd" id="1_2vdxp"]
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_3q4v6"]
@@ -21,6 +21,67 @@ required_level = 1
 script = ExtResource("6_jmgte")
 required_skill = 2
 required_level = 1
+
+[sub_resource type="Animation" id="Animation_s0n0c"]
+resource_name = "new_animation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 4.43333, 5),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [-0.016129, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:text_direction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_a3dvi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.016129]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:text_direction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cloku"]
+_data = {
+"RESET": SubResource("Animation_a3dvi"),
+"new_animation": SubResource("Animation_s0n0c")
+}
 
 [node name="PlayerConstruction" type="HBoxContainer"]
 anchors_preset = -1
@@ -76,7 +137,16 @@ offset_top = 298.0
 offset_right = 443.0
 offset_bottom = 347.0
 text = "abcdedd sdadasd dsadasdasd dsa da sdasdasdad dsadasd  sadasdas"
+horizontal_alignment = 3
 autowrap_mode = 1
+visible_characters = 0
+visible_ratio = 0.0
+text_direction = 1
+
+[node name="AniamteTip" type="AnimationPlayer" parent="ColorRect/PlayerTips"]
+libraries = {
+"": SubResource("AnimationLibrary_cloku")
+}
 
 [node name="ConstructionWindow" type="SubViewportContainer" parent="."]
 custom_minimum_size = Vector2(360, 360)
@@ -116,14 +186,10 @@ color = Color(0.254902, 0.254902, 1, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SkillPoints"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_right = 3.0
-offset_bottom = -183.0
+offset_bottom = 183.0
 grow_horizontal = 2
-grow_vertical = 2
 alignment = 1
 
 [node name="SkillPointThing" parent="SkillPoints/HBoxContainer" instance=ExtResource("6_gf0qy")]
@@ -131,9 +197,11 @@ layout_mode = 2
 
 [node name="SkillPointThing2" parent="SkillPoints/HBoxContainer" instance=ExtResource("6_gf0qy")]
 layout_mode = 2
+tracked_skill = 1
 
 [node name="SkillPointThing3" parent="SkillPoints/HBoxContainer" instance=ExtResource("6_gf0qy")]
 layout_mode = 2
+tracked_skill = 2
 
 [node name="Label" type="Label" parent="SkillPoints"]
 layout_mode = 0
@@ -150,6 +218,22 @@ offset_top = 210.0
 offset_right = 210.0
 offset_bottom = 233.0
 text = "3"
+
+[node name="Label4" type="Label" parent="SkillPoints"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 241.0
+offset_right = 182.0
+offset_bottom = 264.0
+text = "1"
+
+[node name="Label3" type="Label" parent="SkillPoints"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 239.0
+offset_right = 136.0
+offset_bottom = 262.0
+text = "max skill points:"
 
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Texture1" to="." method="_on_texture_1_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer2/Texture2" to="." method="_on_texture_2_pressed"]

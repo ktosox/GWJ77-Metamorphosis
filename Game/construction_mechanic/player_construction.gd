@@ -17,6 +17,8 @@ var _part_selection_button_scene = preload("res://construction_mechanic/part_sel
 func _ready() -> void:
 	for part in starting_parts:
 		add_part(part)
+	await get_tree().create_timer(1).timeout
+	send_player_tip("Hello world, derp derp derp herp derp. manymany words go here")
 	pass # Replace with function body.
 
 
@@ -44,6 +46,11 @@ func player_chose_part(data : PartData) -> void:
 		# send negative message to tips_go_here
 		pass
 
+	pass
+
+func send_player_tip(tip_text : String) -> void:
+	$ColorRect/PlayerTips.text = tip_text
+	$ColorRect/PlayerTips/AniamteTip.play("new_animation")
 	pass
 
 func _on_shape_button_a_pressed() -> void:
