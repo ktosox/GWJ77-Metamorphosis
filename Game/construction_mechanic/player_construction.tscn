@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://mv7gh2u28mg5"]
+[gd_scene load_steps=14 format=3 uid="uid://mv7gh2u28mg5"]
 
 [ext_resource type="Script" path="res://experimental/construction_window.gd" id="1_2vdxp"]
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_3q4v6"]
 [ext_resource type="PackedScene" uid="uid://cgs4l6rmxjr3v" path="res://construction_mechanic/player_building.tscn" id="1_418so"]
 [ext_resource type="Script" path="res://construction_mechanic/player_construction.gd" id="1_opj86"]
+[ext_resource type="PackedScene" uid="uid://cpecidflrl6je" path="res://not_player/parts/small_cheese.tscn" id="3_0hxh6"]
 [ext_resource type="PackedScene" uid="uid://c2b3vr2ga3db5" path="res://construction_mechanic/skill_point_thing.tscn" id="6_gf0qy"]
 [ext_resource type="Script" path="res://part_data.gd" id="6_jmgte"]
 
 [sub_resource type="Resource" id="Resource_fvj03"]
 script = ExtResource("6_jmgte")
+mesh_scene = ExtResource("3_0hxh6")
 required_skill = 0
 required_level = 1
 
@@ -21,34 +23,6 @@ required_level = 1
 script = ExtResource("6_jmgte")
 required_skill = 2
 required_level = 1
-
-[sub_resource type="Animation" id="Animation_s0n0c"]
-resource_name = "new_animation"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 4.43333, 5),
-"transitions": PackedFloat32Array(0.5, 1, 2, 1),
-"update": 0,
-"values": [-0.016129, 1.0, 1.0, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:text_direction")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 2]
-}
 
 [sub_resource type="Animation" id="Animation_a3dvi"]
 length = 0.001
@@ -77,6 +51,34 @@ tracks/1/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_s0n0c"]
+resource_name = "new_animation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.26667, 4.26667, 5),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [-0.016129, 1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:text_direction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cloku"]
 _data = {
 "RESET": SubResource("Animation_a3dvi"),
@@ -100,7 +102,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.55
 color = Color(1, 0.34902, 0.572549, 1)
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect"]
+[node name="ScreenSelection" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,17 +112,13 @@ offset_bottom = -253.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Texture1" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="PartsButton" type="Button" parent="ColorRect/ScreenSelection"]
 layout_mode = 2
-text = "Texture1"
+text = "Parts"
 
-[node name="Texture2" type="Button" parent="ColorRect/VBoxContainer2"]
+[node name="SkillsButton" type="Button" parent="ColorRect/ScreenSelection"]
 layout_mode = 2
-text = "Texture2"
-
-[node name="Texture3" type="Button" parent="ColorRect/VBoxContainer2"]
-layout_mode = 2
-text = "Texture3"
+text = "Skills"
 
 [node name="SpecialPreviewWindow" type="ColorRect" parent="ColorRect"]
 layout_mode = 2
@@ -132,13 +130,14 @@ offset_bottom = 358.0
 [node name="PlayerTips" type="Label" parent="ColorRect"]
 top_level = true
 layout_mode = 0
-offset_left = 158.0
-offset_top = 298.0
-offset_right = 443.0
-offset_bottom = 347.0
+offset_left = 141.0
+offset_top = 287.0
+offset_right = 474.0
+offset_bottom = 357.0
+theme_override_font_sizes/font_size = 20
 text = "abcdedd sdadasd dsadasdasd dsa da sdasdasdad dsadasd  sadasdas"
 horizontal_alignment = 3
-autowrap_mode = 1
+autowrap_mode = 2
 visible_characters = 0
 visible_ratio = 0.0
 text_direction = 1
@@ -205,37 +204,36 @@ tracked_skill = 2
 
 [node name="Label" type="Label" parent="SkillPoints"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 211.0
-offset_right = 133.0
-offset_bottom = 234.0
-text = "Avialble  skill points:"
+offset_left = 6.0
+offset_top = 178.0
+offset_right = 249.0
+offset_bottom = 201.0
+text = "skill points left:"
 
 [node name="Label2" type="Label" parent="SkillPoints"]
 layout_mode = 0
-offset_left = 170.0
-offset_top = 210.0
-offset_right = 210.0
-offset_bottom = 233.0
+offset_left = 205.0
+offset_top = 178.0
+offset_right = 245.0
+offset_bottom = 201.0
 text = "3"
 
 [node name="Label4" type="Label" parent="SkillPoints"]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 241.0
-offset_right = 182.0
-offset_bottom = 264.0
+offset_left = 200.0
+offset_top = 281.0
+offset_right = 240.0
+offset_bottom = 304.0
 text = "1"
 
 [node name="Label3" type="Label" parent="SkillPoints"]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 239.0
-offset_right = 136.0
-offset_bottom = 262.0
+offset_left = 8.0
+offset_top = 276.0
+offset_right = 188.0
+offset_bottom = 299.0
 text = "max skill points:"
 
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Texture1" to="." method="_on_texture_1_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Texture2" to="." method="_on_texture_2_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer2/Texture3" to="." method="_on_texture_3_pressed"]
+[connection signal="pressed" from="ColorRect/ScreenSelection/PartsButton" to="." method="_on_parts_button_pressed"]
+[connection signal="pressed" from="ColorRect/ScreenSelection/SkillsButton" to="." method="_on_skills_button_pressed"]
 [connection signal="gui_input" from="ConstructionWindow" to="ConstructionWindow" method="_on_gui_input"]

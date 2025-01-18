@@ -1,11 +1,11 @@
 extends Node
 
 
-enum Skill_Types {SPARKLING,TASTY,SMARTER}
+enum Skill_Types {SPARKLE,TASTY,SMARTER}
 
 
 var skills = {
-	Skill_Types.SPARKLING : 0,
+	Skill_Types.SPARKLE : 0,
  	Skill_Types.TASTY : 0, 
 	Skill_Types.SMARTER : 0
 	}
@@ -19,6 +19,8 @@ signal player_was_damaged (amount : int)
 signal loot_was_collected (loot : LootPacket)
 
 signal skill_point_was_spent
+
+signal player_has_transformed
 
 func has_skill_level(skill:Skill_Types,level:int) -> bool:
 	if skills[skill] >= level:

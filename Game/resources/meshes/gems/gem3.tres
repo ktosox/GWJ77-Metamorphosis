@@ -1,0 +1,43 @@
+[gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://bjq66dhv6ktxt"]
+
+[ext_resource type="Texture2D" uid="uid://dhhstwpy6xud7" path="res://resources/meshes/gems/cristal_Albedo Stone3.png" id="1_4q3sc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xr47e"]
+resource_name = "Stone3"
+cull_mode = 2
+albedo_texture = ExtResource("1_4q3sc")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ysxep"]
+_surfaces = [{
+"aabb": AABB(-0.322087, -0.0547358, -0.676509, 0.644174, 0.109472, 1.35302),
+"format": 34896613377,
+"index_count": 84,
+"index_data": PackedByteArray("DgAIAAYADgAHAAgABQAKAAsABQAEAAoAAgAFAAEAAgAEAAUAAAAEAAIAAAADAAQACAALAAoACAAHAAsABgAKAAkABgAIAAoABAAJAAoABAADAAkABQAPAA0ABQALAA8ADAAFAA0ADAABAAUAAAANAAMAAAAMAA0ADgALAAcADgAPAAsABgAPAA4ABgAJAA8ADQAJAAMADQAPAAkAAAABAAwAAAACAAEA"),
+"lods": [0.0404841, PackedByteArray("DwAKAAkADwALAAoABQAKAAsABQAEAAoABAAJAAoABAADAAkABQAPAA0ABQALAA8ADQAJAAMADQAPAAkAAwAFAA0AAwAEAAUA")],
+"name": "Stone3",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/3/+/4swAAD/f///c88AAHPP/v/+fwAA/3/+iAAAAAD///6I/n8AAP9//oj//wAA/38AAIswAAD/fwAAc88AAHPPAAD+fwAA/38AdwAAAAD//wB3/n8AAP9/AHf//wAAizD+//5/AAAAAP6I/n8AAIswAAD+fwAAAAAAd/5/AAA=")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "cristal_Stone1_001"
+_surfaces = [{
+"aabb": AABB(-0.322087, -0.0547358, -0.676509, 0.644174, 0.109472, 1.35302),
+"attribute_data": PackedByteArray("RBw9zEQcPcxEHD3MJWf1NSVn9TUlZ/U1IB3gbiAd4G4gHeBu8AMS/fADEv3XCm77xPZ5/+8DU2LvA1NiSIDR+0iA0fuLCUr+en8hBXp/IQW59TT8p5kaNqeZGjanmRo2Y+QYzGPkGMxj5BjMgppKk4KaSpOCmkqT1Qph+V6BXgVegV4FyvZn/UaAxPlGgMT5XoHQn16B0J+QCTj8t/Un+qv81Pyr/NT8SWZTk0lmU5NJZlOTen/hn3p/4Z8ngOH+J4Dh/ofj6G6H4+huh+Pobi2Az/wtgM/8q/xhYqv8YWLwAxL9SIDR+3p/IQVGgMT5XoHQnyeA4f4tgM/8"),
+"format": 34896613399,
+"index_count": 84,
+"index_data": PackedByteArray("MwAbABYAMwAZABsAFAAjACcAFAAQACMACAATAAUACAAOABMAAgANAAcAAgAKAA0AHQApACUAHQAaACkAFwAkACAAFwAcACQADwAeACIADwALAB4AEQA0AC8AEQAmADQAKgASAC0AKgADABIAAAAuAAkAAAArAC4AMQAoABgAMQA2ACgAFQA3ADIAFQAfADcAMAAhAAwAMAA1ACEAAQAEACwAAQAGAAQA"),
+"lods": [0.0404841, PackedByteArray("NgA8AB8ANgAoADwAFAA7ACcAFAA5ADsADwAeACIADwALAB4AEQA0AC8AEQAmADQAPQAhAAwAPQA+ACEAOAA6AC0AOAANADoA")],
+"material": SubResource("StandardMaterial3D_xr47e"),
+"name": "Stone3",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 63,
+"vertex_data": PackedByteArray("/3/+/4swxOj/f/7/izB88v9//v+LMJj//3///3PPCur/f///c8988v9///9zz5v7c8/+//5/fPJzz/7//n+A/XPP/v/+f838/3/+iAAAu+j/f/6IAABR//9//ogAAPT//3/+iAAA7v////6I/n8h/v///oj+f+v8///+iP5/9P////6I/n/u//9//oj//+X//3/+iP//Ruj/f/6I//8T/P9//oj//+7//38AAIswxOj/fwAAizB88v9/AACLMJj//38AAHPPCur/fwAAc8988v9/AABzz5v7c88AAP5/fPJzzwAA/n+A/XPPAAD+f838/38AdwAA9P//fwB3AAC76P9/AHcAAFH//38AdwAA7v///wB3/n/0////AHf+f+7///8Ad/5/If7//wB3/n/r/P9/AHf//+X//38Ad///7v//fwB3//9G6P9/AHf//xP8izD+//5/iuWLMP7//n8r6Ysw/v/+f3zyAAD+iP5/HeUAAP6I/n8V6QAA/oj+f+X/AAD+iP5/7v+LMAAA/n+K5YswAAD+fyvpizAAAP5/fPIAAAB3/n/l/wAAAHf+f+7/AAAAd/5/HeUAAAB3/n8V6f9//ogAAA/y///+iP5/ttj/f/6I///V8P//AHf+f7bY//8Ad/5/auwAAP6I/n///wAAAHf+f///PoS0xraNI7l3N5sWlH0Ou7aNI7mZlg+tt40juVGZcLXLlZ6tTISvxqk3WBZozux/nDEcgLyY37W4laytaM7sf4Wx8397ThKASX89vEiWR62FsfN/tUbA+yQ5R/KalodI78SU/SQ5R/IQLWXpJDlH8nA1rOaeLTLqaM7sf69GsvtXllZInDEcgGjO7H+FsfN/4DVB56wtRup7ThKAhbHzf8DDSf9ILbXpBII3vKyD7Ma2jSO5cIIcvMyD4MZ7ThKAnDEcgDg8+v3tRlH8JDlH8ntOEYCcMRyAHDyN/eFGMvwqjcSnxLrJf+SI657Eusl/+Viq51oX439aF+N/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ysxep")

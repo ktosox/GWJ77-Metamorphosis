@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://blpkkkta8wmxu"]
+[gd_scene load_steps=3 format=3 uid="uid://blpkkkta8wmxu"]
 
 [ext_resource type="Script" path="res://experimental/skill_system_tester.gd" id="1_632s8"]
+[ext_resource type="PackedScene" uid="uid://c2b3vr2ga3db5" path="res://construction_mechanic/skill_point_thing.tscn" id="2_e5to5"]
 
 [node name="SkillSystemTester" type="Control"]
 layout_mode = 3
@@ -10,3 +11,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_632s8")
+
+[node name="SkillPointThing" parent="." instance=ExtResource("2_e5to5")]
+layout_mode = 1
+offset_left = 119.0
+offset_top = 67.0
+offset_right = -1095.0
+offset_bottom = -499.0
+
+[node name="SkillPointThing2" parent="." instance=ExtResource("2_e5to5")]
+layout_mode = 1
+offset_left = 250.0
+offset_top = 88.0
+offset_right = -964.0
+offset_bottom = -478.0
+tracked_skill = 1
+
+[node name="SkillPointThing3" parent="." instance=ExtResource("2_e5to5")]
+layout_mode = 1
+offset_left = 421.0
+offset_top = 100.0
+offset_right = -793.0
+offset_bottom = -466.0
+tracked_skill = 2
