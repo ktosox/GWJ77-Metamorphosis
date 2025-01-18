@@ -14,7 +14,7 @@ var free_skill_points = 3
 
 var max_skill_points = 1
 
-var player_experience = 0
+var player_experience = 220
 
 var player_level = 1
 

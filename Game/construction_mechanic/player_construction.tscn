@@ -8,23 +8,26 @@
 [ext_resource type="PackedScene" uid="uid://dfjrqj7c70fol" path="res://not_player/parts/food/food_cheese_part.tscn" id="5_cgr0r"]
 [ext_resource type="PackedScene" uid="uid://c4wbgcelovrpq" path="res://not_player/parts/chess/chess_rook_part.tscn" id="5_sb6dy"]
 [ext_resource type="PackedScene" uid="uid://c2b3vr2ga3db5" path="res://construction_mechanic/skill_point_thing.tscn" id="6_gf0qy"]
-[ext_resource type="Script" path="res://part_data.gd" id="6_jmgte"]
+[ext_resource type="Script" path="res://not_player/parts/part_data.gd" id="6_jmgte"]
 
 [sub_resource type="Resource" id="Resource_fvj03"]
 script = ExtResource("6_jmgte")
 mesh_scene = ExtResource("3_iilc1")
+experience_points = 20
 required_skill = 0
 required_level = 1
 
 [sub_resource type="Resource" id="Resource_rmjdc"]
 script = ExtResource("6_jmgte")
 mesh_scene = ExtResource("5_cgr0r")
+experience_points = 20
 required_skill = 1
 required_level = 1
 
 [sub_resource type="Resource" id="Resource_olcjs"]
 script = ExtResource("6_jmgte")
 mesh_scene = ExtResource("5_sb6dy")
+experience_points = 20
 required_skill = 2
 required_level = 1
 
@@ -187,6 +190,7 @@ grow_vertical = 2
 columns = 3
 
 [node name="SkillPoints" type="ColorRect" parent="."]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.254902, 0.254902, 1, 1)
@@ -243,13 +247,21 @@ offset_bottom = 299.0
 text = "max skill points:"
 
 [node name="MorphingScreen" type="ColorRect" parent="."]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.593442, 0.943265, 0.653611, 1)
+
+[node name="TransformButton" type="Button" parent="MorphingScreen"]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 266.0
+offset_right = 187.0
+offset_bottom = 298.0
+text = "Metamorphosis"
 
 [connection signal="pressed" from="ColorRect/ScreenSelection/PartsButton" to="." method="_on_parts_button_pressed"]
 [connection signal="pressed" from="ColorRect/ScreenSelection/SkillsButton" to="." method="_on_skills_button_pressed"]
 [connection signal="pressed" from="ColorRect/ScreenSelection/MorphButton" to="." method="_on_morph_button_pressed"]
 [connection signal="gui_input" from="ConstructionWindow" to="ConstructionWindow" method="_on_gui_input"]
-[connection signal="object_was_placed" from="ConstructionWindow" to="." method="_on_construction_window_object_was_placed"]
+[connection signal="part_was_placed" from="ConstructionWindow" to="." method="_on_construction_window_part_was_placed"]
+[connection signal="pressed" from="MorphingScreen/TransformButton" to="." method="_on_transform_button_pressed"]

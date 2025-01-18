@@ -1,8 +1,68 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgs4l6rmxjr3v"]
+[gd_scene load_steps=7 format=3 uid="uid://cgs4l6rmxjr3v"]
 
 [ext_resource type="Script" path="res://construction_mechanic/player_building.gd" id="1_0ehik"]
-[ext_resource type="PackedScene" uid="uid://dupfmq1l5v3gx" path="res://experimental/example_body_b.tscn" id="2_gk61n"]
-[ext_resource type="Material" uid="uid://hhliwspm43bx" path="res://experimental/grid_material.tres" id="2_htgcx"]
+[ext_resource type="PackedScene" uid="uid://803o0r8ipwb2" path="res://construction_mechanic/small_ball_body.tscn" id="2_a1t5w"]
+
+[sub_resource type="Animation" id="Animation_clroa"]
+resource_name = "new_animation"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.9),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4.66667),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 6.28319, 6.28319), Vector3(-6.28319, -6.28319, -6.28319)]
+}
+
+[sub_resource type="Animation" id="Animation_stpm2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kibos"]
+_data = {
+"RESET": SubResource("Animation_stpm2"),
+"new_animation": SubResource("Animation_clroa")
+}
 
 [sub_resource type="Environment" id="Environment_27voy"]
 background_mode = 1
@@ -19,12 +79,16 @@ glow_bloom = 0.16
 [node name="PlayerBuilding" type="Node3D"]
 script = ExtResource("1_0ehik")
 
+[node name="Consume" type="Node3D" parent="."]
+
+[node name="Animator" type="AnimationPlayer" parent="Consume"]
+libraries = {
+"": SubResource("AnimationLibrary_kibos")
+}
+
 [node name="ObjectHolder" type="Node3D" parent="."]
 
-[node name="ExampleBodyB" parent="ObjectHolder" instance=ExtResource("2_gk61n")]
-
-[node name="Mesh" parent="ObjectHolder/ExampleBodyB" index="0"]
-surface_material_override/0 = ExtResource("2_htgcx")
+[node name="SmallBallBody" parent="ObjectHolder" instance=ExtResource("2_a1t5w")]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
@@ -41,5 +105,3 @@ target_position = Vector3(0, 0, -10)
 collision_mask = 2
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-
-[editable path="ObjectHolder/ExampleBodyB"]

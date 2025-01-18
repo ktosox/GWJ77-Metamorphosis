@@ -6,6 +6,8 @@ extends Node3D
 
 @export var feature_list : Array
 
+@export var data : LevelData
+
 @onready var loading_screen = $Overlay/LoadingScreen
 
 var player_scene = preload("res://player/player.tscn")

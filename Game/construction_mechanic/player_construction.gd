@@ -42,7 +42,9 @@ func player_chose_part(data : PartData) -> void:
 		# this is a valid part selection
 		
 		#$ConstructionWindow/SubViewport/PlayerBuildingTest - change object over here
-		player_builder.swap_placed_object(data.mesh_scene.instantiate())
+		var mesh_scene = data.mesh_scene.instantiate()
+		mesh_scene.set_meta("experience",data.experience_points)
+		player_builder.swap_placed_part(mesh_scene)
 		selected_part = data
 		pass
 	else:
@@ -109,10 +111,27 @@ func _on_skills_button_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_construction_window_object_was_placed() -> void:
+
+
+func _on_transform_button_pressed() -> void:
+	# add check if transformation can occur
+	$MorphingScreen/TransformButton.disabled = true
+	for button in $ColorRect/ScreenSelection.get_children():
+		button.disabled = true
+		pass
+	var experience_gained = await $ConstructionWindow/SubViewport/PlayerBuildingTest.consume_placed_parts()
+	
+	GM.transform_player(experience_gained)
+	$MorphingScreen/TransformButton.disabled = false
+	for button in $ColorRect/ScreenSelection.get_children():
+		button.disabled = false
+		pass
+	pass # Replace with function body.
+
+
+func _on_construction_window_part_was_placed() -> void:
 	for part in parts_go_here.get_children():
 		if part.data == selected_part:
 			part.queue_free()
 			return
-
 	pass # Replace with function body.

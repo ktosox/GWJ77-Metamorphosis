@@ -2,7 +2,10 @@ class_name PartData
 
 extends Resource
 
+
 @export var mesh_scene : PackedScene
+
+@export var experience_points = 20
 
 @export var preview_texture : Texture
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://3s00a7q88gky"]
+[gd_scene load_steps=8 format=3 uid="uid://3s00a7q88gky"]
 
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_8ojrk"]
 [ext_resource type="Script" path="res://game.gd" id="1_oho4n"]
 [ext_resource type="PackedScene" uid="uid://mv7gh2u28mg5" path="res://construction_mechanic/player_construction.tscn" id="1_wgv3v"]
 [ext_resource type="Script" path="res://interface/window.gd" id="3_mw1gv"]
+[ext_resource type="PackedScene" uid="uid://bg8jt5dej20l1" path="res://path_mechanic/path_selection_screen.tscn" id="4_ko2fr"]
 
 [sub_resource type="Gradient" id="Gradient_gfmeh"]
 interpolation_mode = 2
@@ -115,37 +116,18 @@ size_flags_vertical = 3
 [node name="SelectLevel" type="Window" parent="."]
 title = "select level"
 position = Vector2i(50, 60)
-size = Vector2i(320, 240)
+size = Vector2i(380, 300)
 script = ExtResource("3_mw1gv")
 tutorial_scene = NodePath("TutorialGoesHere")
 
-[node name="ColorRect" type="ColorRect" parent="SelectLevel"]
+[node name="PathSelectionScreen" parent="SelectLevel" instance=ExtResource("4_ko2fr")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SelectLevel/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Button1" type="Button" parent="SelectLevel/ColorRect/VBoxContainer"]
-layout_mode = 2
-text = "BUTTON1"
-
-[node name="Button2" type="Button" parent="SelectLevel/ColorRect/VBoxContainer"]
-layout_mode = 2
-text = "BUTTON2"
-
-[node name="Button3" type="Button" parent="SelectLevel/ColorRect/VBoxContainer"]
-layout_mode = 2
-text = "BUTTON3"
 
 [node name="TutorialGoesHere" type="ColorRect" parent="SelectLevel"]
 visible = false
@@ -222,9 +204,19 @@ offset_bottom = 23.0
 text = "press AWSD or ARROWS to move
 "
 
+[node name="CenterContainer" type="CenterContainer" parent="GameWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameWindow/CenterContainer"]
+z_index = -1
+layout_mode = 2
+text = "N O
+ S I G N A L"
+
 [connection signal="pressed" from="PanelTexture/Layout/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
 [connection signal="pressed" from="PanelTexture/Layout/GameWindowButton" to="." method="_on_game_window_button_pressed"]
 [connection signal="pressed" from="PanelTexture/Layout/HiddenWindowButton" to="." method="_on_hidden_window_button_pressed"]
-[connection signal="pressed" from="SelectLevel/ColorRect/VBoxContainer/Button1" to="." method="_on_button_1_pressed"]
-[connection signal="pressed" from="SelectLevel/ColorRect/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="SelectLevel/ColorRect/VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

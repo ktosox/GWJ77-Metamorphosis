@@ -4,17 +4,18 @@ var placed_object : MeshInstance3D
 
 var valid_materials = [preload("res://experimental/checkerboard_material.tres"),preload("res://experimental/gradient_material.tres"),preload("res://experimental/grid_material.tres")]
 
+var all_placed_parts : Array
 
-
-func place_object(part = placed_object) -> bool:
+func place_part(part = placed_object) -> bool:
 	if part == null:
 		return false
-	$ObjectHolder/ExampleBodyB
-	placed_object.get_node("Body").collision_layer = $ObjectHolder/ExampleBodyB.collision_layer
-	placed_object.reparent($ObjectHolder.get_child(0))
+
+	part.get_node("Body").collision_layer = $ObjectHolder.get_child(0).collision_layer
+	part.reparent($ObjectHolder.get_child(0))
+	all_placed_parts.push_back(part)
 	return true
 
-func swap_placed_object(new_part : MeshInstance3D) -> void:
+func swap_placed_part(new_part : MeshInstance3D) -> void:
 	placed_object = new_part
 	if $ColisionPreview.get_child_count() > 0:
 		$ColisionPreview.get_child(0).queue_free()
@@ -36,6 +37,20 @@ func swap_central_body(new_body : Node3D) -> void:
 	#$ObjectHolder.get_child(0).get_node("Mesh").set_surface_override_material(0,valid_materials[material_ID])
 #
 	#pass
+func consume_placed_parts() -> float:
+	var total_experience = 0.0
+
+	for part in all_placed_parts:
+		total_experience += part.get_meta("experience")
+		part.reparent($Consume)
+	$Consume/Animator.play("new_animation")
+	
+	await $Consume/Animator.animation_finished
+	for part in all_placed_parts.size():
+		all_placed_parts.pop_back().queue_free()
+
+	$Consume/Animator.play("RESET")
+	return total_experience
 
 
 func update_preview() -> void:
