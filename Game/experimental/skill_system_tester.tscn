@@ -34,3 +34,13 @@ offset_top = 100.0
 offset_right = -793.0
 offset_bottom = -466.0
 tracked_skill = 2
+
+[node name="Transform" type="Button" parent="."]
+layout_mode = 0
+offset_left = 874.0
+offset_top = 79.0
+offset_right = 1018.0
+offset_bottom = 110.0
+text = "trasnform button"
+
+[connection signal="pressed" from="Transform" to="." method="_on_transform_pressed"]

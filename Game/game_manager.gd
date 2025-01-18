@@ -12,7 +12,15 @@ var skills = {
 
 var free_skill_points = 3
 
-var max_skill_points = 2
+var max_skill_points = 1
+
+var player_experience = 0
+
+var player_level = 1
+
+var more_points_treshold = 60
+
+var higher_level_treshold = 90
 
 signal player_was_damaged (amount : int)
 
@@ -21,6 +29,19 @@ signal loot_was_collected (loot : LootPacket)
 signal skill_point_was_spent
 
 signal player_has_transformed
+
+
+func transform_player(experience : int) -> void:
+	player_experience += experience
+	player_level = round(player_experience/higher_level_treshold) + 1
+	max_skill_points = player_level
+	for skill in skills:
+		skills[skill] = 0
+	free_skill_points = round(player_experience/more_points_treshold) + 2
+	emit_signal("skill_point_was_spent")
+	emit_signal("player_has_transformed")
+	
+# SKILL POINT STUFF
 
 func has_skill_level(skill:Skill_Types,level:int) -> bool:
 	if skills[skill] >= level:
