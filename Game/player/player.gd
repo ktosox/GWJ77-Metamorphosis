@@ -25,7 +25,7 @@ func take_bump(data : BumpPacket) -> void:
 
 func take_loot(data : LootPacket) -> void:
 	print(data.type)
-	GM.emit_signal("item_was_collected",data)
+	GM.emit_signal("loot_was_collected",data)
 	pass
 
 func take_damage(amount:int) -> void:

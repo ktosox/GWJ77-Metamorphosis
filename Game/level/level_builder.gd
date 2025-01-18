@@ -6,6 +6,7 @@ extends Node3D
 
 @export var feature_list : Array
 
+@onready var loading_screen = $Overlay/LoadingScreen
 
 var player_scene = preload("res://player/player.tscn")
 
@@ -33,35 +34,37 @@ var _total_length : int
 
 var _valid_location_array = []
 
-signal level_complete
+signal level_complete(time_left : float)
 
 func _ready() -> void:
 	create_segments()
 	await get_tree().create_timer(0.4).timeout
-	$LoadingScreen/ColorRect/ProgressBar.value += 10 + randi()%26
+	loading_screen.get_node("ProgressBar").value += 10 + randi()%26
 	create_floors()
 	await get_tree().create_timer(0.4).timeout
-	$LoadingScreen/ColorRect/ProgressBar.value += 10 + randi()%26
+	loading_screen.get_node("ProgressBar").value += 10 + randi()%26
 	create_features()
 	await get_tree().create_timer(0.4).timeout
-	$LoadingScreen/ColorRect/ProgressBar.value += 10 + randi()%39
+	loading_screen.get_node("ProgressBar").value += 10 + randi()%39
 	create_loot()
 	await get_tree().create_timer(0.4).timeout
-	$LoadingScreen/ColorRect/ProgressBar.value = 100
-	$LoadingScreen/ColorRect/LoadingComplete.visible = true
+	loading_screen.get_node("ProgressBar").value = 100
+	loading_screen.get_node("LoadingComplete").visible = true
 	
 	print("_total_length ", _total_length)
 	pass
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept") and $LoadingScreen/ColorRect/LoadingComplete.visible:
+	if event.is_action_pressed("ui_accept") and loading_screen.get_node("LoadingComplete").visible:
 		start_game()
 
 func start_game() -> void:
-	$LoadingScreen/ColorRect/LoadingComplete.visible = false
+	loading_screen.get_node("LoadingComplete").visible = false
 	spawn_player()
-	$LoadingScreen.visible = false
+	loading_screen.visible = false
+	await get_tree().create_timer(0.4).timeout
+	$Overlay/TimeShower.set_process(true)
 
 func create_segments() -> void:
 	assert(segment_count > 0)
@@ -155,5 +158,8 @@ func spawn_player() -> void:
 
 
 func _on_player_catcher_player_reached_end() -> void:
-	
+	$Overlay/TimeShower.set_process(false)
+	await get_tree().create_timer(1.2).timeout
+	emit_signal("level_complete",$Overlay/TimeShower.current_time)
+	queue_free()
 	pass # Replace with function body.

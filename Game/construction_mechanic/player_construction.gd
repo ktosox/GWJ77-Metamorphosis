@@ -89,13 +89,22 @@ func _on_texture_3_pressed() -> void:
 func _on_parts_button_pressed() -> void:
 	$PartSelector.visible = true
 	$SkillPoints.visible = false
+	$MorphingScreen.visible = false
 	send_player_tip("Select a part and attach it with left click")
 	pass # Replace with function body.
-
+	
+	
+func _on_morph_button_pressed() -> void:
+	$PartSelector.visible = false
+	$SkillPoints.visible = false
+	$MorphingScreen.visible = true
+	send_player_tip("Morph here to advance and reset skill points")
+	pass # Replace with function body.
 
 func _on_skills_button_pressed() -> void:
 	$PartSelector.visible = false
 	$SkillPoints.visible = true
+	$MorphingScreen.visible = false
 	send_player_tip("This is where you can gain skills")
 	pass # Replace with function body.
 

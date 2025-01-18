@@ -124,6 +124,10 @@ text = "Parts"
 layout_mode = 2
 text = "Skills"
 
+[node name="MorphButton" type="Button" parent="ColorRect/ScreenSelection"]
+layout_mode = 2
+text = "Morphing"
+
 [node name="SpecialPreviewWindow" type="ColorRect" parent="ColorRect"]
 layout_mode = 2
 offset_left = 2.0
@@ -238,7 +242,14 @@ offset_right = 188.0
 offset_bottom = 299.0
 text = "max skill points:"
 
+[node name="MorphingScreen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.593442, 0.943265, 0.653611, 1)
+
 [connection signal="pressed" from="ColorRect/ScreenSelection/PartsButton" to="." method="_on_parts_button_pressed"]
 [connection signal="pressed" from="ColorRect/ScreenSelection/SkillsButton" to="." method="_on_skills_button_pressed"]
+[connection signal="pressed" from="ColorRect/ScreenSelection/MorphButton" to="." method="_on_morph_button_pressed"]
 [connection signal="gui_input" from="ConstructionWindow" to="ConstructionWindow" method="_on_gui_input"]
 [connection signal="object_was_placed" from="ConstructionWindow" to="." method="_on_construction_window_object_was_placed"]
