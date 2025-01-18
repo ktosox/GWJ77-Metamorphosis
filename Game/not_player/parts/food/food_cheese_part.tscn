@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfjrqj7c70fol"]
+
+[ext_resource type="PackedScene" uid="uid://b2w5g2udf6vxl" path="res://not_player/parts/generic_part.tscn" id="1_dirg7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rb4f"]
+albedo_color = Color(0.956924, 0.756812, 0.259636, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_rbc1d"]
+material = SubResource("StandardMaterial3D_2rb4f")
+size = Vector3(0.8, 0.8, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gscwi"]
+size = Vector3(1.22894, 0.732086, 0.711197)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lwxxx"]
+size = Vector3(0.679741, 0.709793, 0.641556)
+
+[node name="GenericPart" instance=ExtResource("1_dirg7")]
+mesh = SubResource("PrismMesh_rbc1d")
+
+[node name="StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="Body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0250549, -0.346298, 0.0180282)
+shape = SubResource("BoxShape3D_gscwi")
+
+[node name="StaticBody3D#CollisionShape3D2" type="CollisionShape3D" parent="Body" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0142326, 0.316004, 0.00926965)
+shape = SubResource("BoxShape3D_lwxxx")

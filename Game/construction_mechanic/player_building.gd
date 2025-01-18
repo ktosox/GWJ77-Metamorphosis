@@ -7,13 +7,17 @@ var valid_materials = [preload("res://experimental/checkerboard_material.tres"),
 func place_object(part = placed_object) -> void:
 	if part == null:
 		return
-	
+	$ObjectHolder/ExampleBodyB
+	placed_object.get_node("Body").collision_layer = $ObjectHolder/ExampleBodyB.collision_layer
+	placed_object.reparent($ObjectHolder.get_child(0))
 	pass
 
 func swap_placed_object(new_part : MeshInstance3D) -> void:
 	placed_object = new_part
-	$ColisionPreview.mesh = placed_object.mesh
-	$ColisionPreview.set_surface_override_material(0,placed_object.get_surface_override_material(0))
+	if $ColisionPreview.get_child_count() > 0:
+		$ColisionPreview.get_child(0).queue_free()
+	$ColisionPreview.add_child(new_part)
+
 	# update the mesh under preview here
 	pass
 

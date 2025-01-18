@@ -1,26 +1,30 @@
-[gd_scene load_steps=14 format=3 uid="uid://mv7gh2u28mg5"]
+[gd_scene load_steps=16 format=3 uid="uid://mv7gh2u28mg5"]
 
 [ext_resource type="Script" path="res://experimental/construction_window.gd" id="1_2vdxp"]
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_3q4v6"]
 [ext_resource type="PackedScene" uid="uid://cgs4l6rmxjr3v" path="res://construction_mechanic/player_building.tscn" id="1_418so"]
 [ext_resource type="Script" path="res://construction_mechanic/player_construction.gd" id="1_opj86"]
-[ext_resource type="PackedScene" uid="uid://cpecidflrl6je" path="res://not_player/parts/small_cheese.tscn" id="3_0hxh6"]
+[ext_resource type="PackedScene" uid="uid://bcecd3hqi3gt" path="res://not_player/parts/gems/gem_1_part.tscn" id="3_iilc1"]
+[ext_resource type="PackedScene" uid="uid://dfjrqj7c70fol" path="res://not_player/parts/food/food_cheese_part.tscn" id="5_cgr0r"]
+[ext_resource type="PackedScene" uid="uid://c4wbgcelovrpq" path="res://not_player/parts/chess/chess_rook_part.tscn" id="5_sb6dy"]
 [ext_resource type="PackedScene" uid="uid://c2b3vr2ga3db5" path="res://construction_mechanic/skill_point_thing.tscn" id="6_gf0qy"]
 [ext_resource type="Script" path="res://part_data.gd" id="6_jmgte"]
 
 [sub_resource type="Resource" id="Resource_fvj03"]
 script = ExtResource("6_jmgte")
-mesh_scene = ExtResource("3_0hxh6")
+mesh_scene = ExtResource("3_iilc1")
 required_skill = 0
 required_level = 1
 
 [sub_resource type="Resource" id="Resource_rmjdc"]
 script = ExtResource("6_jmgte")
+mesh_scene = ExtResource("5_cgr0r")
 required_skill = 1
 required_level = 1
 
 [sub_resource type="Resource" id="Resource_olcjs"]
 script = ExtResource("6_jmgte")
+mesh_scene = ExtResource("5_sb6dy")
 required_skill = 2
 required_level = 1
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2w5g2udf6vxl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8j4nk"]
+
+[node name="GenericPart" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_8j4nk")
+
+[node name="Body" type="StaticBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
