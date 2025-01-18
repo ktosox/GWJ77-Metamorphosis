@@ -4,7 +4,7 @@ var selected_body : Node3D
 
 var selected_material : StandardMaterial3D
 
-var selected_part : Node3D
+var selected_part : PartData
 
 var _part_selection_button_scene = preload("res://construction_mechanic/part_selection_button.tscn")
 
@@ -23,10 +23,6 @@ func _ready() -> void:
 	#send_player_tip("Hello world, derp derp derp herp derp. manymany words go here")
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
 	
 func add_part(data : PartData) -> void:
@@ -37,6 +33,9 @@ func add_part(data : PartData) -> void:
 
 	pass
 
+func remove_part(data : PartData) -> void:
+	
+	pass
 
 func player_chose_part(data : PartData) -> void:
 	if GM.has_skill_level(data.required_skill,data.required_level):
@@ -44,8 +43,10 @@ func player_chose_part(data : PartData) -> void:
 		
 		#$ConstructionWindow/SubViewport/PlayerBuildingTest - change object over here
 		player_builder.swap_placed_object(data.mesh_scene.instantiate())
+		selected_part = data
 		pass
 	else:
+		send_player_tip("You don't have the required skill to use this part")
 		# this is not valid part selection
 		# send negative message to tips_go_here
 		pass
@@ -96,4 +97,13 @@ func _on_skills_button_pressed() -> void:
 	$PartSelector.visible = false
 	$SkillPoints.visible = true
 	send_player_tip("This is where you can gain skills")
+	pass # Replace with function body.
+
+
+func _on_construction_window_object_was_placed() -> void:
+	for part in parts_go_here.get_children():
+		if part.data == selected_part:
+			part.queue_free()
+			return
+
 	pass # Replace with function body.

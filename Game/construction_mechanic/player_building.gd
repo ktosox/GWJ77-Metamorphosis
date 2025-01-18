@@ -4,13 +4,15 @@ var placed_object : MeshInstance3D
 
 var valid_materials = [preload("res://experimental/checkerboard_material.tres"),preload("res://experimental/gradient_material.tres"),preload("res://experimental/grid_material.tres")]
 
-func place_object(part = placed_object) -> void:
+
+
+func place_object(part = placed_object) -> bool:
 	if part == null:
-		return
+		return false
 	$ObjectHolder/ExampleBodyB
 	placed_object.get_node("Body").collision_layer = $ObjectHolder/ExampleBodyB.collision_layer
 	placed_object.reparent($ObjectHolder.get_child(0))
-	pass
+	return true
 
 func swap_placed_object(new_part : MeshInstance3D) -> void:
 	placed_object = new_part

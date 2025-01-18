@@ -98,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3q4v6")
 script = ExtResource("1_opj86")
-starting_parts = [SubResource("Resource_fvj03"), SubResource("Resource_rmjdc"), SubResource("Resource_olcjs")]
+starting_parts = [SubResource("Resource_fvj03"), SubResource("Resource_rmjdc"), SubResource("Resource_olcjs"), SubResource("Resource_olcjs")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -241,3 +241,4 @@ text = "max skill points:"
 [connection signal="pressed" from="ColorRect/ScreenSelection/PartsButton" to="." method="_on_parts_button_pressed"]
 [connection signal="pressed" from="ColorRect/ScreenSelection/SkillsButton" to="." method="_on_skills_button_pressed"]
 [connection signal="gui_input" from="ConstructionWindow" to="ConstructionWindow" method="_on_gui_input"]
+[connection signal="object_was_placed" from="ConstructionWindow" to="." method="_on_construction_window_object_was_placed"]

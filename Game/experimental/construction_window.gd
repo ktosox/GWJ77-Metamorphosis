@@ -4,6 +4,8 @@ var mouse_tracked = false
 
 var last_mouse_pos : Vector2
 
+signal object_was_placed
+
 @export var rotation_speed = 1.2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,5 +37,6 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_released("RMB"):
 		mouse_tracked = false
 	if event.is_action_pressed("LMB"):
-		$SubViewport/PlayerBuildingTest.place_object()
+		if $SubViewport/PlayerBuildingTest.place_object():
+			emit_signal("object_was_placed")
 	pass # Replace with function body.
