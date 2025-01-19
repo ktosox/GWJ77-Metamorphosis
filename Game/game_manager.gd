@@ -16,6 +16,8 @@ var max_skill_points = 1
 
 var player_experience = 220
 
+var player_time = 300
+
 var player_level = 1
 
 var more_points_treshold = 60
@@ -59,6 +61,20 @@ func add_skill_point(skill:Skill_Types) -> void:
 	free_skill_points -= 1
 	emit_signal("skill_point_was_spent")
 
+
+func get_part_type_data(type: Skill_Types, level = 0) -> PartData:
+	var data_to_return : PartData
+	match type:
+		Skill_Types.SPARKLE :
+			data_to_return = $PartDefinitions.gem_parts[level]
+			
+		Skill_Types.TASTY :
+			data_to_return = $PartDefinitions.food_parts[level]
+			
+		Skill_Types.SMARTER :
+			data_to_return = $PartDefinitions.chess_parts[level]
+
+	return data_to_return
 
 func can_add_skill_point(skill:Skill_Types) -> bool:
 	if free_skill_points < 1:

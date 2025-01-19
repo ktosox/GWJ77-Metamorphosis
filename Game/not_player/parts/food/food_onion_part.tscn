@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccphvkfpumuml"]
+
+[ext_resource type="PackedScene" uid="uid://b2w5g2udf6vxl" path="res://not_player/parts/generic_part.tscn" id="1_bu3q8"]
+[ext_resource type="ArrayMesh" uid="uid://ti1qobsik1wx" path="res://resources/meshes/food/food_onion.tres" id="2_jnftg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c6k7b"]
+radius = 0.76
+
+[node name="GenericPart" instance=ExtResource("1_bu3q8")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh = ExtResource("2_jnftg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.272148, 0)
+shape = SubResource("SphereShape3D_c6k7b")

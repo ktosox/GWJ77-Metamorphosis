@@ -4,12 +4,12 @@
 [ext_resource type="ArrayMesh" uid="uid://bi86siy2gyjp1" path="res://resources/meshes/chess/chess_rook.tres" id="2_ra7bd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x03ga"]
-size = Vector3(1.5824, 2.65857, 1.3266)
+size = Vector3(0.8, 1.752, 0.8)
 
 [node name="GenericPart" instance=ExtResource("1_rftry")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = ExtResource("2_ra7bd")
 
 [node name="StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="Body" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0236206, 0.732747, -0.0267029)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.728, 0)
 shape = SubResource("BoxShape3D_x03ga")

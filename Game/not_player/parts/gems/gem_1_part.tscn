@@ -4,11 +4,12 @@
 [ext_resource type="ArrayMesh" uid="uid://c72mdfewfms80" path="res://resources/meshes/gems/gem1.tres" id="2_lyo8c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dvv1w"]
-size = Vector3(1.51987, 0.68811, 1.84902)
+size = Vector3(0.747113, 0.18277, 1.09191)
 
 [node name="GenericPart" instance=ExtResource("1_0t0dp")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = ExtResource("2_lyo8c")
 
 [node name="StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="Body" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0244293, -0.00567627, -0.0983086)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00540749, 0.00270076, 0.00146493)
 shape = SubResource("BoxShape3D_dvv1w")

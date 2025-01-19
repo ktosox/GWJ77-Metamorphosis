@@ -8,8 +8,8 @@
 
 [sub_resource type="Resource" id="Resource_hbx62"]
 script = ExtResource("5_48xt1")
-world = 3
-desired_length = 0
+world = 1
+desired_length = 80
 features = Array[PackedScene]([])
 
 [node name="PathSelectionScreen" type="ColorRect"]

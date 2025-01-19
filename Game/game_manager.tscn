@@ -1,6 +1,68 @@
-[gd_scene load_steps=2 format=3 uid="uid://ct2nlvt1tw3nl"]
+[gd_scene load_steps=13 format=3 uid="uid://ct2nlvt1tw3nl"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_r4n7u"]
+[ext_resource type="Script" path="res://part_definitions.gd" id="2_tk5c3"]
+[ext_resource type="Script" path="res://not_player/parts/part_data.gd" id="3_wa12x"]
+
+[sub_resource type="Resource" id="Resource_fa36h"]
+script = ExtResource("3_wa12x")
+experience_points = 20
+required_skill = 0
+required_level = 1
+
+[sub_resource type="Resource" id="Resource_ereak"]
+script = ExtResource("3_wa12x")
+experience_points = 20
+required_skill = 0
+required_level = 1
+
+[sub_resource type="Resource" id="Resource_k2a0t"]
+script = ExtResource("3_wa12x")
+experience_points = 20
+required_skill = 0
+required_level = 1
+
+[sub_resource type="Resource" id="Resource_7ppwy"]
+script = ExtResource("3_wa12x")
+experience_points = 20
+required_skill = 0
+required_level = 1
+
+[sub_resource type="Resource" id="Resource_e1170"]
+script = ExtResource("3_wa12x")
+experience_points = 20
+required_skill = 0
+required_level = 1
+
+[sub_resource type="Resource" id="Resource_unubw"]
+script = ExtResource("3_wa12x")
+experience_points = 20
+required_skill = 0
+required_level = 1
+
+[sub_resource type="Resource" id="Resource_fkt7n"]
+script = ExtResource("3_wa12x")
+experience_points = 20
+required_skill = 0
+required_level = 1
+
+[sub_resource type="Resource" id="Resource_qag13"]
+script = ExtResource("3_wa12x")
+experience_points = 20
+required_skill = 0
+required_level = 1
+
+[sub_resource type="Resource" id="Resource_auo35"]
+script = ExtResource("3_wa12x")
+experience_points = 20
+required_skill = 0
+required_level = 1
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_r4n7u")
+
+[node name="PartDefinitions" type="Node" parent="."]
+script = ExtResource("2_tk5c3")
+food_parts = Array[ExtResource("3_wa12x")]([SubResource("Resource_fa36h"), SubResource("Resource_ereak"), SubResource("Resource_k2a0t")])
+chess_parts = Array[ExtResource("3_wa12x")]([SubResource("Resource_7ppwy"), SubResource("Resource_e1170"), SubResource("Resource_unubw")])
+gem_parts = Array[ExtResource("3_wa12x")]([SubResource("Resource_fkt7n"), SubResource("Resource_qag13"), SubResource("Resource_auo35")])

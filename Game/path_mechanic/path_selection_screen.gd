@@ -53,15 +53,22 @@ func show_this_path(given_path : Control):
 func confirm_path_selection(level_data : LevelData) -> void:
 	
 	emit_signal("create_new_level",level_data)
-	
-	
+	for path in paths_go_here.get_children():
+		path.queue_free()
+	for button in buttons_go_here.get_children():
+		button.queue_free()
+
 	
 	pass
 
+
+
 func start_lock_out():
 	$LockOutScreen.visible = true
+	set_process_input(false)
 	pass
 	
 func end_lock_out():
 	$LockOutScreen.visible = false
+	set_process_input(true)
 	pass

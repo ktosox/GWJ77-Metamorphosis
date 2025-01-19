@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://erbn7cq2niog"]
+
+[ext_resource type="PackedScene" uid="uid://b2w5g2udf6vxl" path="res://not_player/parts/generic_part.tscn" id="1_2tnl5"]
+[ext_resource type="ArrayMesh" uid="uid://b5mvjh08b11ri" path="res://resources/meshes/food/food_mushroom.tres" id="2_jsjpp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1u0ph"]
+radius = 0.615798
+height = 3.53563
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n66y4"]
+radius = 1.469
+
+[node name="GenericPart" instance=ExtResource("1_2tnl5")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = ExtResource("2_jsjpp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body" index="0"]
+shape = SubResource("CapsuleShape3D_1u0ph")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Body" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.55, 0, 0, 0, 1, 0, 0.863886, 0)
+shape = SubResource("SphereShape3D_n66y4")

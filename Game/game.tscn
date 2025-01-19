@@ -462,7 +462,7 @@ text = "N O
 
 [node name="OptionsWindow" type="Window" parent="."]
 title = "options"
-position = Vector2i(810, 407)
+position = Vector2i(935, 407)
 size = Vector2i(240, 240)
 visible = false
 script = ExtResource("3_mw1gv")
@@ -490,7 +490,6 @@ text = "change options here
 libraries = {
 "": SubResource("AnimationLibrary_7rh51")
 }
-autoplay = "new_animation"
 
 [connection signal="pressed" from="PanelTexture/Layout/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
 [connection signal="pressed" from="PanelTexture/Layout/GameWindowButton" to="." method="_on_game_window_button_pressed"]

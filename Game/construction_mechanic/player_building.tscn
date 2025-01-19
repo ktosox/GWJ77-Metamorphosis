@@ -55,7 +55,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 2, 4.66667),
 "transitions": PackedFloat32Array(0.5, -2, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(6.28319, 6.28319, 6.28319), Vector3(-6.28319, -6.28319, -6.28319)]
+"values": [Vector3(0, 0, 0), Vector3(6.28319, -6.28319, 6.28319), Vector3(-12.5664, 12.5664, -6.28319)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kibos"]

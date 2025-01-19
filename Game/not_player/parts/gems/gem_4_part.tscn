@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://fjxe4ukb1few"]
+
+[ext_resource type="PackedScene" uid="uid://b2w5g2udf6vxl" path="res://not_player/parts/generic_part.tscn" id="1_snt00"]
+[ext_resource type="ArrayMesh" uid="uid://c7d0vmlor5ltg" path="res://resources/meshes/gems/gem4.tres" id="2_ci3v6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mojnu"]
+size = Vector3(0.697, 0.883, 0.605)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_haf1u"]
+size = Vector3(0.3, 0.3, 0.55)
+
+[node name="GenericPart" instance=ExtResource("1_snt00")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("2_ci3v6")
+
+[node name="StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="Body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.005, 0.003, -0.158833)
+shape = SubResource("BoxShape3D_mojnu")
+
+[node name="StaticBody3D#CollisionShape3D2" type="CollisionShape3D" parent="Body" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0154117, 0.003, 0.361045)
+shape = SubResource("BoxShape3D_haf1u")

@@ -1,13 +1,12 @@
 extends Label
 
-@export var starting_time : float
-
 var current_time : float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_process(false)
-	current_time = starting_time
+	
+	current_time = GM.player_time
 	pass # Replace with function body.
 
 

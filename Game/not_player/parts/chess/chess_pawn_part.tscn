@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch0q8e5iqnvq2"]
+
+[ext_resource type="PackedScene" uid="uid://b2w5g2udf6vxl" path="res://not_player/parts/generic_part.tscn" id="1_6dtkb"]
+[ext_resource type="ArrayMesh" uid="uid://65wimyahu26m" path="res://resources/meshes/chess/chess_pawn.tres" id="2_32151"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x03ga"]
+size = Vector3(0.8, 1.752, 0.8)
+
+[node name="GenericPart" instance=ExtResource("1_6dtkb")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = ExtResource("2_32151")
+
+[node name="StaticBody3D#CollisionShape3D" type="CollisionShape3D" parent="Body" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.728, 0)
+shape = SubResource("BoxShape3D_x03ga")
