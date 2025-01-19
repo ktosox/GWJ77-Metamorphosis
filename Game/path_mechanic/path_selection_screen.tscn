@@ -1,17 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://bg8jt5dej20l1"]
+[gd_scene load_steps=10 format=3 uid="uid://bg8jt5dej20l1"]
 
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_aqpr0"]
 [ext_resource type="Script" path="res://path_mechanic/path_selection_screen.gd" id="1_pisuv"]
 [ext_resource type="PackedScene" uid="uid://dsqnp0dc0toww" path="res://path_mechanic/path_deatils.tscn" id="3_0n3wb"]
 [ext_resource type="PackedScene" uid="uid://x5uoriat7akg" path="res://path_mechanic/path_button.tscn" id="3_klco7"]
+[ext_resource type="PackedScene" uid="uid://wgbqu5l18xj2" path="res://level/intersection.tscn" id="4_w3tmn"]
 [ext_resource type="Script" path="res://level/level_data.gd" id="5_48xt1"]
+[ext_resource type="PackedScene" uid="uid://bibr0jwrfulir" path="res://level/features/bubble_generator.tscn" id="5_ma4di"]
 [ext_resource type="PackedScene" uid="uid://c1838uqk0isy3" path="res://level/features/virtual_poster.tscn" id="5_rlr33"]
 
 [sub_resource type="Resource" id="Resource_hbx62"]
 script = ExtResource("5_48xt1")
 world = 1
-desired_length = 80
-loot_count = 6
+desired_length = 120
+loot_count = 8
 features = Array[PackedScene]([ExtResource("5_rlr33"), ExtResource("5_rlr33")])
 
 [node name="PathSelectionScreen" type="ColorRect"]
@@ -22,6 +24,7 @@ size_flags_vertical = 0
 theme = ExtResource("1_aqpr0")
 color = Color(1, 0.32549, 0.419608, 1)
 script = ExtResource("1_pisuv")
+possible_feaure_array = Array[PackedScene]([ExtResource("5_rlr33"), ExtResource("4_w3tmn"), ExtResource("5_ma4di")])
 
 [node name="Layout" type="HBoxContainer" parent="."]
 layout_mode = 1

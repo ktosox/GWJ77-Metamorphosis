@@ -10,6 +10,8 @@ var path_button_scene = preload("res://path_mechanic/path_button.tscn")
 
 signal create_new_level (level_data : LevelData)
 
+@export var possible_feaure_array : Array[PackedScene]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GM.connect("falling_ended",Callable(self,"end_lock_out"))
@@ -21,21 +23,27 @@ func _ready() -> void:
 
 func generate_new_paths() -> void:
 	# LUL
-	var new_level_data = LevelData.new()
-	
-	create_page(new_level_data)
-	create_page(new_level_data)
-	create_page(new_level_data)
+	for n in 3:
+		var new_level_data = LevelData.new()
+		new_level_data.desired_length = int(80 + 20 * randf())
+		new_level_data.features.push_back(possible_feaure_array[randi()%possible_feaure_array.size()])
+		new_level_data.features.push_back(possible_feaure_array[randi()%possible_feaure_array.size()])
+		new_level_data.loot_count = 5 + randi()%8
+		new_level_data.world = 1 + randi()%3
+		create_page(new_level_data)
+
 	pass
 
 func create_page(level_data : LevelData) -> void:
-	var new_page = path_details_scene.instantiate() as Control
-	paths_go_here.add_child(new_page)
 	var random_color = Color(randf()*1.8,randf()*1.8,randf()*1.8)
+	
+	var new_page = path_details_scene.instantiate() as Control
+	
 	new_page.level_data = level_data
 	new_page.modulate = random_color
 	new_page.visible = false
 	new_page.connect("level_selection_confirmed",Callable(self,"confirm_path_selection"))
+	paths_go_here.add_child(new_page)
 	var new_button = path_button_scene.instantiate()
 	buttons_go_here.add_child(new_button)
 	new_button.linked_path = new_page

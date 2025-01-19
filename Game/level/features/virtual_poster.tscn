@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1838uqk0isy3"]
+[gd_scene load_steps=8 format=3 uid="uid://c1838uqk0isy3"]
 
 [ext_resource type="Material" uid="uid://hhliwspm43bx" path="res://experimental/grid_material.tres" id="1_qrf8s"]
 [ext_resource type="Script" path="res://level/features/virtual_poster.gd" id="2_gwerj"]
@@ -15,6 +15,9 @@ metallic = 1.0
 material = SubResource("StandardMaterial3D_gnwli")
 left_to_right = 0.0
 size = Vector3(0.2, 0.3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sob34"]
+size = Vector3(1.69275, 4.21536, 2.00098)
 
 [node name="SlowPoster" type="MeshInstance3D"]
 mesh = SubResource("QuadMesh_0bj2b")
@@ -37,3 +40,14 @@ outline_size = 20
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.0119553, 0, -0.999929, 0, 1, 0, 0.999929, 0, -0.0119553, 0, 2.10529, 0)
 mesh = SubResource("PrismMesh_hviuo")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.01937)
+collision_layer = 0
+collision_mask = 2
+linear_damp_space_override = 1
+linear_damp = 4.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0823364, 0.767166, 0.500488)
+shape = SubResource("BoxShape3D_sob34")

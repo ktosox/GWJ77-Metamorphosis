@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bibr0jwrfulir"]
+[gd_scene load_steps=5 format=3 uid="uid://bibr0jwrfulir"]
+
+[ext_resource type="Script" path="res://level/features/bubble_generator.gd" id="1_kdiw6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7mbj"]
 transparency = 1
@@ -12,14 +14,30 @@ height = 0.1
 radial_segments = 8
 rings = 8
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dxq1l"]
+radius = 1.88815
+height = 7.08124
+
 [node name="BubbleGenerator" type="CPUParticles3D"]
-amount = 16
-lifetime = 3.0
-explosiveness = 0.75
+amount = 24
+lifetime = 1.2
 lifetime_randomness = 0.8
 mesh = SubResource("SphereMesh_arunj")
-gravity = Vector3(0, 6, 0)
-initial_velocity_min = 3.0
-initial_velocity_max = 6.0
+gravity = Vector3(0, 9, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
 damping_min = 2.0
 damping_max = 4.0
+script = ExtResource("1_kdiw6")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68512, 3.16662, 0)
+collision_layer = 0
+collision_mask = 2
+gravity_space_override = 1
+gravity_point_center = Vector3(0, 2, 0)
+gravity_direction = Vector3(0, 2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.485953, -0.577646, 0)
+shape = SubResource("CapsuleShape3D_dxq1l")

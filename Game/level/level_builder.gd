@@ -46,8 +46,9 @@ func _ready() -> void:
 	await get_tree().create_timer(0.4).timeout
 	loading_screen.get_node("ProgressBar").value = 100
 	loading_screen.get_node("LoadingComplete").visible = true
-	
-	print("_total_length ", _total_length)
+	$Music.play(randf() * 300)
+	$Music/AnimationPlayer.play("in")
+	#print("_total_length ", _total_length)
 	pass
 
 
@@ -125,9 +126,15 @@ func create_floors() -> void:
 		_valid_location_array.erase(a)
 
 func create_features() -> void:
-
 	
-
+	
+	
+	for feature in data.features:
+		var spot = _valid_location_array[randi()%_valid_location_array.size()]
+		var new_feature = feature.instantiate() as Node3D
+		new_feature.global_position = Vector3(0,spot,0)
+		$FeaturesGoHere.add_child(new_feature)
+		_valid_location_array.erase(spot)
 	pass
 
 
@@ -159,8 +166,9 @@ func spawn_player() -> void:
 
 
 func _on_player_catcher_player_reached_end() -> void:
+	$Music/AnimationPlayer.play("out")
 	$Overlay/TimeShower.set_process(false)
-	await get_tree().create_timer(1.2).timeout
+	await get_tree().create_timer(1.7).timeout
 	emit_signal("level_complete",$Overlay/TimeShower.current_time)
 	queue_free()
 	pass # Replace with function body.

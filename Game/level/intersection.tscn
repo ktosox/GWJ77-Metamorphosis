@@ -112,7 +112,7 @@ _data = {
 "RESET": SubResource("Animation_tw0fa")
 }
 
-[node name="Intersection" type="Node3D"]
+[node name="Trafic" type="Node3D"]
 
 [node name="CarMover" type="AnimationPlayer" parent="."]
 libraries = {

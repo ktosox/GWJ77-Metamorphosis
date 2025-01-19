@@ -1,18 +1,73 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6n1a36i8bdmy"]
+[gd_scene load_steps=13 format=3 uid="uid://b6n1a36i8bdmy"]
 
 [ext_resource type="Script" path="res://level/level_builder.gd" id="1_qv3op"]
-[ext_resource type="PackedScene" uid="uid://c1838uqk0isy3" path="res://level/features/virtual_poster.tscn" id="2_agaqt"]
 [ext_resource type="Script" path="res://level/level_data.gd" id="2_e2rim"]
+[ext_resource type="PackedScene" uid="uid://bibr0jwrfulir" path="res://level/features/bubble_generator.tscn" id="2_gcroh"]
 [ext_resource type="FontFile" uid="uid://bip18wbfqsng2" path="res://resources/fonts/flexi_ibm_vga_true/Flexi_IBM_VGA_True.ttf" id="2_l87on"]
 [ext_resource type="PackedScene" uid="uid://bhtsrhgyo1unt" path="res://level/player_catcher.tscn" id="2_xgffx"]
 [ext_resource type="Script" path="res://level/time_shower.gd" id="3_8a3qc"]
+[ext_resource type="AudioStream" uid="uid://b5114l04llu8i" path="res://resources/sounds/Prismatic Shopping Network.ogg" id="7_kr5f3"]
 
 [sub_resource type="Resource" id="Resource_qxlsf"]
 script = ExtResource("2_e2rim")
 world = 2
 desired_length = 80
 loot_count = 6
-features = Array[PackedScene]([ExtResource("2_agaqt"), ExtResource("2_agaqt")])
+features = Array[PackedScene]([ExtResource("2_gcroh"), ExtResource("2_gcroh")])
+
+[sub_resource type="Animation" id="Animation_ahe07"]
+resource_name = "in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bsdgd"]
+resource_name = "out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_u7b56"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-80.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lhk8r"]
+_data = {
+"RESET": SubResource("Animation_u7b56"),
+"in": SubResource("Animation_ahe07"),
+"out": SubResource("Animation_bsdgd")
+}
 
 [node name="LevelBuilder" type="Node3D"]
 script = ExtResource("1_qv3op")
@@ -94,5 +149,15 @@ offset_bottom = 389.0
 
 [node name="PlayerCatcher" parent="." instance=ExtResource("2_xgffx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kr5f3")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Music"]
+libraries = {
+"": SubResource("AnimationLibrary_lhk8r")
+}
 
 [connection signal="player_reached_end" from="PlayerCatcher" to="." method="_on_player_catcher_player_reached_end"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ch2eeymfycdmw"
+path="res://.godot/imported/scissors 8.wav-424b6024fae984c4f3f68e86efbd4d47.sample"
+
+[deps]
+
+source_file="res://settings/scissors 8.wav"
+dest_files=["res://.godot/imported/scissors 8.wav-424b6024fae984c4f3f68e86efbd4d47.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
