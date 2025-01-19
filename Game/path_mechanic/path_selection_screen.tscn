@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bg8jt5dej20l1"]
+[gd_scene load_steps=5 format=3 uid="uid://bg8jt5dej20l1"]
 
+[ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_aqpr0"]
 [ext_resource type="Script" path="res://path_mechanic/path_selection_screen.gd" id="1_pisuv"]
+[ext_resource type="PackedScene" uid="uid://dsqnp0dc0toww" path="res://path_mechanic/path_deatils.tscn" id="3_0n3wb"]
+[ext_resource type="PackedScene" uid="uid://x5uoriat7akg" path="res://path_mechanic/path_button.tscn" id="3_klco7"]
 
 [node name="PathSelectionScreen" type="ColorRect"]
 offset_right = 380.0
 offset_bottom = 300.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme = ExtResource("1_aqpr0")
 color = Color(1, 0.32549, 0.419608, 1)
 script = ExtResource("1_pisuv")
 
@@ -31,42 +35,35 @@ offset_right = 90.0
 offset_bottom = 300.0
 alignment = 1
 
-[node name="ColorRect2" type="ColorRect" parent="Layout"]
+[node name="Button" parent="Layout/ColorRect/PathSelectionButtonsGoHere" instance=ExtResource("3_klco7")]
+visible = false
+layout_mode = 2
+
+[node name="PathGoHere" type="ColorRect" parent="Layout"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 color = Color(0.946104, 0, 0.0862982, 1)
 
-[node name="PathDeatils" type="VBoxContainer" parent="Layout/ColorRect2"]
+[node name="PathDeatils" parent="Layout/PathGoHere" instance=ExtResource("3_0n3wb")]
 visible = false
-custom_minimum_size = Vector2(240, 0)
+layout_mode = 1
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="LockOutScreen" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
+color = Color(0.513726, 0.513726, 0.513726, 0.709804)
 
-[node name="ColorRect" type="ColorRect" parent="Layout/ColorRect2/PathDeatils"]
-custom_minimum_size = Vector2(0, 240)
-layout_mode = 2
-color = Color(0.752536, 0.778424, 0.964368, 1)
-
-[node name="Label" type="Label" parent="Layout/ColorRect2/PathDeatils/ColorRect"]
-modulate = Color(0, 0, 0, 1)
+[node name="Label" type="Label" parent="LockOutScreen"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 54.0
-offset_right = 258.0
-offset_bottom = 103.0
-text = "a box with 
-detailed inforamtion 
-about the selected
- thingy"
-
-[node name="Button" type="Button" parent="Layout/ColorRect2/PathDeatils"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-text = "CONFIRM CHOICE"
+offset_left = 36.0
+offset_top = 71.0
+offset_right = 332.0
+offset_bottom = 94.0
+text = "can't use this while falling"

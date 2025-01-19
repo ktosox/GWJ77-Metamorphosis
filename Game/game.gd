@@ -7,11 +7,7 @@ var current_game_level : Node3D
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+# NEED TO MOVE IT INTO _on_path_selection_screen_create_new_level
 func test_load_level(level_number : int):
 	if current_game_level!=null:
 		current_game_level.queue_free()
@@ -78,4 +74,10 @@ func _on_hidden_window_button_pressed() -> void:
 
 func _on_options_window_button_pressed() -> void:
 	$OptionsWindow.visible = !$OptionsWindow.visible
+	pass # Replace with function body.
+
+
+func _on_path_selection_screen_create_new_level(level_data: LevelData) -> void:
+	GM.emit_signal("falling_started")
+	# code for passing on level creation data to $GameWindow goes here
 	pass # Replace with function body.

@@ -382,6 +382,7 @@ auto_translate_mode = 1
 title = "hidden window"
 position = Vector2i(520, 120)
 size = Vector2i(720, 360)
+visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
 tutorial_scene = NodePath("TutorialWindow")
@@ -393,6 +394,7 @@ anchor_bottom = 1.0
 offset_right = 0.0
 
 [node name="TutorialWindow" type="ColorRect" parent="HiddenWindow"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -419,6 +421,7 @@ and allows you to invest skill points difrently"
 title = "game window"
 position = Vector2i(400, 42)
 size = Vector2i(640, 640)
+visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
 tutorial_scene = NodePath("TutorialGoesHere")
@@ -493,3 +496,4 @@ autoplay = "new_animation"
 [connection signal="pressed" from="PanelTexture/Layout/GameWindowButton" to="." method="_on_game_window_button_pressed"]
 [connection signal="pressed" from="PanelTexture/Layout/HiddenWindowButton" to="." method="_on_hidden_window_button_pressed"]
 [connection signal="pressed" from="PanelTexture/Layout/OptionsWindowButton" to="." method="_on_options_window_button_pressed"]
+[connection signal="create_new_level" from="SelectLevel/PathSelectionScreen" to="." method="_on_path_selection_screen_create_new_level"]

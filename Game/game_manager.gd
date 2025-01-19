@@ -30,6 +30,10 @@ signal skill_point_was_spent
 
 signal player_has_transformed
 
+signal falling_started
+
+signal falling_ended
+
 
 func transform_player(experience : int) -> void:
 	player_experience += experience

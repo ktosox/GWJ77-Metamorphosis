@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsqnp0dc0toww"]
+
+[ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_db42c"]
+[ext_resource type="Script" path="res://path_mechanic/path_deatils.gd" id="2_wfr5n"]
+
+[node name="PathDeatils" type="VBoxContainer"]
+custom_minimum_size = Vector2(280, 300)
+offset_right = 280.0
+offset_bottom = 300.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_db42c")
+script = ExtResource("2_wfr5n")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 240)
+layout_mode = 2
+color = Color(0.752536, 0.778424, 0.964368, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 14.0
+offset_top = 54.0
+offset_right = 258.0
+offset_bottom = 103.0
+text = "a box with 
+detailed inforamtion 
+about the selected
+ thingy"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "CONFIRM CHOICE"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
