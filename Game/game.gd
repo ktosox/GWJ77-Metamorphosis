@@ -52,6 +52,8 @@ func start_game() -> void:
 	$PanelTexture/Layout/OptionsWindowButton.visible = true
 	$SelectLevel.visible = true
 	$OptionsWindow.visible = true
+	#$StartAniamator.stop()
+	$StartAniamator.play("loop")
 	pass
 
 

@@ -249,15 +249,34 @@ text = "max skill points:"
 [node name="MorphingScreen" type="ColorRect" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-color = Color(0.593442, 0.943265, 0.653611, 1)
+color = Color(0, 0.50466, 0.380144, 1)
 
 [node name="TransformButton" type="Button" parent="MorphingScreen"]
 layout_mode = 0
-offset_left = 34.0
-offset_top = 266.0
-offset_right = 187.0
-offset_bottom = 298.0
+offset_left = 33.0
+offset_top = 293.0
+offset_right = 186.0
+offset_bottom = 325.0
 text = "Metamorphosis"
+
+[node name="Label" type="Label" parent="MorphingScreen"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 217.0
+offset_bottom = 276.0
+theme_override_constants/line_spacing = 2
+text = "c o n s u m e
+  the parts attached
+to gain:
+
+  m o r e   t i m e
+
+ m o r e   s k i l l
+
+and reset your 
+       skill points
+ "
 
 [connection signal="pressed" from="ColorRect/ScreenSelection/PartsButton" to="." method="_on_parts_button_pressed"]
 [connection signal="pressed" from="ColorRect/ScreenSelection/SkillsButton" to="." method="_on_skills_button_pressed"]
