@@ -2,7 +2,7 @@ extends Node3D
 
 @export_range(1,3) var world = 3
 
-@export var segment_count = 4
+@export var desired_length = 120
 
 @export var feature_list : Array
 
@@ -69,9 +69,9 @@ func start_game() -> void:
 	$Overlay/TimeShower.set_process(true)
 
 func create_segments() -> void:
-	assert(segment_count > 0)
+
 	var segment_offset = 0
-	for S in segment_count: # make each segemnt and add it to $SegmentsGoHere
+	while _total_length < desired_length:
 		var new_segment
 		match randi()%2:
 			0: 
@@ -85,12 +85,12 @@ func create_segments() -> void:
 
 		segment_offset -= new_segment.get_meta("length")
 		
-		
+		_total_length = abs(segment_offset)
 		pass
 	
 	
 	
-	_total_length = abs(segment_offset)
+	
 	
 
 	

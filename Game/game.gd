@@ -7,24 +7,6 @@ var current_game_level : Node3D
 func _ready() -> void:
 	pass # Replace with function body.
 
-# NEED TO MOVE IT INTO _on_path_selection_screen_create_new_level
-func test_load_level(level_number : int):
-	if current_game_level!=null:
-		current_game_level.queue_free()
-	
-	var new_level = load("res://level/level_builder.tscn").instantiate()
-	$GameWindow/CenterContainer.visible = false
-	#add funy things to new_level based on a level_number match HERE
-	current_game_level = new_level
-	#knobs to turn here: @export_range(1,3) var world (from 1 to 3), @export var segment_count = 6 (how long should the fall be?), @export var feature_list : Array (bonus things to add)
-	new_level.world = level_number
-	new_level.segment_count = 3+level_number
-	$GameWindow.add_child(new_level)
-	$GameWindow.visible = true
-	$GameWindow.grab_focus()
-	if !$PanelTexture/Layout/GameWindowButton.visible:
-		$PanelTexture/Layout/GameWindowButton.visible = true
-	pass
 
 
 # SPECILA TEST BUTTONS
@@ -79,5 +61,21 @@ func _on_options_window_button_pressed() -> void:
 
 func _on_path_selection_screen_create_new_level(level_data: LevelData) -> void:
 	GM.emit_signal("falling_started")
+	if current_game_level!=null:
+		current_game_level.queue_free()
+	
+	var new_level = load("res://level/level_builder.tscn").instantiate()
+	#add funy things to new_level based on a level_number match HERE
+	current_game_level = new_level
+	#knobs to turn here: @export_range(1,3) var world (from 1 to 3), @export var segment_count = 6 (how long should the fall be?), @export var feature_list : Array (bonus things to add)
+	new_level.world = level_data.world
+	new_level.desired_length = level_data.desired_length
+	$GameWindow.add_child(new_level)
+	$GameWindow.visible = true
+	$GameWindow.grab_focus()
+	
+	$GameWindow/CenterContainer.visible = false
+	if !$PanelTexture/Layout/GameWindowButton.visible:
+		$PanelTexture/Layout/GameWindowButton.visible = true
 	# code for passing on level creation data to $GameWindow goes here
 	pass # Replace with function body.

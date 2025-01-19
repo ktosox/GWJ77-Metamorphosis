@@ -14,8 +14,8 @@ features = Array[PackedScene]([null, null, null, null])
 
 [node name="LevelBuilder" type="Node3D"]
 script = ExtResource("1_qv3op")
-world = 2
-segment_count = 6
+world = 1
+desired_length = 60
 data = SubResource("Resource_qxlsf")
 
 [node name="PlayerSpawnPoint" type="Marker3D" parent="."]

@@ -14,8 +14,9 @@ signal create_new_level (level_data : LevelData)
 func _ready() -> void:
 	GM.connect("falling_ended",Callable(self,"end_lock_out"))
 	GM.connect("falling_started",Callable(self,"start_lock_out"))
-	
-	generate_new_paths()
+
+	$Layout/ColorRect/PathSelectionButtonsGoHere/Button.connect("linked_path_requested",Callable(self,"show_this_path"))
+	$Layout/PathGoHere/PathDeatils.connect("level_selection_confirmed",Callable(self,"confirm_path_selection"))
 	pass # Replace with function body.
 
 func generate_new_paths() -> void:
@@ -29,13 +30,15 @@ func generate_new_paths() -> void:
 func create_page(level_data : LevelData) -> void:
 	var new_page = path_details_scene.instantiate() as Control
 	paths_go_here.add_child(new_page)
+	var random_color = Color(randf()*1.8,randf()*1.8,randf()*1.8)
 	new_page.level_data = level_data
-	new_page.modulate = Color(randf(),randf(),randf())
+	new_page.modulate = random_color
 	new_page.visible = false
 	new_page.connect("level_selection_confirmed",Callable(self,"confirm_path_selection"))
 	var new_button = path_button_scene.instantiate()
 	buttons_go_here.add_child(new_button)
 	new_button.linked_path = new_page
+	new_button.modulate = random_color
 	new_button.connect("linked_path_requested",Callable(self,"show_this_path"))
 	pass
 
