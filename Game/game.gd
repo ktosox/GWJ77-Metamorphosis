@@ -85,6 +85,7 @@ func _on_path_selection_screen_create_new_level(level_data: LevelData) -> void:
 func end_level(new_time : float) -> void:
 	GM.player_time = new_time
 	GM.emit_signal("falling_ended")
+	$GameWindow.visible = false
 	$GameWindow/CenterContainer.visible = true
 	$SelectLevel/PathSelectionScreen.generate_new_paths()
 	if !$HiddenWindow.visible:

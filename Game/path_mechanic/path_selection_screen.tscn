@@ -12,8 +12,8 @@
 [sub_resource type="Resource" id="Resource_hbx62"]
 script = ExtResource("5_48xt1")
 world = 1
-desired_length = 120
-loot_count = 8
+desired_length = 110
+loot_count = 3
 features = Array[PackedScene]([ExtResource("5_rlr33"), ExtResource("5_rlr33")])
 
 [node name="PathSelectionScreen" type="ColorRect"]

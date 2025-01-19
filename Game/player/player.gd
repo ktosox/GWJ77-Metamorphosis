@@ -29,6 +29,7 @@ func take_bump(data : BumpPacket) -> void:
 
 func take_loot(data : LootPacket) -> void:
 	print(data.type)
+	$Collect.play()
 	GM.emit_signal("loot_was_collected",data)
 	pass
 

@@ -69,6 +69,10 @@ func add_skill_point(skill:Skill_Types) -> void:
 	free_skill_points -= 1
 	emit_signal("skill_point_was_spent")
 
+func game_over():
+	print("TEST GAME OVER")
+	get_tree().change_scene_to_file("res://game_over.tscn")
+	pass
 
 func get_part_type_data(type: Skill_Types, level = 0) -> PartData:
 	var data_to_return : PartData

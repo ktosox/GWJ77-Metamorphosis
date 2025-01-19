@@ -17,16 +17,15 @@ var _part_selection_button_scene = preload("res://construction_mechanic/part_sel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_part(GM.get_part_type_data(0,0))
-	add_part(GM.get_part_type_data(1,0))
-	add_part(GM.get_part_type_data(2,0))
-	add_part(GM.get_part_type_data(2,1))
-	add_part(GM.get_part_type_data(2,1))
+	GM.connect("loot_was_collected",Callable(self,"loot_to_part"))
+
 	#await get_tree().create_timer(1).timeout
 	#send_player_tip("Hello world, derp derp derp herp derp. manymany words go here")
 	pass # Replace with function body.
 
-	
+func loot_to_part(data : LootPacket):
+	add_part(GM.get_part_type_data(data.type,data.value))
+	pass
 	
 func add_part(data : PartData) -> void:
 	var new_part = _part_selection_button_scene.instantiate()
@@ -49,7 +48,7 @@ func player_chose_part(data : PartData) -> void:
 		mesh_scene.set_meta("experience",data.experience_points)
 		player_builder.swap_placed_part(mesh_scene)
 		selected_part = data
-
+		
 		$ColorRect/SpecialPreviewWindow/PartPreview.visible = true
 		$ColorRect/SpecialPreviewWindow/PartPreview.load_part_data(data)
 		
@@ -124,6 +123,7 @@ func _on_skills_button_pressed() -> void:
 
 func _on_transform_button_pressed() -> void:
 	# add check if transformation can occur
+	
 	$MorphingScreen/TransformButton.disabled = true
 	for button in $ColorRect/ScreenSelection.get_children():
 		button.disabled = true
@@ -131,7 +131,7 @@ func _on_transform_button_pressed() -> void:
 	var experience_gained = await $ConstructionWindow/SubViewport/PlayerBuildingTest.consume_placed_parts()
 	
 	GM.transform_player(experience_gained)
-	$MorphingScreen/TransformButton.disabled = false
+	
 	for button in $ColorRect/ScreenSelection.get_children():
 		button.disabled = false
 		pass
@@ -139,12 +139,17 @@ func _on_transform_button_pressed() -> void:
 
 
 func _on_construction_window_part_was_placed() -> void:
+
 	$ColorRect/SpecialPreviewWindow/PartPreview.visible = false
 	if selected_part.bonus_property != PartData.Special_Property.NONE:
 		GM.player_bonus_properties[selected_part.bonus_property] += 1
-	print(GM.player_bonus_properties)
+	#print(GM.player_bonus_properties)
+	$MorphingScreen/TransformButton.disabled = false
+
 	for part in parts_go_here.get_children():
 		if part.data == selected_part:
 			part.queue_free()
+			selected_part = null
 			return
+	
 	pass # Replace with function body.

@@ -15,14 +15,14 @@ var floor_scene = preload("res://level/floor_segment.tscn")
 var loot_scene_array = [preload("res://not_player/loot/loot3.tscn")]
 
 var segment_materials_regular ={
-	1 : [load("res://level/segments/world1/vapor1_material.tres")],
-	2 : [load("res://level/segments/world2/generic_water_material.tres")],
+	1 : [load("res://level/segments/world1/vapor1_material.tres"), load("res://level/segments/world1/vapor2_material.tres")],
+	2 : [load("res://level/segments/world2/generic_water_material.tres"),load("res://level/segments/world2/water2_material.tres")],
 	3 : [load("res://level/segments/world3/checkerboard_material_small.tres")]
 }
 
 var segment_materials_big ={
 	1 : [load("res://level/segments/world1/vapor_bricks1_material.tres") ],
-	2 : [load("res://level/segments/world2/generic_water_material.tres")],
+	2 : [load("res://level/segments/world2/generic_water_material.tres"), load("res://level/segments/world2/water_big_material.tres")],
 	3 : [load("res://level/segments/world3/checkerboard_material_big.tres")]
 }
 
@@ -73,10 +73,10 @@ func create_segments() -> void:
 		match randi()%2:
 			0: 
 				new_segment = segment_scene.instantiate() as Node3D
-				new_segment.get_node("Mesh").set_surface_override_material(0,segment_materials_regular[data.world][0])
+				new_segment.get_node("Mesh").set_surface_override_material(0,segment_materials_regular[data.world][randi()%segment_materials_regular[data.world].size()])
 			1: 
 				new_segment = bigger_segment_scene.instantiate() as Node3D
-				new_segment.get_node("Mesh").set_surface_override_material(0,segment_materials_big[data.world][0])
+				new_segment.get_node("Mesh").set_surface_override_material(0,segment_materials_big[data.world][randi()%segment_materials_big[data.world].size()])
 		$SegmentsGoHere.add_child(new_segment)
 		new_segment.global_position = Vector3(0,segment_offset,0)
 

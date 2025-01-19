@@ -239,6 +239,7 @@ offset_left = 33.0
 offset_top = 293.0
 offset_right = 186.0
 offset_bottom = 325.0
+disabled = true
 text = "Metamorphosis"
 
 [node name="Label" type="Label" parent="MorphingScreen"]

@@ -29,7 +29,7 @@ func generate_new_paths() -> void:
 		new_level_data.desired_length = int(80 + 20 * randf())
 		new_level_data.features.push_back(possible_feaure_array[randi()%possible_feaure_array.size()])
 		new_level_data.features.push_back(possible_feaure_array[randi()%possible_feaure_array.size()])
-		new_level_data.loot_count = 5 + randi()%8
+		new_level_data.loot_count = 2 + randi()%2
 		new_level_data.world = 1 + randi()%3
 		create_page(new_level_data)
 

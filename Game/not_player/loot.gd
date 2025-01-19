@@ -3,7 +3,9 @@ extends Area3D
 @export var packet : LootPacket
 
 func _ready() -> void:
-	assert(packet != null)
+	packet = LootPacket.new()
+	packet.type = randi()%3
+	packet.value = clampi( (randi()%GM.player_level) -1 ,0,2)
 	rotation = Vector3(randf(),randf(),randf())
 	
 

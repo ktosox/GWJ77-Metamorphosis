@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgs4l6rmxjr3v"]
+[gd_scene load_steps=9 format=3 uid="uid://cgs4l6rmxjr3v"]
 
 [ext_resource type="Script" path="res://construction_mechanic/player_building.gd" id="1_0ehik"]
 [ext_resource type="PackedScene" uid="uid://803o0r8ipwb2" path="res://construction_mechanic/small_ball_body.tscn" id="2_a1t5w"]
+[ext_resource type="AudioStream" uid="uid://baskkxunrq242" path="res://resources/sounds/GDYN_Punching_Perc_DESIGNED - 3.wav" id="3_u84nq"]
+[ext_resource type="AudioStream" uid="uid://dqp6j1h7htndd" path="res://resources/sounds/GDYN_Punching_Perc_DESIGNED - 4.wav" id="4_5yfl4"]
 
 [sub_resource type="Animation" id="Animation_stpm2"]
 length = 0.001
@@ -104,4 +106,13 @@ environment = SubResource("Environment_27voy")
 target_position = Vector3(0, 0, -10)
 collision_mask = 2
 
+[node name="MorphComplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u84nq")
+bus = &"Effects"
+
+[node name="PlacePart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5yfl4")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="ObjectHolder/SmallBallBody"]
