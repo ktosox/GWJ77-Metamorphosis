@@ -22,6 +22,7 @@ func _ready() -> void:
 func generate_new_paths() -> void:
 	# LUL
 	var new_level_data = LevelData.new()
+	
 	create_page(new_level_data)
 	create_page(new_level_data)
 	create_page(new_level_data)

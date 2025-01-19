@@ -2,6 +2,13 @@ class_name PartData
 
 extends Resource
 
+enum Special_Property {NONE,AGILITY1,AGILITY2,SPEED1,SPEED2}
+
+@export var official_name : String
+
+@export var description : String
+
+@export var bonus_property : Special_Property
 
 @export var mesh_scene : PackedScene
 

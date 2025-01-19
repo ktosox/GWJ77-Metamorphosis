@@ -1,16 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg8jt5dej20l1"]
+[gd_scene load_steps=8 format=3 uid="uid://bg8jt5dej20l1"]
 
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_aqpr0"]
 [ext_resource type="Script" path="res://path_mechanic/path_selection_screen.gd" id="1_pisuv"]
 [ext_resource type="PackedScene" uid="uid://dsqnp0dc0toww" path="res://path_mechanic/path_deatils.tscn" id="3_0n3wb"]
 [ext_resource type="PackedScene" uid="uid://x5uoriat7akg" path="res://path_mechanic/path_button.tscn" id="3_klco7"]
 [ext_resource type="Script" path="res://level/level_data.gd" id="5_48xt1"]
+[ext_resource type="PackedScene" uid="uid://c1838uqk0isy3" path="res://level/features/virtual_poster.tscn" id="5_rlr33"]
 
 [sub_resource type="Resource" id="Resource_hbx62"]
 script = ExtResource("5_48xt1")
 world = 1
 desired_length = 80
-features = Array[PackedScene]([])
+loot_count = 6
+features = Array[PackedScene]([ExtResource("5_rlr33"), ExtResource("5_rlr33")])
 
 [node name="PathSelectionScreen" type="ColorRect"]
 offset_right = 380.0

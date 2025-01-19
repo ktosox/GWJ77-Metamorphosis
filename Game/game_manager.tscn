@@ -1,62 +1,119 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct2nlvt1tw3nl"]
+[gd_scene load_steps=25 format=3 uid="uid://ct2nlvt1tw3nl"]
 
 [ext_resource type="Script" path="res://game_manager.gd" id="1_r4n7u"]
 [ext_resource type="Script" path="res://part_definitions.gd" id="2_tk5c3"]
 [ext_resource type="Script" path="res://not_player/parts/part_data.gd" id="3_wa12x"]
+[ext_resource type="PackedScene" uid="uid://ccphvkfpumuml" path="res://not_player/parts/food/food_onion_part.tscn" id="4_yhcuj"]
+[ext_resource type="Texture2D" uid="uid://b1wihsxrut7pn" path="res://experimental/food_preview.png" id="5_uqonh"]
+[ext_resource type="PackedScene" uid="uid://erbn7cq2niog" path="res://not_player/parts/food/food_mushroom_part.tscn" id="6_21b7v"]
+[ext_resource type="Texture2D" uid="uid://da4x6ulaoeffa" path="res://experimental/chess_preview.png" id="6_pq5kb"]
+[ext_resource type="Texture2D" uid="uid://dc6va5x0ntclf" path="res://experimental/gem_preview.png" id="7_7bqkc"]
+[ext_resource type="PackedScene" uid="uid://dfjrqj7c70fol" path="res://not_player/parts/food/food_cheese_part.tscn" id="7_a1ms7"]
+[ext_resource type="PackedScene" uid="uid://ch0q8e5iqnvq2" path="res://not_player/parts/chess/chess_pawn_part.tscn" id="8_r1xaq"]
+[ext_resource type="PackedScene" uid="uid://c4wbgcelovrpq" path="res://not_player/parts/chess/chess_rook_part.tscn" id="10_chenn"]
+[ext_resource type="PackedScene" uid="uid://bcecd3hqi3gt" path="res://not_player/parts/gems/gem_1_part.tscn" id="10_g7ysb"]
+[ext_resource type="PackedScene" uid="uid://c51y2pxkbl4vf" path="res://not_player/parts/chess/chess_bishop_part.tscn" id="11_pdufd"]
+[ext_resource type="PackedScene" uid="uid://hjsfekjjvwi2" path="res://not_player/parts/gems/gem_2_part.tscn" id="12_pq032"]
+[ext_resource type="PackedScene" uid="uid://fjxe4ukb1few" path="res://not_player/parts/gems/gem_4_part.tscn" id="13_h4u4v"]
 
 [sub_resource type="Resource" id="Resource_fa36h"]
 script = ExtResource("3_wa12x")
-experience_points = 20
-required_skill = 0
+official_name = "Humble Onion"
+description = "Very humble"
+bonus_property = 3
+mesh_scene = ExtResource("4_yhcuj")
+experience_points = 25
+preview_texture = ExtResource("5_uqonh")
+required_skill = 1
 required_level = 1
 
 [sub_resource type="Resource" id="Resource_ereak"]
 script = ExtResource("3_wa12x")
-experience_points = 20
-required_skill = 0
-required_level = 1
+official_name = "Brown mushroom"
+description = "Does not make you bigger"
+bonus_property = 1
+mesh_scene = ExtResource("6_21b7v")
+experience_points = 65
+preview_texture = ExtResource("5_uqonh")
+required_skill = 1
+required_level = 2
 
 [sub_resource type="Resource" id="Resource_k2a0t"]
 script = ExtResource("3_wa12x")
-experience_points = 20
-required_skill = 0
-required_level = 1
+official_name = "Smelly Cheese"
+description = "Good that you can't smell it"
+bonus_property = 4
+mesh_scene = ExtResource("7_a1ms7")
+experience_points = 50
+preview_texture = ExtResource("5_uqonh")
+required_skill = 1
+required_level = 3
 
 [sub_resource type="Resource" id="Resource_7ppwy"]
 script = ExtResource("3_wa12x")
-experience_points = 20
-required_skill = 0
+official_name = "Pawn"
+description = ""
+bonus_property = 0
+mesh_scene = ExtResource("8_r1xaq")
+experience_points = 60
+preview_texture = ExtResource("6_pq5kb")
+required_skill = 2
 required_level = 1
 
 [sub_resource type="Resource" id="Resource_e1170"]
 script = ExtResource("3_wa12x")
-experience_points = 20
-required_skill = 0
-required_level = 1
+official_name = "Rook"
+description = ""
+bonus_property = 0
+mesh_scene = ExtResource("10_chenn")
+experience_points = 90
+preview_texture = ExtResource("6_pq5kb")
+required_skill = 2
+required_level = 2
 
 [sub_resource type="Resource" id="Resource_unubw"]
 script = ExtResource("3_wa12x")
-experience_points = 20
-required_skill = 0
-required_level = 1
+official_name = "Bishop"
+description = "Exceptionally diagonal"
+bonus_property = 2
+mesh_scene = ExtResource("11_pdufd")
+experience_points = 90
+preview_texture = ExtResource("6_pq5kb")
+required_skill = 2
+required_level = 3
 
 [sub_resource type="Resource" id="Resource_fkt7n"]
 script = ExtResource("3_wa12x")
-experience_points = 20
+official_name = "Green Gem"
+description = "Linked to pottery crimes"
+bonus_property = 1
+mesh_scene = ExtResource("10_g7ysb")
+experience_points = 25
+preview_texture = ExtResource("7_7bqkc")
 required_skill = 0
 required_level = 1
 
 [sub_resource type="Resource" id="Resource_qag13"]
 script = ExtResource("3_wa12x")
-experience_points = 20
+official_name = "Purple Gem"
+description = "Not very bright"
+bonus_property = 3
+mesh_scene = ExtResource("12_pq032")
+experience_points = 55
+preview_texture = ExtResource("7_7bqkc")
 required_skill = 0
-required_level = 1
+required_level = 2
 
 [sub_resource type="Resource" id="Resource_auo35"]
 script = ExtResource("3_wa12x")
-experience_points = 20
+official_name = "Blue Gem"
+description = "Very shiny"
+bonus_property = 2
+mesh_scene = ExtResource("13_h4u4v")
+experience_points = 70
+preview_texture = ExtResource("7_7bqkc")
 required_skill = 0
-required_level = 1
+required_level = 3
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_r4n7u")

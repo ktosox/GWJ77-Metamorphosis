@@ -16,7 +16,7 @@ material = SubResource("StandardMaterial3D_gnwli")
 left_to_right = 0.0
 size = Vector3(0.2, 0.3, 2)
 
-[node name="VirtualPoster" type="MeshInstance3D"]
+[node name="SlowPoster" type="MeshInstance3D"]
 mesh = SubResource("QuadMesh_0bj2b")
 surface_material_override/0 = ExtResource("1_qrf8s")
 script = ExtResource("2_gwerj")

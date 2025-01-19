@@ -24,6 +24,8 @@ var more_points_treshold = 60
 
 var higher_level_treshold = 90
 
+var player_bonus_properties = {PartData.Special_Property.SPEED1 : 0, PartData.Special_Property.SPEED2 : 0, PartData.Special_Property.AGILITY1 : 0, PartData.Special_Property.AGILITY2 : 0}
+
 signal player_was_damaged (amount : int)
 
 signal loot_was_collected (loot : LootPacket)
@@ -46,6 +48,10 @@ func transform_player(experience : int) -> void:
 	free_skill_points = round(player_experience/more_points_treshold) + 2
 	emit_signal("skill_point_was_spent")
 	emit_signal("player_has_transformed")
+	player_bonus_properties[PartData.Special_Property.SPEED1] = 0
+	player_bonus_properties[PartData.Special_Property.SPEED2] = 0
+	player_bonus_properties[PartData.Special_Property.AGILITY1] = 0
+	player_bonus_properties[PartData.Special_Property.AGILITY2] = 0
 	
 # SKILL POINT STUFF
 

@@ -1,36 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://mv7gh2u28mg5"]
+[gd_scene load_steps=11 format=3 uid="uid://mv7gh2u28mg5"]
 
 [ext_resource type="Script" path="res://experimental/construction_window.gd" id="1_2vdxp"]
 [ext_resource type="Theme" uid="uid://dbotcsipmht72" path="res://interface/main_theme.tres" id="1_3q4v6"]
 [ext_resource type="PackedScene" uid="uid://cgs4l6rmxjr3v" path="res://construction_mechanic/player_building.tscn" id="1_418so"]
 [ext_resource type="Script" path="res://construction_mechanic/player_construction.gd" id="1_opj86"]
-[ext_resource type="PackedScene" uid="uid://bcecd3hqi3gt" path="res://not_player/parts/gems/gem_1_part.tscn" id="3_iilc1"]
-[ext_resource type="PackedScene" uid="uid://dfjrqj7c70fol" path="res://not_player/parts/food/food_cheese_part.tscn" id="5_cgr0r"]
-[ext_resource type="PackedScene" uid="uid://c4wbgcelovrpq" path="res://not_player/parts/chess/chess_rook_part.tscn" id="5_sb6dy"]
 [ext_resource type="PackedScene" uid="uid://c2b3vr2ga3db5" path="res://construction_mechanic/skill_point_thing.tscn" id="6_gf0qy"]
-[ext_resource type="Script" path="res://not_player/parts/part_data.gd" id="6_jmgte"]
+[ext_resource type="PackedScene" uid="uid://oys8y41no3cc" path="res://construction_mechanic/part_preview.tscn" id="7_1r4ck"]
 [ext_resource type="Script" path="res://construction_mechanic/skill_points.gd" id="9_ii3oi"]
-
-[sub_resource type="Resource" id="Resource_fvj03"]
-script = ExtResource("6_jmgte")
-mesh_scene = ExtResource("3_iilc1")
-experience_points = 20
-required_skill = null
-required_level = 1
-
-[sub_resource type="Resource" id="Resource_rmjdc"]
-script = ExtResource("6_jmgte")
-mesh_scene = ExtResource("5_cgr0r")
-experience_points = 20
-required_skill = 1
-required_level = 1
-
-[sub_resource type="Resource" id="Resource_olcjs"]
-script = ExtResource("6_jmgte")
-mesh_scene = ExtResource("5_sb6dy")
-experience_points = 20
-required_skill = 2
-required_level = 1
 
 [sub_resource type="Animation" id="Animation_a3dvi"]
 length = 0.001
@@ -102,7 +78,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_3q4v6")
 script = ExtResource("1_opj86")
-starting_parts = [SubResource("Resource_fvj03"), SubResource("Resource_rmjdc"), SubResource("Resource_olcjs"), SubResource("Resource_olcjs")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -138,6 +113,11 @@ offset_left = 2.0
 offset_top = 109.0
 offset_right = 122.0
 offset_bottom = 358.0
+color = Color(0.937255, 0.596078, 0, 1)
+
+[node name="PartPreview" parent="ColorRect/SpecialPreviewWindow" instance=ExtResource("7_1r4ck")]
+visible = false
+layout_mode = 1
 
 [node name="PlayerTips" type="Label" parent="ColorRect"]
 top_level = true

@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://oys8y41no3cc"]
+
+[ext_resource type="Script" path="res://construction_mechanic/part_preview.gd" id="1_2bl1f"]
+[ext_resource type="FontFile" uid="uid://bip18wbfqsng2" path="res://resources/fonts/flexi_ibm_vga_true/Flexi_IBM_VGA_True.ttf" id="1_w0tkl"]
+[ext_resource type="Script" path="res://not_player/parts/part_data.gd" id="2_re4yx"]
+
+[sub_resource type="Theme" id="Theme_uho3y"]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0.486275, 0.796078, 0.658824, 0.698039)
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/constants/shadow_outline_size = 4
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_w0tkl")
+
+[sub_resource type="Resource" id="Resource_0l8ge"]
+script = ExtResource("2_re4yx")
+official_name = "Hello World"
+description = "A very hello to you world"
+bonus_property = 3
+experience_points = 200
+required_skill = 0
+required_level = 1
+
+[node name="PartPreview" type="VBoxContainer"]
+custom_minimum_size = Vector2(120, 249)
+offset_right = 120.0
+offset_bottom = 249.0
+theme = SubResource("Theme_uho3y")
+script = ExtResource("1_2bl1f")
+test_data = SubResource("Resource_0l8ge")
+
+[node name="NameOfPart" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+text = "aaaaaa"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SpecialProperty" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+text = "bbbbbb"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Description" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+text = "cccccc"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Experience" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+text = "dddddd"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

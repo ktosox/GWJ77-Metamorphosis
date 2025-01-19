@@ -1,4 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bto8wp5vpjogq"]
+[gd_scene load_steps=7 format=3 uid="uid://bto8wp5vpjogq"]
+
+[ext_resource type="Script" path="res://level/floor_segment.gd" id="1_v1jb6"]
+[ext_resource type="Material" uid="uid://b8ukboj2d2tqn" path="res://level/floor_material.tres" id="2_doils"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gq4ju"]
 size = Vector3(2, 0.05, 4)
@@ -7,15 +10,18 @@ size = Vector3(2, 0.05, 4)
 size = Vector3(2, 0.05, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_v1j50"]
+material = ExtResource("2_doils")
 size = Vector3(2, 0.1, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_6qtuc"]
+material = ExtResource("2_doils")
 size = Vector3(2, 0.1, 4)
 
 [node name="FloorSegment" type="StaticBody3D"]
 collision_layer = 4
 collision_mask = 2
 constant_linear_velocity = Vector3(0, 6, 0)
+script = ExtResource("1_v1jb6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
@@ -24,11 +30,9 @@ shape = SubResource("BoxShape3D_gq4ju")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 shape = SubResource("BoxShape3D_5glpq")
-disabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
-visible = false
 mesh = SubResource("BoxMesh_v1j50")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]

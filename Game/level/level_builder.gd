@@ -1,11 +1,5 @@
 extends Node3D
 
-@export_range(1,3) var world = 3
-
-@export var desired_length = 120
-
-@export var feature_list : Array
-
 @export var data : LevelData
 
 @onready var loading_screen = $Overlay/LoadingScreen
@@ -18,7 +12,7 @@ var bigger_segment_scene = preload("res://level/segments/segment_bigger.tscn")
 
 var floor_scene = preload("res://level/floor_segment.tscn")
 
-var loot_scene_array = [preload("res://not_player/loot/loot1.tscn"),preload("res://not_player/loot/loot2.tscn"),preload("res://not_player/loot/loot3.tscn")]
+var loot_scene_array = [preload("res://not_player/loot/loot3.tscn")]
 
 var segment_materials_regular ={
 	1 : [load("res://level/segments/world1/vapor1_material.tres")],
@@ -71,15 +65,15 @@ func start_game() -> void:
 func create_segments() -> void:
 
 	var segment_offset = 0
-	while _total_length < desired_length:
+	while _total_length < data.desired_length:
 		var new_segment
 		match randi()%2:
 			0: 
 				new_segment = segment_scene.instantiate() as Node3D
-				new_segment.get_node("Mesh").set_surface_override_material(0,segment_materials_regular[world][0])
+				new_segment.get_node("Mesh").set_surface_override_material(0,segment_materials_regular[data.world][0])
 			1: 
 				new_segment = bigger_segment_scene.instantiate() as Node3D
-				new_segment.get_node("Mesh").set_surface_override_material(0,segment_materials_big[world][0])
+				new_segment.get_node("Mesh").set_surface_override_material(0,segment_materials_big[data.world][0])
 		$SegmentsGoHere.add_child(new_segment)
 		new_segment.global_position = Vector3(0,segment_offset,0)
 
@@ -132,7 +126,7 @@ func create_floors() -> void:
 
 func create_features() -> void:
 
-
+	
 
 	pass
 
@@ -140,11 +134,16 @@ func create_features() -> void:
 func create_loot() -> void:
 	var from_range = -1
 	var to_range = 1
-	for spot in _valid_location_array.size():
-		if spot%2 == 1:
-			var new_loot = loot_scene_array[randi()%3].instantiate() as Node3D
-			$LootGoesHere.add_child(new_loot)
-			new_loot.global_position = Vector3(randi_range(from_range,to_range),_valid_location_array[spot],randi_range(from_range,to_range))
+	var loot_spawned = 0
+	while loot_spawned < data.loot_count:
+		var new_loot = loot_scene_array[randi()%loot_scene_array.size()].instantiate() as Node3D
+		$LootGoesHere.add_child(new_loot)
+		var spot = _valid_location_array[randi()%_valid_location_array.size()]
+		new_loot.global_position = Vector3(randi_range(from_range,to_range),spot,randi_range(from_range,to_range))
+		loot_spawned += 1
+		_valid_location_array.erase(spot)
+			
+			
 			
 	
 	pass

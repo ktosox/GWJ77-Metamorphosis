@@ -14,11 +14,14 @@ var _part_selection_button_scene = preload("res://construction_mechanic/part_sel
 
 @onready var player_builder = $ConstructionWindow/SubViewport/PlayerBuildingTest
 
-@export var starting_parts : Array
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for part in starting_parts:
-		add_part(part)
+	add_part(GM.get_part_type_data(0,0))
+	add_part(GM.get_part_type_data(1,0))
+	add_part(GM.get_part_type_data(2,0))
+	add_part(GM.get_part_type_data(2,1))
+	add_part(GM.get_part_type_data(2,1))
 	#await get_tree().create_timer(1).timeout
 	#send_player_tip("Hello world, derp derp derp herp derp. manymany words go here")
 	pass # Replace with function body.
@@ -46,6 +49,10 @@ func player_chose_part(data : PartData) -> void:
 		mesh_scene.set_meta("experience",data.experience_points)
 		player_builder.swap_placed_part(mesh_scene)
 		selected_part = data
+
+		$ColorRect/SpecialPreviewWindow/PartPreview.visible = true
+		$ColorRect/SpecialPreviewWindow/PartPreview.load_part_data(data)
+		
 		pass
 	else:
 		send_player_tip("You don't have the required skill to use this part")
@@ -100,6 +107,7 @@ func _on_morph_button_pressed() -> void:
 	$PartSelector.visible = false
 	$SkillPoints.visible = false
 	$MorphingScreen.visible = true
+	$ColorRect/SpecialPreviewWindow/PartPreview.visible = false
 	send_player_tip("Morph here to advance and reset skill points")
 	pass # Replace with function body.
 
@@ -107,6 +115,7 @@ func _on_skills_button_pressed() -> void:
 	$PartSelector.visible = false
 	$SkillPoints.visible = true
 	$MorphingScreen.visible = false
+	$ColorRect/SpecialPreviewWindow/PartPreview.visible = false
 	send_player_tip("This is where you can gain skills")
 	pass # Replace with function body.
 
@@ -130,6 +139,10 @@ func _on_transform_button_pressed() -> void:
 
 
 func _on_construction_window_part_was_placed() -> void:
+	$ColorRect/SpecialPreviewWindow/PartPreview.visible = false
+	if selected_part.bonus_property != PartData.Special_Property.NONE:
+		GM.player_bonus_properties[selected_part.bonus_property] += 1
+	print(GM.player_bonus_properties)
 	for part in parts_go_here.get_children():
 		if part.data == selected_part:
 			part.queue_free()

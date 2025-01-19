@@ -5,4 +5,6 @@ extends Resource
 
 @export var desired_length : int # how long should the level be
 
+@export var loot_count : int
+
 @export var features : Array[PackedScene]

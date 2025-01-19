@@ -2,10 +2,14 @@ extends RigidBody3D
 
 const MOVE_FORCE = 10.0
 
+var bonus_move_force = 0.0
+
 var cant_take_damage = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	bonus_move_force += 1.5 * GM.player_bonus_properties[PartData.Special_Property.AGILITY1] + 4 * GM.player_bonus_properties[PartData.Special_Property.AGILITY2]
+	gravity_scale += 0.15 * GM.player_bonus_properties[PartData.Special_Property.SPEED1] + 0.35 * GM.player_bonus_properties[PartData.Special_Property.SPEED2]
 	pass # Replace with function body.
 
 func _physics_process(delta: float) -> void:
@@ -15,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("Move_Left", "Move_Right", "Move_Up", "Move_Down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	apply_central_force(direction * MOVE_FORCE)
+	apply_central_force(direction * (MOVE_FORCE + bonus_move_force))
 	pass
 
 

@@ -318,13 +318,13 @@ layout_mode = 2
 visible = false
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
-text = "h   w
-i   i
-d   n
-d   d
-e   o
-n   w
-"
+text = "u   w
+p   i
+g   n
+r   d
+a   o
+d   w
+e    "
 autowrap_mode = 2
 
 [node name="Control" type="Control" parent="PanelTexture/Layout"]
@@ -379,7 +379,7 @@ text = "tutrial instruction geos here"
 
 [node name="HiddenWindow" type="Window" parent="."]
 auto_translate_mode = 1
-title = "hidden window"
+title = "upgrade window"
 position = Vector2i(520, 120)
 size = Vector2i(720, 360)
 visible = false
