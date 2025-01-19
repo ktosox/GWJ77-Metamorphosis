@@ -48,6 +48,7 @@ func _ready() -> void:
 	loading_screen.get_node("LoadingComplete").visible = true
 	$Music.play(randf() * 300)
 	$Music/AnimationPlayer.play("in")
+	
 	#print("_total_length ", _total_length)
 	pass
 
@@ -61,6 +62,7 @@ func start_game() -> void:
 	spawn_player()
 	loading_screen.visible = false
 	await get_tree().create_timer(0.4).timeout
+	$Overlay/TimeShower.visible = true
 	$Overlay/TimeShower.set_process(true)
 
 func create_segments() -> void:

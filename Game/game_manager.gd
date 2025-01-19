@@ -14,9 +14,9 @@ var free_skill_points = 3
 
 var max_skill_points = 1
 
-var player_experience = 220
+var player_experience = 100
 
-var player_time = 300
+var player_time = 90
 
 var player_level = 1
 
@@ -33,6 +33,8 @@ signal loot_was_collected (loot : LootPacket)
 signal skill_point_was_spent
 
 signal player_has_transformed
+
+signal player_tranformation_started
 
 signal falling_started
 

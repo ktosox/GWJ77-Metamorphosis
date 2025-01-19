@@ -16,7 +16,8 @@ signal create_new_level (level_data : LevelData)
 func _ready() -> void:
 	GM.connect("falling_ended",Callable(self,"end_lock_out"))
 	GM.connect("falling_started",Callable(self,"start_lock_out"))
-
+	GM.connect("player_has_transformed",Callable(self,"end_lock_out"))
+	GM.connect("player_tranformation_started",Callable(self,"start_lock_out"))
 	$Layout/ColorRect/PathSelectionButtonsGoHere/Button.connect("linked_path_requested",Callable(self,"show_this_path"))
 	$Layout/PathGoHere/PathDeatils.connect("level_selection_confirmed",Callable(self,"confirm_path_selection"))
 	pass # Replace with function body.

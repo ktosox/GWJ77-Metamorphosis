@@ -90,4 +90,5 @@ func end_level(new_time : float) -> void:
 	if !$HiddenWindow.visible:
 		$HiddenWindow.visible = true
 		$PanelTexture/Layout/HiddenWindowButton.visible = true
+		$Welcome2.play("new_animation")
 	pass
