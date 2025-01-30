@@ -16,8 +16,6 @@ var max_skill_points = 1
 
 var player_experience = 100
 
-var player_time = 90
-
 var player_level = 1
 
 var more_points_treshold = 60

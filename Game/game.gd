@@ -82,8 +82,8 @@ func _on_path_selection_screen_create_new_level(level_data: LevelData) -> void:
 	pass # Replace with function body.
 
 
-func end_level(new_time : float) -> void:
-	GM.player_time = new_time
+func end_level() -> void:
+
 	GM.emit_signal("falling_ended")
 	$GameWindow.visible = false
 	$GameWindow/CenterContainer.visible = true

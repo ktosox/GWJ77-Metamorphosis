@@ -46,7 +46,7 @@ func consume_placed_parts() -> float:
 	for part in all_placed_parts:
 		total_experience += part.get_meta("experience")
 		part.reparent($Consume)
-		GM.player_time += 9
+
 	$Consume/Animator.play("new_animation")
 	
 	await $Consume/Animator.animation_finished

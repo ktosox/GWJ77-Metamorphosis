@@ -30,7 +30,7 @@ var _total_length : int
 
 var _valid_location_array = []
 
-signal level_complete(time_left : float)
+signal level_complete()
 
 func _ready() -> void:
 	create_segments()
@@ -171,6 +171,6 @@ func _on_player_catcher_player_reached_end() -> void:
 	$Music/AnimationPlayer.play("out")
 	$Overlay/TimeShower.set_process(false)
 	await get_tree().create_timer(1.7).timeout
-	emit_signal("level_complete",$Overlay/TimeShower.current_time)
+	emit_signal("level_complete")
 	queue_free()
 	pass # Replace with function body.
