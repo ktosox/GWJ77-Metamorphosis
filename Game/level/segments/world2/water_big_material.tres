@@ -4,7 +4,6 @@
 
 [resource]
 resource_name = "Checker"
-cull_mode = 2
 albedo_texture = ExtResource("1_ijrks")
 emission = Color(1, 0.0901961, 1, 1)
 emission_energy_multiplier = 0.4
