@@ -406,68 +406,6 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 1
 
-[node name="SelectLevelButton" type="Button" parent="PanelTexture/Layout"]
-visible = false
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
-text = "s   l
-e   e
-l   v
-e   e
-c   l
-t    "
-autowrap_mode = 2
-
-[node name="Control4" type="Control" parent="PanelTexture/Layout"]
-custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
-
-[node name="GameWindowButton" type="Button" parent="PanelTexture/Layout"]
-visible = false
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
-text = "g   w
-a   i
-m   n
-e   d
-    o
-    w"
-autowrap_mode = 2
-
-[node name="Control3" type="Control" parent="PanelTexture/Layout"]
-custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
-
-[node name="HiddenWindowButton" type="Button" parent="PanelTexture/Layout"]
-visible = false
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
-text = "u   w
-p   i
-g   n
-r   d
-a   o
-d   w
-e    "
-autowrap_mode = 2
-
-[node name="Control" type="Control" parent="PanelTexture/Layout"]
-custom_minimum_size = Vector2(0, 4)
-layout_mode = 2
-
-[node name="OptionsWindowButton" type="Button" parent="PanelTexture/Layout"]
-visible = false
-custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
-text = "o
-p
-t
-i
-o
-n
-s"
-autowrap_mode = 2
-
 [node name="SelectLevel" type="Window" parent="."]
 title = "select level"
 position = Vector2i(90, 125)
@@ -475,6 +413,12 @@ size = Vector2i(380, 300)
 visible = false
 script = ExtResource("3_mw1gv")
 tutorial_scene = NodePath("TutorialGoesHere")
+side_bar_title = "s   l
+e   e
+l   v
+e   e
+c   l
+t    "
 
 [node name="PathSelectionScreen" parent="SelectLevel" instance=ExtResource("4_ko2fr")]
 anchors_preset = 15
@@ -510,6 +454,13 @@ visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
 tutorial_scene = NodePath("TutorialWindow")
+side_bar_title = "u   w
+p   i
+g   n
+r   d
+a   o
+d   w
+e    "
 
 [node name="PlayerConstruction" parent="HiddenWindow" instance=ExtResource("1_wgv3v")]
 anchors_preset = 15
@@ -549,6 +500,12 @@ visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
 tutorial_scene = NodePath("TutorialGoesHere")
+side_bar_title = "g   w
+a   i
+m   n
+e   d
+    o
+    w"
 
 [node name="TutorialGoesHere" type="ColorRect" parent="GameWindow"]
 visible = false
@@ -592,6 +549,13 @@ visible = false
 unresizable = true
 script = ExtResource("3_mw1gv")
 tutorial_scene = NodePath("TutorialIGuess")
+side_bar_title = "o
+p
+t
+i
+o
+n
+s"
 
 [node name="Settings" type="ColorRect" parent="OptionsWindow"]
 anchors_preset = 15
@@ -651,7 +615,6 @@ text = "change options here
 libraries = {
 "": SubResource("AnimationLibrary_7rh51")
 }
-autoplay = "new_animation"
 
 [node name="Welcome2" type="AnimationPlayer" parent="."]
 libraries = {
@@ -678,11 +641,11 @@ text = "YOU HAVE UNLOCKED A SPECIAL UPGRADE WIDNOW
 
 THE CLOCK ONLY TICKS WHEN YOU FALL"
 
-[connection signal="pressed" from="PanelTexture/Layout/SelectLevelButton" to="." method="_on_select_level_button_pressed"]
-[connection signal="pressed" from="PanelTexture/Layout/GameWindowButton" to="." method="_on_game_window_button_pressed"]
-[connection signal="pressed" from="PanelTexture/Layout/HiddenWindowButton" to="." method="_on_hidden_window_button_pressed"]
-[connection signal="pressed" from="PanelTexture/Layout/OptionsWindowButton" to="." method="_on_options_window_button_pressed"]
+[connection signal="minimize_button_created" from="SelectLevel" to="." method="_on_minimize_button_created"]
 [connection signal="create_new_level" from="SelectLevel/PathSelectionScreen" to="." method="_on_path_selection_screen_create_new_level"]
+[connection signal="minimize_button_created" from="HiddenWindow" to="." method="_on_minimize_button_created"]
+[connection signal="minimize_button_created" from="GameWindow" to="." method="_on_minimize_button_created"]
+[connection signal="minimize_button_created" from="OptionsWindow" to="." method="_on_minimize_button_created"]
 
 [editable path="OptionsWindow/Settings/SoundSetter2"]
 [editable path="OptionsWindow/Settings/SoundSetter3"]

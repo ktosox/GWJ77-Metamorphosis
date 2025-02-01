@@ -5,7 +5,7 @@ var current_game_level : Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#start_game()
+	start_game()
 	pass # Replace with function body.
 
 
@@ -27,37 +27,14 @@ func _ready() -> void:
 
 
 func start_game() -> void:
-	$PanelTexture/Layout/SelectLevelButton.visible = true
-	$PanelTexture/Layout/OptionsWindowButton.visible = true
+
+	
 	$SelectLevel.visible = true
 	$OptionsWindow.visible = true
 	#$StartAniamator.stop()
 	$StartAniamator.play("loop")
 	pass
 
-
-func _on_select_level_button_pressed() -> void:
-	$SelectLevel.visible = !$SelectLevel.visible
-
-	pass # Replace with function body.
-
-
-
-
-func _on_game_window_button_pressed() -> void:
-	$GameWindow.visible = !$GameWindow.visible
-
-	pass # Replace with function body.
-
-
-func _on_hidden_window_button_pressed() -> void:
-	$HiddenWindow.visible = !$HiddenWindow.visible
-	pass # Replace with function body.
-
-
-func _on_options_window_button_pressed() -> void:
-	$OptionsWindow.visible = !$OptionsWindow.visible
-	pass # Replace with function body.
 
 
 func _on_path_selection_screen_create_new_level(level_data: LevelData) -> void:
@@ -93,3 +70,8 @@ func end_level() -> void:
 		$PanelTexture/Layout/HiddenWindowButton.visible = true
 		$Welcome2.play("new_animation")
 	pass
+
+
+func _on_minimize_button_created(button: Button) -> void:
+	$PanelTexture/Layout.add_child(button)
+	pass # Replace with function body.
