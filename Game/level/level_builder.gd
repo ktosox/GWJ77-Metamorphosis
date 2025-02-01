@@ -61,9 +61,6 @@ func start_game() -> void:
 	loading_screen.get_node("LoadingComplete").visible = false
 	spawn_player()
 	loading_screen.visible = false
-	await get_tree().create_timer(0.4).timeout
-	$Overlay/TimeShower.visible = true
-	$Overlay/TimeShower.set_process(true)
 
 func create_segments() -> void:
 
@@ -169,7 +166,6 @@ func spawn_player() -> void:
 
 func _on_player_catcher_player_reached_end() -> void:
 	$Music/AnimationPlayer.play("out")
-	$Overlay/TimeShower.set_process(false)
 	await get_tree().create_timer(1.7).timeout
 	emit_signal("level_complete")
 	queue_free()
