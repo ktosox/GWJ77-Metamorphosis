@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkytgrlel38ah"]
+
+[ext_resource type="Script" path="res://experimental/test_free_cam.gd" id="1_duln1"]
+
+[sub_resource type="Environment" id="Environment_ndmsw"]
+ambient_light_color = Color(0.691357, 0.691357, 0.691357, 1)
+
+[node name="TestFreeCam" type="Camera3D"]
+environment = SubResource("Environment_ndmsw")
+current = true
+script = ExtResource("1_duln1")
