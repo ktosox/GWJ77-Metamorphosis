@@ -12,18 +12,20 @@ extends GridMap
 # then the real fun starts with the loop that begins with "observe" and keeps going till the Wave is empty
 
 var sections = {
-	"north" : [Vector3i(-1,0,3),Vector3i(0,0,3),Vector3i(1,0,3),Vector3i(2,0,3)],
-	"south" : [Vector3i(-2,0,-1),Vector3i(-2,0,0),Vector3i(-2,0,1),Vector3i(-2,0,2)],
-	"west" : [Vector3i(3,0,-1),Vector3i(3,0,0),Vector3i(3,0,1),Vector3i(3,0,2)],
-	"east" : [Vector3i(-1,0,-2),Vector3i(0,0,-2),Vector3i(1,0,-2),Vector3i(2,0,-2)],
+	11: [Vector3i(3,0,-1),Vector3i(3,0,0),Vector3i(3,0,1),Vector3i(3,0,2)],
+	3 : [Vector3i(-2,0,-1),Vector3i(-2,0,0),Vector3i(-2,0,1),Vector3i(-2,0,2)],
+	7 : [Vector3i(-1,0,-2),Vector3i(0,0,-2),Vector3i(1,0,-2),Vector3i(2,0,-2)],
+	15 : [Vector3i(-1,0,3),Vector3i(0,0,3),Vector3i(1,0,3),Vector3i(2,0,3)],
+	
 	}
 
 func _ready() -> void:
 	for cell in get_used_cells():
 		set_cell_item(cell,-1)
-	var flip = 3
 	for section in sections:
-		flip += 2
 		for loc in sections[section]:
-			set_cell_item(loc,0,flip)
-	pass
+			set_cell_item(loc,0,section)
+
+	#for z in 24:
+		#set_cell_item(Vector3i(z,0,0),0,z)
+	#pass
