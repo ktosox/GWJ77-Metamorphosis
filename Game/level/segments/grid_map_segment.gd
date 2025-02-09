@@ -18,7 +18,7 @@ extends GridMap
 class Tile:
 	var location : Vector3i
 	var orientation : int
-	var neighbours : Array[Vector3i]
+	var neighbours = [] as Array[Vector3i]
 	var state : int
 	var valid_states = [0,1,2]
 	var is_collpased = false
@@ -111,8 +111,17 @@ func find_linked_location(location : Vector3i) -> Array:
 func _ready() -> void:
 	for cell in get_used_cells():
 		set_cell_item(cell,-1)
-	the_wave_of_tiles[Vector3i(0,0,0)] = Tile.new()
-	propagate_collapse(0,[Vector3i(0,0,0)])
+		
+
+	create_empty_tiles(-4,4)
+	
+	
+
+	observe_next_tile()
+	var random_tile = entropy_tier_list[3][19]
+	print(random_tile.location," : ",random_tile.neighbours)
+	#the_wave_of_tiles[Vector3i(0,0,0)] = Tile.new()
+	#propagate_collapse(0,[Vector3i(0,0,0)])
 	#var iteration = 0
 	#for section in all_valid_sections:
 		#
@@ -126,6 +135,9 @@ func _ready() -> void:
 	#for z in 24:
 		#set_cell_item(Vector3i(z,0,0),0,z)
 	#pass
+
+func observe_next_tile():
+	pass
 
 func create_empty_tiles(from : int, to : int) -> void: # creates an Array of Vector3i represeting locations on GridMap between "from" and "to" (inclusive)
 	assert(from < to)
@@ -145,14 +157,16 @@ func create_empty_tiles(from : int, to : int) -> void: # creates an Array of Vec
 		current_floor += 1
 	for tile in created_tiles as Array[Tile]:
 		# populate the Tiles.neighbours array using find_linked_location
-		tile.neighbours = find_linked_location(tile.location)
+		var linked_location = find_linked_location(tile.location) as Array[Vector3i]
+
+		tile.neighbours = linked_location
 		
 		# remeber to add 2 excpetions - the first and last row, so Y == from and Y == to
 		if tile.location.y == from:
 			pass
 		if tile.location.y == to:
 			pass
-	
+		entropy_tier_list[tile.valid_states.size()].push_back(tile)
 
 func collapse_tile_at_loc(location : Vector3i) -> void:
 	var selected_tile = the_wave_of_tiles[location] as Tile
