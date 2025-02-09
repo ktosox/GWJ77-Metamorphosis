@@ -49,7 +49,7 @@ var all_valid_sections = {# a dictionary describing all 4 walls, where keys are 
 	7 : [Vector3i(-1,0,-2),Vector3i(0,0,-2),Vector3i(1,0,-2),Vector3i(2,0,-2)],
 	}
 
-func find_linked_location(location : Vector3i) -> Array:
+func find_linked_locations(location : Vector3i) -> Array:
 	var neigbours = []
 	var base_layer = []
 	if location.x == -2:
@@ -113,15 +113,10 @@ func _ready() -> void:
 		set_cell_item(cell,-1)
 		
 
-	create_empty_tiles(-4,4)
+	create_empty_tiles(-2,3)
 	
+	#print(the_wave_of_tiles[Vector3i(-1,1,-2)].neighbours)
 	
-
-	observe_next_tile()
-	var random_tile = entropy_tier_list[3][19]
-	print(random_tile.location," : ",random_tile.neighbours)
-	#the_wave_of_tiles[Vector3i(0,0,0)] = Tile.new()
-	#propagate_collapse(0,[Vector3i(0,0,0)])
 	#var iteration = 0
 	#for section in all_valid_sections:
 		#
@@ -136,7 +131,17 @@ func _ready() -> void:
 		#set_cell_item(Vector3i(z,0,0),0,z)
 	#pass
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("RMB"):
+		observe_next_tile()
+	pass
+
 func observe_next_tile():
+	for n in [1,2,3]:
+		if entropy_tier_list[n].size() != 0:
+			collapse_tile_at_loc(entropy_tier_list[n][0].location)
+			return
+	print("nothing left to collapse")
 	pass
 
 func create_empty_tiles(from : int, to : int) -> void: # creates an Array of Vector3i represeting locations on GridMap between "from" and "to" (inclusive)
@@ -157,14 +162,20 @@ func create_empty_tiles(from : int, to : int) -> void: # creates an Array of Vec
 		current_floor += 1
 	for tile in created_tiles as Array[Tile]:
 		# populate the Tiles.neighbours array using find_linked_location
-		var linked_location = find_linked_location(tile.location) as Array[Vector3i]
+		var linked_location = find_linked_locations(tile.location) as Array[Vector3i]
 
 		tile.neighbours = linked_location
 		
 		# remeber to add 2 excpetions - the first and last row, so Y == from and Y == to
 		if tile.location.y == from:
+			for loc in tile.neighbours.duplicate():
+				if loc.y == from-1:
+					tile.neighbours.erase(loc)
 			pass
 		if tile.location.y == to:
+			for loc in tile.neighbours.duplicate():
+				if loc.y == to+1:
+					tile.neighbours.erase(loc)
 			pass
 		entropy_tier_list[tile.valid_states.size()].push_back(tile)
 
