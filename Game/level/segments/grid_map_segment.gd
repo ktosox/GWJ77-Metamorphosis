@@ -34,7 +34,7 @@ class Tile:
 		pass
 
 
-var wave : Dictionary # pairs locations as Vectro3i with Tile
+var the_wave_of_tiles : Dictionary # pairs locations as Vectro3i with Tile
 
 var entropy_tier_list = { # pairs entropy size as int with an Array of Tile with the specified entropy
 	1 : [],
@@ -47,7 +47,6 @@ var all_valid_sections = {# a dictionary describing all 4 walls, where keys are 
 	11: [Vector3i(3,0,-1),Vector3i(3,0,0),Vector3i(3,0,1),Vector3i(3,0,2)],
 	15 : [Vector3i(2,0,3),Vector3i(1,0,3),Vector3i(0,0,3),Vector3i(-1,0,3)],
 	7 : [Vector3i(-1,0,-2),Vector3i(0,0,-2),Vector3i(1,0,-2),Vector3i(2,0,-2)],
-	
 	}
 
 func find_linked_location(location : Vector3i) -> Array:
@@ -112,7 +111,8 @@ func find_linked_location(location : Vector3i) -> Array:
 func _ready() -> void:
 	for cell in get_used_cells():
 		set_cell_item(cell,-1)
-	find_linked_location(Vector3i(-2,10,2))
+	the_wave_of_tiles[Vector3i(0,0,0)] = Tile.new()
+	propagate_collapse(0,[Vector3i(0,0,0)])
 	#var iteration = 0
 	#for section in all_valid_sections:
 		#
@@ -129,43 +129,51 @@ func _ready() -> void:
 
 func create_empty_tiles(from : int, to : int) -> void: # creates an Array of Vector3i represeting locations on GridMap between "from" and "to" (inclusive)
 	assert(from < to)
-	var list_of_locations_by_Y : Dictionary
+	var created_tiles = []
 	var current_floor = from
-	while current_floor <= to: # populate array_of_locations wit hall of the locations
-		list_of_locations_by_Y[current_floor] = []
+	while current_floor <= to: 
+
 		for section in all_valid_sections:
 			
-			for loc in all_valid_sections[section]:
-				
-				list_of_locations_by_Y[current_floor].push_back(loc + Vector3i(0,current_floor,0) )
+			for base_loc in all_valid_sections[section]:
+				var new_Tile = Tile.new()
+				var target_loc = base_loc + Vector3i(0,current_floor,0) 
+				new_Tile.location = target_loc
+				new_Tile.orientation = section
+				the_wave_of_tiles[target_loc] = new_Tile
+				created_tiles.push_back(new_Tile)
 		current_floor += 1
-	for floor in list_of_locations_by_Y: # for each floor (which is an Array) in list_of_locations_by_Y
-		for location in floor: # make a tile for each
-			var new_Tile = Tile.new()
-		# populate the Tiles.neighbours array with the locations
-			
-			if floor != from:
-				# add neigbourhs above
-				pass
-			if floor != to:
-				# add neigbourhs below
-				pass
-		# remeber to add 2 excpetions - the first and last row, so Y = from and Y = to
+	for tile in created_tiles as Array[Tile]:
+		# populate the Tiles.neighbours array using find_linked_location
+		tile.neighbours = find_linked_location(tile.location)
+		
+		# remeber to add 2 excpetions - the first and last row, so Y == from and Y == to
+		if tile.location.y == from:
+			pass
+		if tile.location.y == to:
+			pass
 	
 
 func collapse_tile_at_loc(location : Vector3i) -> void:
-	var selected_tile = wave[location] as Tile
+	var selected_tile = the_wave_of_tiles[location] as Tile
 	assert(!selected_tile.is_collpased)
 	selected_tile.state = selected_tile.valid_states[randi()%selected_tile.valid_states.size()]
 	selected_tile.is_collpased = true
-
+	entropy_tier_list[selected_tile.valid_states.size()].erase(selected_tile)
+	selected_tile.valid_states.clear()
+	set_cell_item(selected_tile.location,selected_tile.state,selected_tile.orientation)
 	propagate_collapse(selected_tile.state,selected_tile.neighbours)
 	pass
 
 func propagate_collapse(state : int, list : Array) -> void:
-	
+		
 	for tile in list:
-		var tile_to_update = wave[tile]
+		var tile_to_update 
+		if typeof(tile) == 10:
+			tile_to_update = the_wave_of_tiles[tile]
+		else:
+			tile_to_update = tile
+		assert(tile_to_update.has_method("update_valid_states"))
 		if !tile_to_update.is_collpased:
 			var before = tile_to_update.valid_states.size()
 			tile_to_update.update_valid_states(state)
