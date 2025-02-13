@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://be5e44tl4ldbh"]
+[gd_scene load_steps=5 format=3 uid="uid://be5e44tl4ldbh"]
 
 [ext_resource type="ArrayMesh" uid="uid://dbe0eus01m6di" path="res://experimental/normal_segment_mesh.tres" id="1_wwuiy"]
 [ext_resource type="Material" uid="uid://bg4mh54ducaew" path="res://level/segments/world2/water2_material.tres" id="2_e0m3i"]
+[ext_resource type="PackedScene" uid="uid://cnteqmx04phmf" path="res://level/segments/grid_map_segment.tscn" id="3_m17ij"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pfy5q"]
 size = Vector3(4, 17, 1)
@@ -52,3 +53,5 @@ constant_linear_velocity = Vector3(0, 0, -4)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Wall2"]
 shape = SubResource("BoxShape3D_pfy5q")
+
+[node name="GridMap" parent="." instance=ExtResource("3_m17ij")]
