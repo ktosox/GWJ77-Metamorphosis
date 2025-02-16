@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmjql5w1jjml8"]
+
+[ext_resource type="Environment" uid="uid://fe2dljyurgxb" path="res://experimental/new_environment.tres" id="1_h7f6r"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3rr8p"]
+viewport_path = NodePath("MeshInstance3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cktj0"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_3rr8p")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hx8ta"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_cktj0")
+size = Vector2(20, 20)
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+environment = ExtResource("1_h7f6r")
+current = true
+fov = 90.0
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+remote_path = NodePath("../MeshInstance3D/SubViewport/Camera3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -20)
+mesh = SubResource("PlaneMesh_hx8ta")
+
+[node name="SubViewport" type="SubViewport" parent="MeshInstance3D"]
+size = Vector2i(768, 768)
+
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -20, 8.74228e-07)
+environment = ExtResource("1_h7f6r")
+projection = 2
+size = 20.0
+near = 0.1
+far = 40.0

@@ -24,9 +24,4 @@ shape = SubResource("BoxShape3D_xnr6b")
 [node name="Player" parent="." instance=ExtResource("3_jj50h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
-[node name="Camera3D" parent="Player" index="0"]
-size = 0.315
-
 [connection signal="body_entered" from="TestLevelDuplicator" to="." method="_on_test_level_duplicator_body_entered"]
-
-[editable path="Player"]
