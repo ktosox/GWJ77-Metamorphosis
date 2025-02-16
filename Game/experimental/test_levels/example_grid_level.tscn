@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdudwib4o7nwi"]
+[gd_scene load_steps=7 format=3 uid="uid://cdudwib4o7nwi"]
 
 [ext_resource type="MeshLibrary" uid="uid://c4pxemfr1mg2o" path="res://level/segments/grid_map_tiles.tres" id="1_386du"]
 [ext_resource type="Script" path="res://experimental/test_levels/example_grid_level.gd" id="1_jmqlq"]
@@ -6,6 +6,12 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xnr6b"]
 size = Vector3(20, 1, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vyy5h"]
+albedo_color = Color(0.793322, 0, 0.280023, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7n2sv"]
+material = SubResource("StandardMaterial3D_vyy5h")
 
 [node name="ExampleGridLevel" type="GridMap"]
 mesh_library = ExtResource("1_386du")
@@ -15,13 +21,30 @@ cell_center_z = false
 script = ExtResource("1_jmqlq")
 
 [node name="TestLevelDuplicator" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.3773, 0)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestLevelDuplicator"]
 shape = SubResource("BoxShape3D_xnr6b")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestLevelDuplicator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24737, -6.10873, 0)
+mesh = SubResource("BoxMesh_7n2sv")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TestLevelDuplicator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.84422, -32.7765, 0)
+mesh = SubResource("BoxMesh_7n2sv")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="TestLevelDuplicator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6093, -21.0341, 3.41558)
+mesh = SubResource("BoxMesh_7n2sv")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="TestLevelDuplicator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16604, -10.8004, -2.11307)
+mesh = SubResource("BoxMesh_7n2sv")
+
 [node name="Player" parent="." instance=ExtResource("3_jj50h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 21.3156, 2)
 
 [connection signal="body_entered" from="TestLevelDuplicator" to="." method="_on_test_level_duplicator_body_entered"]
