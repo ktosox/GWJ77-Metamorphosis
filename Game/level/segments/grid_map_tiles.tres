@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnteqmx04phmf"]
+[gd_resource type="MeshLibrary" load_steps=14 format=3 uid="uid://c4pxemfr1mg2o"]
 
-[ext_resource type="Script" path="res://level/segments/grid_map_segment.gd" id="2_yvoh8"]
-[ext_resource type="PackedScene" uid="uid://bkytgrlel38ah" path="res://experimental/test_free_cam.tscn" id="3_qedym"]
+[ext_resource type="Texture2D" uid="uid://d013cjdfsu4ai" path="res://resources/3D_textures/checkerboard_128x128.png" id="1_eh68j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxfkg"]
 albedo_color = Color(0.974321, 0.895877, 0.98603, 1)
@@ -13,7 +12,9 @@ size = Vector2(4, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_h4blp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyccv"]
-albedo_color = Color(0.768627, 0.878431, 0.156863, 1)
+albedo_texture = ExtResource("1_eh68j")
+uv1_scale = Vector3(2, 1, 1)
+texture_filter = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_72vwk"]
 material = SubResource("StandardMaterial3D_eyccv")
@@ -26,14 +27,23 @@ albedo_color = Color(0.47445, 0.151507, 0.573197, 1)
 material = SubResource("StandardMaterial3D_v8icb")
 size = Vector2(4, 2)
 
+[sub_resource type="Gradient" id="Gradient_x8m34"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ij80w"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_80gy8"]
+color_ramp = SubResource("Gradient_x8m34")
+noise = SubResource("FastNoiseLite_ij80w")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_686hm"]
-albedo_color = Color(0, 0, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_80gy8")
+texture_filter = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ydvqc"]
 material = SubResource("StandardMaterial3D_686hm")
 size = Vector2(4, 2)
 
-[sub_resource type="MeshLibrary" id="MeshLibrary_5mayi"]
+[resource]
 item/0/name = ""
 item/0/mesh = SubResource("PlaneMesh_0tc1j")
 item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -58,15 +68,3 @@ item/3/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 item/3/shapes = []
 item/3/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/3/navigation_layers = 1
-
-[node name="GridMap" type="GridMap"]
-mesh_library = SubResource("MeshLibrary_5mayi")
-cell_size = Vector3(2, 4, 2)
-data = {
-"cells": PackedInt32Array(65536, 0, 65536, 65536, 1, 65536, 65536, 2, 65536, 65536, 65535, 65536, 131072, 65535, 65536, 131072, 0, 65536, 131072, 1, 65536, 131072, 2, 65536, 196608, 2, 65536, 196608, 0, 65536, 196608, 65535, 65536, 196608, 1, 65536, 65532, 3, 1)
-}
-script = ExtResource("2_yvoh8")
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="Camera3D" parent="." instance=ExtResource("3_qedym")]
-transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -8.49998, 0, 0)

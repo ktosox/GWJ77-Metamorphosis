@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://vjhqu8weavmm"]
+[gd_scene load_steps=2 format=3 uid="uid://vjhqu8weavmm"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2q1ns"]
+size = Vector2(8, 10)
 
 [node name="SuperMarketAlley" type="Node3D"]
+
+[node name="Roof" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 5.76754, 0, 0)
+mesh = SubResource("PlaneMesh_2q1ns")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -4.4927, 0, 0)
+mesh = SubResource("PlaneMesh_2q1ns")
