@@ -12,6 +12,7 @@ albedo_color = Color(0.793322, 0, 0.280023, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7n2sv"]
 material = SubResource("StandardMaterial3D_vyy5h")
+size = Vector3(10, 1, 1)
 
 [node name="ExampleGridLevel" type="GridMap"]
 mesh_library = ExtResource("1_386du")
@@ -29,19 +30,19 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_xnr6b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestLevelDuplicator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24737, -6.10873, 0)
+transform = Transform3D(-0.085643, 0, 0.996326, 0, 1, 0, -0.996326, 0, -0.085643, 0.24737, -6.10873, 0)
 mesh = SubResource("BoxMesh_7n2sv")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="TestLevelDuplicator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.84422, -32.7765, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.84422, -17.1105, 0)
 mesh = SubResource("BoxMesh_7n2sv")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="TestLevelDuplicator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6093, -21.0341, 3.41558)
+transform = Transform3D(0.509657, 0, 0.860378, 0, 1, 0, -0.860378, 0, 0.509657, -1.6093, -21.0341, 3.41558)
 mesh = SubResource("BoxMesh_7n2sv")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="TestLevelDuplicator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16604, -10.8004, -2.11307)
+transform = Transform3D(0.598311, 0, -0.801264, 0, 1, 0, 0.801264, 0, 0.598311, -1.16604, -10.8004, -2.11307)
 mesh = SubResource("BoxMesh_7n2sv")
 
 [node name="Player" parent="." instance=ExtResource("3_jj50h")]
