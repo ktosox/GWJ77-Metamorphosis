@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=14 format=3 uid="uid://c4pxemfr1mg2o"]
+[gd_resource type="MeshLibrary" load_steps=16 format=3 uid="uid://c4pxemfr1mg2o"]
 
 [ext_resource type="Texture2D" uid="uid://d013cjdfsu4ai" path="res://resources/3D_textures/checkerboard_128x128.png" id="1_eh68j"]
 
@@ -9,8 +9,6 @@ albedo_color = Color(0.974321, 0.895877, 0.98603, 1)
 material = SubResource("StandardMaterial3D_wxfkg")
 size = Vector2(4, 2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h4blp"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eyccv"]
 albedo_texture = ExtResource("1_eh68j")
 uv1_scale = Vector3(2, 1, 1)
@@ -20,12 +18,16 @@ texture_filter = 2
 material = SubResource("StandardMaterial3D_eyccv")
 size = Vector2(4, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_axcfy"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8icb"]
 albedo_color = Color(0.47445, 0.151507, 0.573197, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0xbhg"]
 material = SubResource("StandardMaterial3D_v8icb")
 size = Vector2(4, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j50g2"]
 
 [sub_resource type="Gradient" id="Gradient_x8m34"]
 
@@ -43,28 +45,30 @@ texture_filter = 2
 material = SubResource("StandardMaterial3D_686hm")
 size = Vector2(4, 2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7egax"]
+
 [resource]
 item/0/name = ""
 item/0/mesh = SubResource("PlaneMesh_0tc1j")
 item/0/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-item/0/shapes = [SubResource("BoxShape3D_h4blp"), Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)]
+item/0/shapes = []
 item/0/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/0/navigation_layers = 1
 item/1/name = ""
 item/1/mesh = SubResource("PlaneMesh_72vwk")
 item/1/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-item/1/shapes = []
+item/1/shapes = [SubResource("BoxShape3D_axcfy"), Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)]
 item/1/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/1/navigation_layers = 1
 item/2/name = ""
 item/2/mesh = SubResource("PlaneMesh_0xbhg")
 item/2/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-item/2/shapes = []
+item/2/shapes = [SubResource("BoxShape3D_j50g2"), Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)]
 item/2/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/2/navigation_layers = 1
 item/3/name = ""
 item/3/mesh = SubResource("PlaneMesh_ydvqc")
 item/3/mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-item/3/shapes = []
+item/3/shapes = [SubResource("BoxShape3D_7egax"), Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)]
 item/3/navigation_mesh_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 item/3/navigation_layers = 1

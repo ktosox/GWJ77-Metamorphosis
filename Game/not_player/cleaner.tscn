@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkjxx86xjlgf6"]
+
+[ext_resource type="Script" path="res://not_player/cleaner.gd" id="1_d8f4w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5r2os"]
+size = Vector3(10, 1, 10)
+
+[node name="Cleaner" type="Area3D"]
+editor_description = "this is meant to delete stuff that is behind player"
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource("1_d8f4w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5r2os")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

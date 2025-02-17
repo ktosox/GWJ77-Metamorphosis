@@ -1,14 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://vjhqu8weavmm"]
+[gd_scene load_steps=4 format=3 uid="uid://vjhqu8weavmm"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_2q1ns"]
-size = Vector2(8, 10)
+[ext_resource type="MeshLibrary" uid="uid://c4pxemfr1mg2o" path="res://level/segments/grid_map_tiles.tres" id="1_qrw0s"]
+[ext_resource type="Script" path="res://experimental/test_levels/example_grid_level.gd" id="2_eiuam"]
+[ext_resource type="PackedScene" uid="uid://4wrvwk40jiq0" path="res://player/player.tscn" id="3_4djv6"]
 
 [node name="SuperMarketAlley" type="Node3D"]
 
-[node name="Roof" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 5.76754, 0, 0)
-mesh = SubResource("PlaneMesh_2q1ns")
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_qrw0s")
+cell_size = Vector3(2, 4, 2)
+cell_center_y = false
+cell_center_z = false
+collision_layer = 4
+collision_mask = 2
+data = {
+"cells": PackedInt32Array(3, 1, 0)
+}
+script = ExtResource("2_eiuam")
 
-[node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -4.4927, 0, 0)
-mesh = SubResource("PlaneMesh_2q1ns")
+[node name="Player" parent="." instance=ExtResource("3_4djv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)

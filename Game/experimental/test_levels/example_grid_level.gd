@@ -35,7 +35,8 @@ func _ready() -> void:
 
 
 	base_tile_layer_array = get_used_cells()
-	create_next_layer(5)
+	create_next_layer(15)
+	
 	pass # Replace with function body.
 
 
