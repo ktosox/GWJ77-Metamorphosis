@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc5ivdmxc2q2a"]
+
+[ext_resource type="PackedScene" uid="uid://cmjql5w1jjml8" path="res://player/player_camera.tscn" id="1_rf8jd"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_25k3i"]
+size = Vector2(1, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6me04"]
+
+[node name="NewCameraTest" type="Node3D"]
+
+[node name="Camera3D" parent="." instance=ExtResource("1_rf8jd")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -6.385, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -10.9619, 1.03562)
+mesh = SubResource("QuadMesh_25k3i")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10.9619, -3.18274)
+mesh = SubResource("QuadMesh_25k3i")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13967, -16.545, 0)
+mesh = SubResource("BoxMesh_6me04")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71592, -27.4579, 0)
+mesh = SubResource("BoxMesh_6me04")

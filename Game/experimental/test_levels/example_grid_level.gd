@@ -54,8 +54,8 @@ func create_next_layer(count = 1) -> void:
 
 func _on_test_level_duplicator_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		$TestLevelDuplicator.global_position += Vector3(0,-16,0)
-		create_next_layer(5)
+		$TestLevelDuplicator.global_position += Vector3(0,-60,0)
+		create_next_layer(15)
 		pass
 		
 	pass # Replace with function body.
