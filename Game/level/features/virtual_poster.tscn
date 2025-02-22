@@ -19,7 +19,7 @@ size = Vector3(0.2, 0.3, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sob34"]
 size = Vector3(2.28862, 4.21536, 1.39966)
 
-[node name="SlowPoster" type="MeshInstance3D"]
+[node name="SlowPoster" type="MeshInstance3D" groups=["Feature"]]
 mesh = SubResource("QuadMesh_0bj2b")
 surface_material_override/0 = ExtResource("1_qrf8s")
 script = ExtResource("2_gwerj")

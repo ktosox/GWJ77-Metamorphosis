@@ -29,6 +29,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="Metamorphosis"
 
+[global_group]
+
+Feature="Stuff inside level that is not Player"
+
 [input]
 
 LMB={

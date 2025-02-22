@@ -5,7 +5,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7mbj"]
 transparency = 1
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.764706, 1, 1, 0.839216)
+albedo_color = Color(0.764706, 1, 1, 0.772549)
 
 [sub_resource type="SphereMesh" id="SphereMesh_arunj"]
 material = SubResource("StandardMaterial3D_m7mbj")
@@ -18,7 +18,7 @@ rings = 8
 radius = 1.88815
 height = 7.08124
 
-[node name="BubbleGenerator" type="CPUParticles3D"]
+[node name="BubbleGenerator" type="CPUParticles3D" groups=["Feature"]]
 amount = 24
 lifetime = 1.2
 lifetime_randomness = 0.8
